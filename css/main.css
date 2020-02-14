@@ -14,7 +14,6 @@ body {
 * {
   -webkit-box-sizing: inherit;
           box-sizing: inherit;
-  color: #333333;
   font-family: 'Roboto', sans-serif;
 }
 
@@ -90,6 +89,10 @@ header {
   height: 110px;
   background-color: white;
   position: fixed;
+}
+
+header * {
+  color: #333333;
 }
 
 header nav {

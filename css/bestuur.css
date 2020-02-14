@@ -1,0 +1,23 @@
+#bestuur * {
+  color: #333333;
+}
+
+#bestuur .wrapper {
+  margin: 80px auto;
+}
+
+#bestuur .wrapper .split-2 {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+}
+
+#bestuur .wrapper .split-2 h1 {
+  font-size: 6em;
+}
+
+#bestuur .wrapper .split-2 p {
+  font-size: 2em;
+}
+/*# sourceMappingURL=bestuur.css.map */
