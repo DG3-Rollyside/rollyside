@@ -14,8 +14,9 @@ class HTMLcleaner{
         $spansReplaced = preg_replace('/<span\s>(.*?)<\/span\s>/', '<p>$1</p>', $strippedTags);
         $hTagsReplaced= preg_replace('/<h[3-5]>(.*?)<\/h[3-5]>/', '<p>$1</p>', $spansReplaced);
         $strippedAttr = HTMLcleaner::stripAttributes($hTagsReplaced, $allowedattr);
+        $tagRemoved= str_replace("", "\"", $strippedAttr);
         
-        return trim(preg_replace('/\s+/', ' ', $strippedAttr));
+        return trim(preg_replace('/\s+/', ' ', $tagRemoved));
     }
 
     private static function stripAttributes($s, $allowedattr = array()) {
