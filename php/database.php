@@ -14,8 +14,18 @@
       if($conn->connect_error){
         die("Connection failed.");
       } else {
-        
+
       }
     }
+    /*  
+      @limit
+    */
+    static public function getPosts(limit, offset = 0) {
+
+
+
+
+        $sql = 
+        $conn->prepared();    }
   }
  ?>
