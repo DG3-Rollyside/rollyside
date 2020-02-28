@@ -82,56 +82,38 @@
              </div>
              <div class="carousel_wrapper">
                  <div class="owl-carousel">
-                     <p>
-                     De Rollyside is een supportersvereniging van supporters van FC Groningen die zich voortbewegen op
-                     wielen of visuele gehandicapt zijn. Wij als bestuur van de Rollyside
-                     behartigt de belangen van de leden zo goed mogelijk bij FC Groningen. Zo hebben wij ervoor gezorgd
-                     dat
-                     de rollende
-                     supporters van FC Groningen een eigen plek in het stadion hebben. De Rollyside zit op de omloop van
-                     de
-                     eerste ring tegenover de hoofdtribune (op de Piet Fransen tribune).
-                 </p>
-                 <p>
-                     De Rollyside is een supportersvereniging van supporters van FC Groningen die zich voortbewegen op
-                     wielen of visuele gehandicapt zijn. Wij als bestuur van de Rollyside
-                     behartigt de belangen van de leden zo goed mogelijk bij FC Groningen. Zo hebben wij ervoor gezorgd
-                     dat
-                     de rollende
-                     supporters van FC Groningen een eigen plek in het stadion hebben. De Rollyside zit op de omloop van
-                     de
-                     eerste ring tegenover de hoofdtribune (op de Piet Fransen tribune).
-                 </p>
-                 <p>
-                     De Rollyside is een supportersvereniging van supporters van FC Groningen die zich voortbewegen op
-                     wielen of visuele gehandicapt zijn. Wij als bestuur van de Rollyside
-                     behartigt de belangen van de leden zo goed mogelijk bij FC Groningen. Zo hebben wij ervoor gezorgd
-                     dat
-                     de rollende
-                     supporters van FC Groningen een eigen plek in het stadion hebben. De Rollyside zit op de omloop van
-                     de
-                     eerste ring tegenover de hoofdtribune (op de Piet Fransen tribune).
-                 </p>
-                 <p>
-                     De Rollyside is een supportersvereniging van supporters van FC Groningen die zich voortbewegen op
-                     wielen of visuele gehandicapt zijn. Wij als bestuur van de Rollyside
-                     behartigt de belangen van de leden zo goed mogelijk bij FC Groningen. Zo hebben wij ervoor gezorgd
-                     dat
-                     de rollende
-                     supporters van FC Groningen een eigen plek in het stadion hebben. De Rollyside zit op de omloop van
-                     de
-                     eerste ring tegenover de hoofdtribune (op de Piet Fransen tribune).
-                 </p>
-                 <p>
-                     De Rollyside is een supportersvereniging van supporters van FC Groningen die zich voortbewegen op
-                     wielen of visuele gehandicapt zijn. Wij als bestuur van de Rollyside
-                     behartigt de belangen van de leden zo goed mogelijk bij FC Groningen. Zo hebben wij ervoor gezorgd
-                     dat
-                     de rollende
-                     supporters van FC Groningen een eigen plek in het stadion hebben. De Rollyside zit op de omloop van
-                     de
-                     eerste ring tegenover de hoofdtribune (op de Piet Fransen tribune).
-                 </p>
+                     <div class="bestuurs_lid">
+                         <img src="./img/bestuurs_leden/johan.jpg" alt="Johan ten Hoove">
+                         <h5 class="name">Johan ten Hoove</h5>
+                         <p>Voorzitter</p>
+                         <a href="mailto:johantenhoove@rollyside.nl">Stuur een mail</a>
+                     </div>
+
+                     <div class="bestuurs_lid">
+                         <img src="./img/bestuurs_leden/gerda.jpg" alt="Gerda Boersema">
+                         <h5 class="name">Gerda Boersema</h5>
+                         <p>Secretaris</p>
+                         <a href="mailto:gerdaboersema@rollyside.nl">Stuur een mail</a>
+                     </div>
+                    
+                     <div class="bestuurs_lid">
+                         <img src="./img/bestuurs_leden/heike.jpg" alt="Heike ten Hoove">
+                         <h5 class="name">Heike ten Hoove</h5>
+                         <p>Penningmeester</p>
+                         
+                     </div>
+
+                     <div class="bestuurs_lid">
+                         <img src="./img/bestuurs_leden/harry.jpg" alt="Harry de Jong">
+                         <h5 class="name">Harry de Jong</h5>
+                         <p>Bestuurds lid</p>
+                     </div>
+
+                     <div class="bestuurs_lid">
+                         <img src="./img/bestuurs_leden/lars.jpg" alt="Lars Mulderije">
+                         <h5 class="name">Lars Mulderije</h5>
+                         <p>Bestuurs lid</p>
+                     </div>
                  </div>
              </div>
          </div>
@@ -172,23 +154,22 @@
      <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
      <script src="./js/owl.carousel.min.js"></script>
      <script>
+     $(".owl-carousel").owlCarousel({
+         items: 4,
+         responsive: {
+             0: {
+                 items: 1
+             },
+             600: {
+                 items: 2
+             },
+             1200: {
+                 items: 4
+             }
+         }
+     });
 
-    $(".owl-carousel").owlCarousel({
-        items: 4,
-        responsive: {
-            0: {
-                items: 1
-            },
-            600: {
-                items: 2
-            },
-            1200: {
-                items: 4
-            }
-        }
-    });
-
-    function openMobileMenu() {
+     function openMobileMenu() {
          let menu = document.getElementsByTagName("mobile-nav")[0];
          menu.classList.add("open");
      }
