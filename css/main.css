@@ -1,4 +1,5 @@
-html, textarea {
+html,
+textarea {
   -webkit-box-sizing: border-box !important;
           box-sizing: border-box !important;
 }
@@ -14,7 +15,7 @@ body {
 * {
   -webkit-box-sizing: inherit;
           box-sizing: inherit;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 .wrapper {
@@ -27,7 +28,9 @@ body {
   cursor: pointer;
 }
 
-.hamburger .bar1, .hamburger .bar2, .hamburger .bar3 {
+.hamburger .bar1,
+.hamburger .bar2,
+.hamburger .bar3 {
   width: 35px;
   height: 5px;
   background-color: #333;
@@ -62,7 +65,7 @@ body {
 .close:before, .close:after {
   position: absolute;
   left: 15px;
-  content: ' ';
+  content: " ";
   height: 5vh;
   width: 5px;
   background-color: #333;
@@ -143,7 +146,7 @@ header nav .nav-links ul li.nav-link {
 }
 
 header nav .nav-links ul li.nav-button {
-  background-color: #33A112;
+  background-color: #33a112;
   padding: 15px 25px;
   border-radius: 23px;
 }
@@ -152,12 +155,14 @@ header nav .nav-links ul li.nav-button a {
   color: white;
 }
 
-tablet, mobile, mobile-nav {
+tablet,
+mobile,
+mobile-nav {
   display: none;
 }
 
 footer {
-  background-color: #00792D;
+  background-color: #00792d;
   color: white !important;
   padding: 20px;
 }
@@ -194,7 +199,8 @@ footer .wrapper form {
   margin-left: 30px;
 }
 
-footer .wrapper form input, footer .wrapper form textarea {
+footer .wrapper form input,
+footer .wrapper form textarea {
   margin: 17.5px 0px;
   width: 100%;
   padding: 1rem;
@@ -204,32 +210,37 @@ footer .wrapper form input, footer .wrapper form textarea {
   color: white;
 }
 
-footer .wrapper form input::-webkit-input-placeholder, footer .wrapper form textarea::-webkit-input-placeholder {
+footer .wrapper form input::-webkit-input-placeholder,
+footer .wrapper form textarea::-webkit-input-placeholder {
   font-size: 1.25rem;
   color: white;
   font-weight: 500;
 }
 
-footer .wrapper form input:-ms-input-placeholder, footer .wrapper form textarea:-ms-input-placeholder {
+footer .wrapper form input:-ms-input-placeholder,
+footer .wrapper form textarea:-ms-input-placeholder {
   font-size: 1.25rem;
   color: white;
   font-weight: 500;
 }
 
-footer .wrapper form input::-ms-input-placeholder, footer .wrapper form textarea::-ms-input-placeholder {
+footer .wrapper form input::-ms-input-placeholder,
+footer .wrapper form textarea::-ms-input-placeholder {
   font-size: 1.25rem;
   color: white;
   font-weight: 500;
 }
 
-footer .wrapper form input::placeholder, footer .wrapper form textarea::placeholder {
+footer .wrapper form input::placeholder,
+footer .wrapper form textarea::placeholder {
   font-size: 1.25rem;
   color: white;
   font-weight: 500;
 }
 
-footer .wrapper form input.submit, footer .wrapper form textarea.submit {
-  font-wieght: 500;
+footer .wrapper form input.submit,
+footer .wrapper form textarea.submit {
+  font-weight: 500;
   font-size: 1.25rem;
   text-align: start;
 }
@@ -273,7 +284,10 @@ intro .intro-img .centered {
           transform: translate(-50%, -50%);
 }
 
-intro .intro-img .centered h1, intro .intro-img .centered p, intro .intro-img .centered button, intro .intro-img .centered a {
+intro .intro-img .centered h1,
+intro .intro-img .centered p,
+intro .intro-img .centered button,
+intro .intro-img .centered a {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -289,7 +303,7 @@ intro .intro-img .centered p {
 }
 
 intro .intro-img .centered button {
-  background-color: #33A112;
+  background-color: #33a112;
   border-radius: 23px;
   padding: 20px 35px;
   border: none;
@@ -316,12 +330,12 @@ intro .intro-img .centered button a {
   display: grid;
   -ms-grid-columns: 1fr 1fr;
       grid-template-columns: 1fr 1fr;
-  grid-gap: 100px;
+  grid-gap: 50px;
 }
 
 #index .wrapper .news-featured .split-2 .left {
   width: calc();
-  height: calc(50vw - 50px);
+  height: calc(50vw);
   max-height: 650px;
 }
 
@@ -341,7 +355,7 @@ intro .intro-img .centered button a {
 }
 
 #index .wrapper .news-featured .split-2 .left .nieuws-featured .content a {
-  color: #33A112;
+  color: #33a112;
   font-size: 20px;
   text-decoration: none;
   width: -webkit-fit-content;
@@ -351,7 +365,9 @@ intro .intro-img .centered button a {
   bottom: 0px;
 }
 
-#index .wrapper .news-featured .split-2 .left .nieuws-featured h3, #index .wrapper .news-featured .split-2 .left .nieuws-featured h5, #index .wrapper .news-featured .split-2 .left .nieuws-featured p {
+#index .wrapper .news-featured .split-2 .left .nieuws-featured h3,
+#index .wrapper .news-featured .split-2 .left .nieuws-featured h5,
+#index .wrapper .news-featured .split-2 .left .nieuws-featured p {
   color: white;
   font-weight: 500;
 }
@@ -371,6 +387,79 @@ intro .intro-img .centered button a {
   font-size: 22px;
 }
 
+#index .wrapper .news-featured .split-2 .right {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 350px 350px;
+      grid-template-rows: 350px 350px;
+}
+
+#index .wrapper .news-featured .split-2 .right .news {
+  width: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  -webkit-column-gap: 25px;
+          column-gap: 25px;
+}
+
+#index .wrapper .news-featured .split-2 .right .news .img {
+  height: 300px;
+  width: 300px;
+  background-position: center;
+}
+
+#index .wrapper .news-featured .split-2 .right .news .content {
+  margin: 0px auto;
+}
+
+#index .wrapper .news-featured .split-2 .right .news .content .title {
+  font-size: 1.5em;
+  margin: 0px;
+}
+
+#index .wrapper .news-featured .split-2 .right .news .content .date {
+  margin: 0px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: 1em;
+}
+
+#index .wrapper .news-featured .split-2 .right .news .content .intro-text {
+  font-size: 1.1em;
+}
+
+#index .wrapper .news-featured .split-2 .right .news .content a {
+  color: #236e0c;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+#index .wrapper .news-featured button {
+  margin: 50px 0px;
+  background-color: #33a112;
+  border-radius: 23px;
+  padding: 20px 35px;
+  border: none;
+  position: relative;
+  left: 50%;
+  -webkit-transform: translatex(-50%);
+          transform: translatex(-50%);
+  font-size: 32px;
+  text-decoration: none;
+  color: white;
+}
+
+#sponsoren {
+  background-color: #f3f3f3;
+}
+
+#sponsoren .owl-carousel {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
 @media screen and (max-width: 1200px) {
   .hamburger {
     display: inline-block;
@@ -382,8 +471,10 @@ intro .intro-img .centered button a {
   desktop {
     display: none;
   }
-  tablet, mobile-nav {
+  tablet,
+  mobile-nav {
     display: inline-block;
+    overflow-x: scroll;
   }
   mobile-nav {
     position: absolute;
@@ -426,7 +517,8 @@ intro .intro-img .centered button a {
     margin-left: 0px !important;
     margin: 10px;
   }
-  footer section form input.submit, footer section form textarea.submit {
+  footer section form input.submit,
+  footer section form textarea.submit {
     text-align: center !important;
   }
   footer .footer-text {
@@ -443,7 +535,8 @@ h2 {
 }
 
 @media screen and (max-width: 420px) {
-  desktop, tablet {
+  desktop,
+  tablet {
     display: none;
   }
   mobile {
@@ -467,7 +560,8 @@ h2 {
   header nav .hamburger {
     margin-right: 35px;
   }
-  footer .wrapper section form input, footer .wrapper section form textarea {
+  footer .wrapper section form input,
+  footer .wrapper section form textarea {
     margin: 7.5px;
   }
 }
