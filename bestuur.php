@@ -1,5 +1,5 @@
  <!DOCTYPE html>
- <html lang="en">
+ <html lang="nl">
 
  <head>
      <meta charset="utf-8" />
@@ -84,34 +84,34 @@
                  <div class="owl-carousel">
                      <div class="bestuurs_lid">
                          <img src="./img/bestuurs_leden/johan.jpg" alt="Johan ten Hoove">
-                         <h5 class="name">Johan ten Hoove</h5>
+                         <h3 class="name">Johan ten Hoove</h3>
                          <p>Voorzitter</p>
                          <a href="mailto:johantenhoove@rollyside.nl">Stuur een mail</a>
                      </div>
 
                      <div class="bestuurs_lid">
                          <img src="./img/bestuurs_leden/gerda.jpg" alt="Gerda Boersema">
-                         <h5 class="name">Gerda Boersema</h5>
+                         <h3 class="name">Gerda Boersema</h3>
                          <p>Secretaris</p>
                          <a href="mailto:gerdaboersema@rollyside.nl">Stuur een mail</a>
                      </div>
-                    
+
                      <div class="bestuurs_lid">
                          <img src="./img/bestuurs_leden/heike.jpg" alt="Heike ten Hoove">
-                         <h5 class="name">Heike ten Hoove</h5>
+                         <h3 class="name">Heike ten Hoove</h3>
                          <p>Penningmeester</p>
-                         
+
                      </div>
 
                      <div class="bestuurs_lid">
                          <img src="./img/bestuurs_leden/harry.jpg" alt="Harry de Jong">
-                         <h5 class="name">Harry de Jong</h5>
+                         <h3 class="name">Harry de Jong</h3>
                          <p>Bestuurds lid</p>
                      </div>
 
                      <div class="bestuurs_lid">
                          <img src="./img/bestuurs_leden/lars.jpg" alt="Lars Mulderije">
-                         <h5 class="name">Lars Mulderije</h5>
+                         <h3 class="name">Lars Mulderije</h3>
                          <p>Bestuurs lid</p>
                      </div>
                  </div>
@@ -143,10 +143,12 @@
              </section>
              <section>
                  <form>
-                     <input type="text" placeholder="Naam" class="contact-form" name="naam" />
-                     <input type="text" placeholder="Email" class="contact-form" name="email" />
-                     <textarea placeholder="Bericht"></textarea>
-                     <input type="submit" value="Verstuur" class="submit">
+                     <input type="text" placeholder="Naam" class="contact-form" name="naam"
+                         aria-label="Naam Contact formulier" />
+                     <input type="text" placeholder="Email" class="contact-form" name="email"
+                         aria-label="Email contact formulier" />
+                     <textarea placeholder="Bericht" aria-label="bericht contact formulier"></textarea>
+                     <input type="submit" value="Verstuur" class="submit" aria-label="verstuur bericht">
                  </form>
              </section>
          </div>
@@ -156,6 +158,8 @@
      <script>
      $(".owl-carousel").owlCarousel({
          items: 4,
+         dots: !0,
+         margin: 50,
          responsive: {
              0: {
                  items: 1
@@ -168,6 +172,10 @@
              }
          }
      });
+
+     $(".owl-dot").map((i, elem)=> {
+            $(elem).attr("aria-label", `Carousel navigatie ${i}`);        
+        }); 
 
      function openMobileMenu() {
          let menu = document.getElementsByTagName("mobile-nav")[0];

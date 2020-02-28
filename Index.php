@@ -181,10 +181,10 @@
                 </section>
                 <section>
                     <form>
-                        <input type="text" placeholder="Naam" class="contact-form" name="naam" />
-                        <input type="text" placeholder="Email" class="contact-form" name="email" />
-                        <textarea placeholder="Bericht"></textarea>
-                        <input type="submit" value="Verstuur" class="submit">
+                        <input type="text" placeholder="Naam" class="contact-form" name="naam" aria-label="Naam Contact formulier"/>
+                        <input type="text" placeholder="Email" class="contact-form" name="email" aria-label="Email contact formulier"/>
+                        <textarea placeholder="Bericht" aria-label="bericht contact formulier"></textarea>
+                        <input type="submit" value="Verstuur" class="submit" aria-label="verstuur bericht">
                     </form>
                 </section>
             </div>
@@ -209,6 +209,10 @@
                 }
             }
         });
+
+        $(".owl-dot").map((i, elem)=> {
+            $(elem).attr("aria-label", `Carousel navigatie ${i}`);        
+        }); 
 
         function openMobileMenu() {
             let menu = document.getElementsByTagName("mobile-nav")[0];

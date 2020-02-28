@@ -4,19 +4,34 @@
     }
 
     .wrapper {
+        padding: 0px 20px;
         margin: 80px auto;
         .split-2 {
             display: grid;
             grid-template-columns: 1fr 1fr;
             
             h1 {
-                font-size: 6em;
+                margin: auto 0px; 
+                margin-left: 80px;
+                font-size: 5.5em;
             }
             
             p{
-                font-size: 2em;
+                font-size: 1.75em;
+                margin-bottom: 50px;
             }
         }
+        .owl-carousel {
+            background-color: #f3f3f3;
+            padding: 80px;
+        }
+        
     }
 
 }
+
+@media screen and (max-width: 1200px) {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
