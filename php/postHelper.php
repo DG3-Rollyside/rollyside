@@ -27,12 +27,15 @@ class PostHelper {
     }
 
     public static function downloadImages($post, $path) {
-        echo ++PostHelper::$debugIttr . "<br>";
+        // echo ++PostHelper::$debugIttr . "<br>";
+        // if (Posthelper::$debugIttr == 8) {
+        //     echo $post[3];
+        // }
 
         // check the path to the folder of the images
         $pathArr = explode("/", $path . "/".$post[0]);
         $checkPath = "";
-
+        echo $checkPath;
         foreach($pathArr as $pathPiece){
             if ($pathPiece == "..") {
                 $checkPath .= ".." . DIRECTORY_SEPARATOR;
@@ -40,7 +43,12 @@ class PostHelper {
             }
             $checkPath .= $pathPiece;
             if (!file_exists($checkPath)) {
-                mkdir($checkPath);
+                try {
+                    mkdir($checkPath);
+                } catch (\Throwable $th) {
+                    echo $checkPath;
+                }
+                echo $checkPath;
             } else if(!is_dir($checkPath)) {
                 die("<strong>FATAL ERROR: </strong>Folder in path is a file: <strong>\"" . $checkPath . "\"</strong>");
             }
@@ -68,6 +76,7 @@ class PostHelper {
                 echo "<hr/><hr/>";
 
             } else {
+                echo $orig;
                 file_put_contents($orig, file_get_contents($url));    
                 $resize = new ResizeImage($orig);
                 $resize->resizeTo(1920, 1080, 'maxWidth');
@@ -86,17 +95,18 @@ class PostHelper {
 
         #download images from the content of the articles
         $doc = new HTmlDocument();
-        $tempHtml = "<div id='wrap'> ". $post[4] . "</div>"; 
+        $tempHtml = "<div id='wrap'> ". $post[3] . "</div>"; 
+        print_r($tempHtml);
         $html = $doc->load($tempHtml);
         
-        $imgTags = $html->find('img');
+        $imgTags = $html->find('#wrap figure img');
+        print_r($imgTags);
         foreach($imgTags as $image) {
 
             print_r($image);
 
             $path = $checkPath . uniqid($post[0] . "_") . ".jpg";
             $url = $image->src;
-
             file_put_contents($path, file_get_contents($url));    
             $resize = new ResizeImage($path);
             $resize->resizeTo(1280, 720, 'maxWidth');
