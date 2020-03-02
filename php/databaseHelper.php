@@ -14,6 +14,8 @@ include_once "htmlCleaner.php";
       $results = DatabaseHelper::utf8_string_array_encode($results);
 
       // print_r($results[sizeof($results) -2]);
+        // $folderPath = $imagePath .DIRECTORY_SEPARATOR . $results[14][0];
+        // list($newContent, $res[5], $imgThumb) = PostHelper::downloadImages($results[14], $folderPath);
 
       // die("");
 
@@ -25,8 +27,14 @@ include_once "htmlCleaner.php";
 
         $temp = array();
 
-        $imagePath .= $res[0];
-        // list($newContent, $featuredPath, $thumbnailPath) = PostHelper::downloadImages($res, $imagePath);
+        
+        $folderPath = $imagePath .DIRECTORY_SEPARATOR . $res[0];
+        
+        try {
+          list($newContent, $res[5], $imgThumb) = PostHelper::downloadImages($res, $folderPath);
+        } catch (\Throwable $th) {
+          print_r($res);
+        }
 
         array_push($temp,$res[0]);
         array_push($temp,$res[1]);
