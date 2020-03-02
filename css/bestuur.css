@@ -3,6 +3,7 @@
 }
 
 #bestuur .wrapper {
+  padding: 0px 20px;
   margin: 80px auto;
 }
 
@@ -11,13 +12,69 @@
   display: grid;
   -ms-grid-columns: 1fr 1fr;
       grid-template-columns: 1fr 1fr;
+  margin-bottom: 80px;
 }
 
 #bestuur .wrapper .split-2 h1 {
-  font-size: 6em;
+  margin: auto 0px;
+  margin-left: 80px;
+  font-size: 5.5em;
 }
 
 #bestuur .wrapper .split-2 p {
-  font-size: 2em;
+  font-size: 1.75em;
+}
+
+#bestuur .wrapper .owl-carousel {
+  background-color: #f3f3f3;
+  padding: 80px;
+  padding-bottom: 40px;
+}
+
+#bestuur .wrapper .owl-carousel .owl-dots {
+  margin-top: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#bestuur .wrapper .owl-carousel .owl-dots button {
+  margin: 7.5px;
+  width: 15px;
+  height: 15px;
+  border-radius: 10px;
+  background-color: #a3a3a3;
+}
+
+#bestuur .wrapper .owl-carousel .owl-dots button.active {
+  background-color: #333333;
+}
+
+@media screen and (max-width: 1400px) {
+  #bestuur .wrapper .split-2 h1 {
+    margin-left: 0px;
+    margin-right: 40px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  #bestuur .wrapper .split-2 {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+    -ms-grid-rows: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+    padding: 10px;
+  }
+  #bestuur .wrapper .split-2 h1 {
+    margin: 20px auto;
+    margin-bottom: 0px;
+  }
+  #bestuur .wrapper .split-2 P {
+    margin: 40px;
+    margin-top: 0px;
+  }
 }
 /*# sourceMappingURL=bestuur.css.map */

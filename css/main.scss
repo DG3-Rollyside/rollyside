@@ -9,6 +9,19 @@ html {
 
 body {
   margin: 0px;
+  
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
 }
 
 * {
@@ -112,6 +125,7 @@ header {
       float: right;
       margin: 0px;
       margin-top: 10px;
+      margin-right: 10px;
 
       ul {
         padding: 0px;

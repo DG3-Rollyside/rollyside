@@ -158,7 +158,7 @@
      <script>
      $(".owl-carousel").owlCarousel({
          items: 4,
-         dots: !0,
+         dots: true,
          margin: 50,
          responsive: {
              0: {
