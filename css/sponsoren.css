@@ -1,3 +1,7 @@
+#sponsoren {
+  background-color: white;
+}
+
 #sponsoren * {
   color: #333333;
 }
@@ -25,14 +29,37 @@
   font-size: 1.75em;
 }
 
-#sponsoren .wrapper h2 {
-  font-size: 2.5em;
+#sponsoren .wrapper .split-2 h2 {
+  margin: 10px 0px;
+  font-size: 2em;
+}
+
+#sponsoren .wrapper .split-2 h2 a {
+  text-decoration: none;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+#sponsoren .wrapper .split-2 h2 a:hover {
+  color: #20660b;
 }
 
 #sponsoren .wrapper .owl-carousel {
   background-color: #f3f3f3;
   padding: 80px;
   padding-bottom: 40px;
+}
+
+#sponsoren .wrapper .owl-carousel .sponsoren-logo {
+  height: 300px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: auto;
+}
+
+#sponsoren .wrapper .owl-carousel .sponsoren-logo .logo {
+  width: 300px;
 }
 
 #sponsoren .wrapper .owl-carousel .owl-dots {

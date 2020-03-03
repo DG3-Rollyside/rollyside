@@ -4,10 +4,15 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="De Rollyside is de supportersvereniging voor minder validen van FC Groningen. Meld je aan!" />
+
     <title>rollyside</title>
     <link rel="stylesheet" href="./css/main.css" />
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/owl.carousel.min.css">
+
+    <link rel="preload" href="./img/logo.svg" as="image">
+    <link rel="preload" href="./img/header-img.jpg" as="image">
 </head>
 
 <body>
@@ -171,8 +176,8 @@
                         bereiken door te bellen naar het
                         nummer
                     </p>
-                    <h4> Mobiel: Heike ten Hoove 06-10 860 061 </h4>
-                    <h4> Adres Secretaris Gerda Boersema </h4>
+                    <h4> Mobiel: 06-10 860 061 </h4>
+                    <h4> Adres Secretaris </h4>
                     <p>
                         Rollyside<br />
                         Torenakkers 10<br />
@@ -181,8 +186,10 @@
                 </section>
                 <section>
                     <form>
-                        <input type="text" placeholder="Naam" class="contact-form" name="naam" aria-label="Naam Contact formulier"/>
-                        <input type="text" placeholder="Email" class="contact-form" name="email" aria-label="Email contact formulier"/>
+                        <input type="text" placeholder="Naam" class="contact-form" name="naam"
+                            aria-label="Naam Contact formulier" />
+                        <input type="text" placeholder="Email" class="contact-form" name="email"
+                            aria-label="Email contact formulier" />
                         <textarea placeholder="Bericht" aria-label="bericht contact formulier"></textarea>
                         <input type="submit" value="Verstuur" class="submit" aria-label="verstuur bericht">
                     </form>
@@ -210,9 +217,9 @@
             }
         });
 
-        $(".owl-dot").map((i, elem)=> {
-            $(elem).attr("aria-label", `Carousel navigatie ${i}`);        
-        }); 
+        $(".owl-dot").map((i, elem) => {
+            $(elem).attr("aria-label", `Carousel navigatie ${i}`);
+        });
 
         function openMobileMenu() {
             let menu = document.getElementsByTagName("mobile-nav")[0];
