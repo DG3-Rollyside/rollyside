@@ -111,10 +111,6 @@
                         <img src="./img/sponsoren/knvb.png" class="logo" alt="Logo KNVB">
                         <div class="name"> KNVB </div>
                     </a>
-                    <a class="sponsoren-logo" href="https://www.zorgbelang-groningen.nl/" target="_blank">
-                        <img src="./img/sponsoren/zorgbelang.png" class="logo" alt="Logo Zorgbelang">
-                        <div class="name"> Zorgbelang Groningen </div>
-                    </a>
                 </div>
             </div>
         </div>
