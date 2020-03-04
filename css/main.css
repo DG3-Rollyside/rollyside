@@ -323,6 +323,7 @@ intro .intro-img .centered button a {
   width: -moz-fit-content;
   width: fit-content;
   margin: 80px auto;
+  text-align: center;
 }
 
 #index .wrapper .news-featured .split-2 {
@@ -331,6 +332,7 @@ intro .intro-img .centered button a {
   -ms-grid-columns: 1fr 1fr;
       grid-template-columns: 1fr 1fr;
   grid-gap: 50px;
+  margin: 20px;
 }
 
 #index .wrapper .news-featured .split-2 .left {
@@ -390,8 +392,9 @@ intro .intro-img .centered button a {
 #index .wrapper .news-featured .split-2 .right {
   display: -ms-grid;
   display: grid;
-  -ms-grid-rows: 350px 350px;
-      grid-template-rows: 350px 350px;
+  -ms-grid-rows: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+  row-gap: 50px;
 }
 
 #index .wrapper .news-featured .split-2 .right .news {
@@ -451,8 +454,42 @@ intro .intro-img .centered button a {
   color: white;
 }
 
+@media screen and (max-width: 1300px) {
+  #index .wrapper .news-featured {
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    margin: auto 10px;
+  }
+  #index .wrapper .news-featured .split-2 {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
+  #index .wrapper .news-featured .split-2 .left {
+    width: 100%;
+    min-height: 300px;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+  #index .wrapper .news-featured .split-2 .right {
+    display: none;
+  }
+}
+
 #sponsoren {
   background-color: #f3f3f3;
+}
+
+#sponsoren .wrapper {
+  padding: 10px;
+}
+
+#sponsoren .wrapper h1 {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 80px auto;
 }
 
 #sponsoren .owl-carousel {
@@ -534,6 +571,14 @@ h2 {
   font-size: 48px;
 }
 
+@media screen and (max-width: 640px) {
+  header nav .logo {
+    /*min-height: 70px;*/
+    width: calc(50vw - 20px);
+    margin-left: 20px;
+  }
+}
+
 @media screen and (max-width: 420px) {
   desktop,
   tablet {
@@ -556,6 +601,7 @@ h2 {
 @media screen and (max-width: 640px) {
   header nav .logo {
     width: 60vw;
+    margin-left: 0px;
   }
   header nav .hamburger {
     margin-right: 35px;
