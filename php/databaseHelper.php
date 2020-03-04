@@ -6,6 +6,7 @@ include_once "htmlCleaner.php";
   class DatabaseHelper {
 
     static public function genCleanCSV($limit, $offset = 0, $imagePath = "../img/nieuws") {
+      set_time_limit(300);
       $results = Database::getAllPosts();
       $csvNew = array();
 
@@ -13,28 +14,19 @@ include_once "htmlCleaner.php";
 
       $results = DatabaseHelper::utf8_string_array_encode($results);
 
-      // print_r($results[sizeof($results) -2]);
-        // $folderPath = $imagePath .DIRECTORY_SEPARATOR . $results[14][0];
-        // list($newContent, $res[5], $imgThumb) = PostHelper::downloadImages($results[14], $folderPath);
-
-      // die("");
-
       foreach ($results as $res) {
         $cleanedCon = HTMLcleaner::cleanHtml($res[3], array("src", "href"), "<h1><h2><h3><h4><h5><p><img><a><video><ul><ol><li><quote><figure><figcaption>");
         $imgThumb = $res[6];
         // list($res[3], $res[5], $imgThumb) = PostHelper::downloadImages($res, $imagePath);
-
-
+        
+        
         $temp = array();
-
         
-        $folderPath = $imagePath .DIRECTORY_SEPARATOR . $res[0];
         
-        try {
-          list($newContent, $res[5], $imgThumb) = PostHelper::downloadImages($res, $folderPath);
-        } catch (\Throwable $th) {
-          print_r($res);
-        }
+        $folderPath = $imagePath . "/" . $res[0];
+        
+        list($newContent, $res[5], $imgThumb) = PostHelper::downloadImages($res, $folderPath);
+        
 
         array_push($temp,$res[0]);
         array_push($temp,$res[1]);
@@ -49,21 +41,24 @@ include_once "htmlCleaner.php";
         
         
 
-        array_push($temp, $res[5]);
+        array_push($temp, $newContent);
         array_push($temp, $imgThumb);
         array_push($csvNew, $temp);
 
 
       }
+
       $file = fopen('nieuws_gen.csv', 'w');
         // fputcsv($file, ["id", "title", "created_at", "intro_text", "content", "img", "thumbnail"]);
         foreach($csvNew as $row) {
           fputcsv($file, $row);
         }
 
+        
       fclose($file);
+      // print_r($csvNew);
 
-      header('location: ./nieuws_gen.csv');
+      // header('location: ./nieuws_gen.csv');
 
     }
 
@@ -83,6 +78,6 @@ include_once "htmlCleaner.php";
       return $array;
   }
   }  
-  echo "";
+
   DatabaseHelper::genCleanCSV(100);
  ?>
