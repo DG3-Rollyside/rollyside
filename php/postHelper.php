@@ -1,6 +1,8 @@
 <?php 
 include_once "imageEditor.php";
 include_once "simplehtmldom/HtmlDocument.php";
+require_once("./url_to_absolute/url_to_absolute.php");
+
 use simplehtmldom\HtmlDocument;
 
 
@@ -96,24 +98,15 @@ class PostHelper {
         #download images from the content of the articles
         $doc = new HTmlDocument();
         $tempHtml = "<div id='wrap'> ". $post[3] . "</div>"; 
-        print_r($tempHtml);
         $html = $doc->load($tempHtml);
+
         
-        $imgTags = $html->find('#wrap figure img');
-        print_r($imgTags);
-        foreach($imgTags as $image) {
-
-            print_r($image);
-
-            $path = $checkPath . uniqid($post[0] . "_") . ".jpg";
-            $url = $image->src;
-            file_put_contents($path, file_get_contents($url));    
-            $resize = new ResizeImage($path);
-            $resize->resizeTo(1280, 720, 'maxWidth');
-            $resize->saveImage($path, 60);
-
-            $image->src = $path;
+        $url = "http://www.rollyside.nl";
+        foreach($html->find('img') as $element) {
+            echo url_to_absolute($url, $element->src), "n";
         }
+        
+
         $str = $html->find("div[id=wrap]", 0);
         $newArticle = $str->innertext;
 
