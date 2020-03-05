@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="nl">
-
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -69,7 +68,7 @@
                 <div class="split-2">
                     <div class="left">
                         <div class="nieuws-featured"
-                            style='background-image: url("./img/nieuws/3983/ORIGINAL.jpg");'>
+                            style='background-image: url("http://www.rollyside.nl/wp-content/uploads/2020/01/IMG_0671-1-rotated.jpg");'>
                             <div class="content">
                                 <h3 class="title">
                                     Angst op mindervaliden-tribune FC na afstekenfakkel: ‘Je ziet hem bijna
@@ -102,12 +101,12 @@
                                 <a href="autgen" class="read-more">Lees meer...</a>
                             </div>
                             <div class="img"
-                                style='background-image: url("./img/nieuws/3983/FEATURED.jpg");'>
+                                style='background-image: url("http://www.rollyside.nl/wp-content/uploads/2020/01/IMG_0671-1-rotated.jpg");'>
                             </div>
                         </div>
                         <div class="news">
                             <div class="img"
-                                style='background-image: url("./img/nieuws/3983/FEATURED.jpg");'>
+                                style='background-image: url("http://www.rollyside.nl/wp-content/uploads/2020/01/IMG_0671-1-rotated.jpg");'>
                             </div>
                             <div class="content">
                                 <h3 class="title">
@@ -223,5 +222,4 @@
     </script>
     <script src="./js/site.js"></script>
 </body>
-
 </html>

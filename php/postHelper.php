@@ -66,6 +66,7 @@ class PostHelper {
                 $imgF = "https://place-hold.it/1920/1080";
 
             } else {
+                echo $orig;
                 file_put_contents($orig, file_get_contents($url));    
                 $resize = new ResizeImage($orig);
                 $resize->resizeTo(1920, 1080, 'maxWidth');
@@ -130,7 +131,6 @@ class PostHelper {
             $element->src = "<strong>".$imagePathFromPost."</strong>";
             // test
             // $element->src = $imagePathFromPHP;
-
         }
 
         $html->save();
@@ -146,7 +146,6 @@ class PostHelper {
 
 
     }
-
     private static function createCorrectPathToImg($path) {
         $checkPath = "./";
         $pathArr = explode('\\', $path);

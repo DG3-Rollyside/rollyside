@@ -17,16 +17,12 @@ include_once "htmlCleaner.php";
       foreach ($results as $res) {
         $cleanedCon = HTMLcleaner::cleanHtml($res[3], array("src", "href"), "<h1><h2><h3><h4><h5><p><img><a><video><ul><ol><li><quote><figure><figcaption>");
         $imgThumb = $res[6];
-        // list($res[3], $res[5], $imgThumb) = PostHelper::downloadImages($res, $imagePath);
         
         
         $temp = array();
-        
-        
         $folderPath = $imagePath . "/" . $res[0];
         
         list($newContent, $res[5], $imgThumb) = PostHelper::downloadImages($res, $folderPath);
-        
 
         array_push($temp,$res[0]);
         array_push($temp,$res[1]);
