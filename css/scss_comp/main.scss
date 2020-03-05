@@ -247,7 +247,7 @@ intro {
   margin-top: 110px;
   display: block;
   width: 100vw;
-  background-image: url("../img/header-img.jpg");
+  background-image: url("../../img/header-img.jpg");
   background-position: center center;
   background-size: cover;
   backdrop-filter: blur(3px);
@@ -314,9 +314,8 @@ intro {
   tablet,
   mobile-nav {
     display: inline-block;
-    
   }
-  
+
   mobile-nav {
     position: absolute;
     left: -100vw;
@@ -328,11 +327,10 @@ intro {
 
     overflow-y: scroll;
     overflow-x: hidden;
-    
+
     &.open {
       left: 0px;
       display: inline-block;
-
     }
 
     .logo {
