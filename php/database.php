@@ -134,10 +134,23 @@ include "postHelper.php";
 
     }
 
+    public static function searchPost($title, $limit, $offset) {
+      $conn = Database::connect();
+
+      $sql = 'SELECT * FROM `nieuws` WHERE title LIKE ? ORDER BY created_at DESC LIMIT ? OFFSET ?';
+
+      $stmt = $conn->prepare($sql);
+      $title = "%$title%";
+      $stmt->bind_param("sss", $title, $limit, $offset);
+
+      $stmt->execute();
+      $result = $stmt->get_result();
+      $results = $result->fetch_all();
+
+      $conn->close();
+      return $results;
+    }
+
     //! end of class
   }
-
-$msg = Database::updatePost(4883,["lul", "dit is test", "dit is een test", "../hoi.png", "../hoi/post.png", "14-01-2003 12:00:00"]);
-print_R($msg);
-
 ?>

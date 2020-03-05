@@ -19,7 +19,7 @@
 
     #cookieBar button {
         background-color: inherit;
-        border: 6px solid white;
+        border: 4px solid white;
         font-size: 1.25em;
         color: white;
 
