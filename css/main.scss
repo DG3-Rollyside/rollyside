@@ -9,7 +9,6 @@ html {
 
 body {
   margin: 0px;
-  
   &::-webkit-scrollbar {
     width: 10px;
   }
@@ -301,12 +300,14 @@ intro {
       h1 {
         width: fit-content;
         margin: 80px auto;
+        text-align: center;
       }
 
       .split-2 {
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-gap: 50px;
+        margin: 20px;
 
         .left {
           width: calc();
@@ -353,15 +354,20 @@ intro {
               font-size: 20px;
             }
 
+            h3,
+            h5,
             p {
               margin-top: 20px;
               font-size: 22px;
+              color: white;
+              font-weight: 500;
             }
           }
         }
         .right {
           display: grid;
-          grid-template-rows: 350px 350px;
+          grid-template-rows: 1fr 1fr;
+          row-gap: 50px;
 
           .news {
             width: 100%;
@@ -417,11 +423,40 @@ intro {
     }
   }
 }
+@media screen and (max-width: 1300px) {
+    #index {
+      .wrapper {
+        .news-featured {
+          width: fit-content;
+          margin: auto 10px;
+          .split-2 {
+            grid-template-columns: 1fr;
+
+            .left {
+              width: 100%;
+              min-height: 300px;
+              height: fit-content;
+            }
+
+            .right {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+}
+
 
 #sponsoren {
   background-color: #f3f3f3;
 
   .wrapper {
+    padding: 10px;
+    h1 {
+      width: fit-content;
+      margin: 80px auto;
+    }
   }
   .owl-carousel {
     margin-top: 50px;
@@ -518,6 +553,14 @@ h2 {
   font-size: 48px;
 }
 
+@media screen and (max-width: 640px) {
+  header nav .logo {
+    /*min-height: 70px;*/
+    width: calc(50vw - 20px);
+    margin-left: 20px;
+  }
+}
+
 @media screen and (max-width: 420px) {
   desktop,
   tablet {
@@ -554,6 +597,7 @@ h2 {
     nav {
       .logo {
         width: 60vw;
+        margin-left: 0px;
       }
 
       .hamburger {

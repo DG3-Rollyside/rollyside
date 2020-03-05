@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="nl">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -130,101 +129,97 @@
                 <button onclick="window.location = './nieuws.php';" class="button">Bekijk meer berichten</button>
             </div>
         </div>
+    </div>
 
-        <div id="sponsoren">
-            <div class="wrapper">
-                <h1>Onze sponsoren</h1>
-                <div class="owl-carousel">
-                    <img src="./img/KNVB-logo.png" alt="">
-                    <img src="./img/KNVB-logo.png" alt="">
-                    <img src="./img/KNVB-logo.png" alt="">
-                    <img src="./img/KNVB-logo.png" alt="">
-                    <img src="./img/KNVB-logo.png" alt="">
-                    <img src="./img/KNVB-logo.png" alt="">
-                    <img src="./img/KNVB-logo.png" alt="">
-                    <img src="./img/KNVB-logo.png" alt="">
-                    <img src="./img/KNVB-logo.png" alt="">
-                    <img src="./img/KNVB-logo.png" alt="">
-                    <img src="./img/KNVB-logo.png" alt="">
-                    <img src="./img/KNVB-logo.png" alt="">
-                    <img src="./img/KNVB-logo.png" alt="">
-                    <img src="./img/KNVB-logo.png" alt="">
-                    <img src="./img/KNVB-logo.png" alt="">
-                    <img src="./img/KNVB-logo.png" alt="">
-                    <img src="./img/KNVB-logo.png" alt="">
-                    <img src="./img/KNVB-logo.png" alt="">
-                    <img src="./img/KNVB-logo.png" alt="">
-                </div>
+    <div id="sponsoren">
+        <div class="wrapper">
+            <h1>Onze sponsoren</h1>
+            <div class="owl-carousel">
+                <img src="./img/KNVB-logo.png" alt="">
+                <img src="./img/KNVB-logo.png" alt="">
+                <img src="./img/KNVB-logo.png" alt="">
+                <img src="./img/KNVB-logo.png" alt="">
+                <img src="./img/KNVB-logo.png" alt="">
+                <img src="./img/KNVB-logo.png" alt="">
+                <img src="./img/KNVB-logo.png" alt="">
+                <img src="./img/KNVB-logo.png" alt="">
+                <img src="./img/KNVB-logo.png" alt="">
+                <img src="./img/KNVB-logo.png" alt="">
+                <img src="./img/KNVB-logo.png" alt="">
+                <img src="./img/KNVB-logo.png" alt="">
+                <img src="./img/KNVB-logo.png" alt="">
+                <img src="./img/KNVB-logo.png" alt="">
+                <img src="./img/KNVB-logo.png" alt="">
+                <img src="./img/KNVB-logo.png" alt="">
+                <img src="./img/KNVB-logo.png" alt="">
+                <img src="./img/KNVB-logo.png" alt="">
+                <img src="./img/KNVB-logo.png" alt="">
             </div>
         </div>
+    </div>
 
-        <footer>
-            <div class="wrapper">
-                <section class="footer-text">
-                    <h2> Neem contact op </h2>
-                    <p>
-                        Heeft u een vraag of wilt u iets kwijt?
-                        Stel deze via onderstaand formulier.
-                        Ook reacties op of opmerkingen over
-                        rollyside.nl kunt u kwijt via
-                        onderstaand formulier U kunt ons ook
-                        bereiken door te bellen naar het
-                        nummer
-                    </p>
-                    <h4> Mobiel: Heike ten Hoove 06-10 860 061 </h4>
-                    <h4> Adres Secretaris Gerda Boersema </h4>
-                    <p>
-                        Rollyside<br />
-                        Torenakkers 10<br />
-                        9482 RP Tynaarlo<br />
-                    </p>
-                </section>
-                <section>
-                    <form>
-                        <input type="text" placeholder="Naam" class="contact-form" name="naam" aria-label="Naam Contact formulier"/>
-                        <input type="text" placeholder="Email" class="contact-form" name="email" aria-label="Email contact formulier"/>
-                        <textarea placeholder="Bericht" aria-label="bericht contact formulier"></textarea>
-                        <input type="submit" value="Verstuur" class="submit" aria-label="verstuur bericht">
-                    </form>
-                </section>
-            </div>
-        </footer>
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-        <script src="./js/owl.carousel.min.js"></script>
-        <script>
-        $(".owl-carousel").owlCarousel({
-            items: 4,
-            loop: 1,
-            autoplay: 1,
-            dots: 1,
-            responsive: {
-                0: {
-                    items: 1
-                },
-                600: {
-                    items: 2
-                },
-                1200: {
-                    items: 4
-                }
+    <footer>
+        <div class="wrapper">
+            <section class="footer-text">
+                <h2> Neem contact op </h2>
+                <p>
+                    Heeft u een vraag of wilt u iets kwijt?
+                    Stel deze via onderstaand formulier.
+                    Ook reacties op of opmerkingen over
+                    rollyside.nl kunt u kwijt via
+                    onderstaand formulier U kunt ons ook
+                    bereiken door te bellen naar het
+                    nummer
+                </p>
+                <h4> Mobiel: Heike ten Hoove 06-10 860 061 </h4>
+                <h4> Adres Secretaris Gerda Boersema </h4>
+                <p>
+                    Rollyside<br />
+                    Torenakkers 10<br />
+                    9482 RP Tynaarlo<br />
+                </p>
+            </section>
+            <section>
+                <form>
+                    <input type="text" placeholder="Naam" class="contact-form" name="naam" />
+                    <input type="text" placeholder="Email" class="contact-form" name="email" />
+                    <textarea placeholder="Bericht"></textarea>
+                    <input type="submit" value="Verstuur" class="submit">
+                </form>
+            </section>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="./js/owl.carousel.min.js"></script>
+    <script>
+    $(".owl-carousel").owlCarousel({
+        items: 4,
+        loop: 1,
+        autoplay: 1,
+        dots: 1,
+        responsive: {
+            0: {
+                items: 1
+            },
+            600: {
+                items: 2
+            },
+            1200: {
+                items: 4
             }
-        });
-
-        $(".owl-dot").map((i, elem)=> {
-            $(elem).attr("aria-label", `Carousel navigatie ${i}`);        
-        }); 
-
-        function openMobileMenu() {
-            let menu = document.getElementsByTagName("mobile-nav")[0];
-            menu.classList.add("open");
         }
+    });
 
-        function closeMobileMenu() {
-            let menu = document.getElementsByTagName("mobile-nav")[0];
-            menu.classList.remove("open");
-        }
-        </script>
-        <script src="./js/site.js"></script>
+    function openMobileMenu() {
+        let menu = document.getElementsByTagName("mobile-nav")[0];
+        menu.classList.add("open");
+    }
+
+    function closeMobileMenu() {
+        let menu = document.getElementsByTagName("mobile-nav")[0];
+        menu.classList.remove("open");
+    }
+    </script>
+    <script src="./js/site.js"></script>
 </body>
-
 </html>
