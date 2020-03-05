@@ -1,0 +1,91 @@
+
+@media screen and (max-width: 1300px) {
+    #index {
+      .wrapper {
+        .news-featured {
+          width: fit-content;
+          margin: auto 10px;
+          .split-2 {
+            grid-template-columns: calc(100vw - 40px);
+
+            .left {
+              width: 100%;
+              min-height: 300px;
+              height: fit-content;
+              .nieuws-featured {
+                .content {
+                  width: 100%;
+                  .contents {
+                    width: fit-content;
+                    margin: auto;
+                    
+                    h3, h5, p, a {
+                     max-width: 650px;
+                   }
+                  }
+                }
+              }
+            }
+
+            .right {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+}
+
+@media screen and (max-width: 450px) {
+  #index {
+    .wrapper {
+      .news-featured {
+        width: fit-content;
+        margin: auto 10px;
+        .split-2 {
+          grid-template-columns: calc(100vw - 40px);
+
+          .left {
+            width: 100%;
+            min-height: 300px;
+            height: fit-content;
+            .nieuws-featured {
+              .content {
+                width: 100%;
+                .contents {
+                  width: fit-content;
+                  margin: auto;
+                  font-size: 12px;                  
+
+                  h3, h5, p, a {
+                   max-width: 650px;
+                 }
+                }
+              }
+            }
+          }
+
+        }
+            button {
+              font-size: 1.5em;
+            }
+      }
+    }
+  }
+}
+
+#sponsoren {
+  background-color: #f3f3f3;
+
+  .wrapper {
+    padding: 10px;
+    h1 {
+      width: fit-content;
+      margin: 80px auto;
+    }
+  }
+  .owl-carousel {
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+}
