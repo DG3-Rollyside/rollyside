@@ -1,3 +1,7 @@
+.fixedPosition {
+  position: fixed;
+}
+
 html,
 textarea {
   -webkit-box-sizing: border-box !important;
@@ -353,7 +357,6 @@ intro .intro-img .centered button a {
 }
 
 #index .wrapper .news-featured .split-2 .left {
-  width: calc();
   height: calc(50vw);
   max-height: 650px;
 }
@@ -392,7 +395,7 @@ intro .intro-img .centered button a {
 }
 
 #index .wrapper .news-featured .split-2 .left .nieuws-featured h3 {
-  font-size: 42px;
+  font-size: 2.625em;
   margin-bottom: 20px;
 }
 
@@ -401,9 +404,12 @@ intro .intro-img .centered button a {
   font-size: 20px;
 }
 
+#index .wrapper .news-featured .split-2 .left .nieuws-featured h3,
+#index .wrapper .news-featured .split-2 .left .nieuws-featured h5,
 #index .wrapper .news-featured .split-2 .left .nieuws-featured p {
   margin-top: 20px;
-  font-size: 22px;
+  color: white;
+  font-weight: 500;
 }
 
 #index .wrapper .news-featured .split-2 .right {
@@ -411,7 +417,7 @@ intro .intro-img .centered button a {
   display: grid;
   -ms-grid-rows: 1fr 1fr;
       grid-template-rows: 1fr 1fr;
-  row-gap: 50px;
+  row-gap: 30px;
 }
 
 #index .wrapper .news-featured .split-2 .right .news {
@@ -466,52 +472,9 @@ intro .intro-img .centered button a {
   left: 50%;
   -webkit-transform: translatex(-50%);
           transform: translatex(-50%);
-  font-size: 32px;
+  font-size: 2em;
   text-decoration: none;
   color: white;
-}
-
-@media screen and (max-width: 1300px) {
-  #index .wrapper .news-featured {
-    width: -webkit-fit-content;
-    width: -moz-fit-content;
-    width: fit-content;
-    margin: auto 10px;
-  }
-  #index .wrapper .news-featured .split-2 {
-    -ms-grid-columns: 1fr;
-        grid-template-columns: 1fr;
-  }
-  #index .wrapper .news-featured .split-2 .left {
-    width: 100%;
-    min-height: 300px;
-    height: -webkit-fit-content;
-    height: -moz-fit-content;
-    height: fit-content;
-  }
-  #index .wrapper .news-featured .split-2 .right {
-    display: none;
-  }
-}
-
-#sponsoren {
-  background-color: #f3f3f3;
-}
-
-#sponsoren .wrapper {
-  padding: 10px;
-}
-
-#sponsoren .wrapper h1 {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  margin: 80px auto;
-}
-
-#sponsoren .owl-carousel {
-  margin-top: 50px;
-  margin-bottom: 50px;
 }
 
 @media screen and (max-width: 1200px) {
@@ -528,29 +491,30 @@ intro .intro-img .centered button a {
   tablet,
   mobile-nav {
     display: inline-block;
-    overflow-x: scroll;
   }
   mobile-nav {
     position: absolute;
     left: -100vw;
     top: 0px;
-    height: 100vh;
+    height: 105vh;
     width: 100vw;
     background-color: white;
     -webkit-transition: left 0.3s;
     transition: left 0.3s;
+    overflow-y: scroll;
+    overflow-x: hidden;
   }
   mobile-nav.open {
     left: 0px;
     display: inline-block;
   }
   mobile-nav .logo {
-    /*min-height: 70px;*/
     width: calc(50vw - 20px);
     margin: 50px;
   }
   mobile-nav ul {
     padding: 0;
+    margin-bottom: 80px;
   }
   mobile-nav ul li {
     list-style: none;
