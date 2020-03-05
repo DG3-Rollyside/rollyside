@@ -29,11 +29,6 @@ class PostHelper {
     }
 
     public static function downloadImages($post, $path) {
-        // echo ++PostHelper::$debugIttr . "<br>";
-        // if (Posthelper::$debugIttr == 8) {
-        //     echo $post[3];
-        // }
-
         // check the path to the folder of the images
         $pathArr = explode("/", $path . "/");
         $checkPath = "";
@@ -47,7 +42,6 @@ class PostHelper {
                 try {
                     mkdir($checkPath);
                 } catch (\Throwable $th) {
-                    // echo $checkPath;
                 }
             } else if(!is_dir($checkPath)) {
                 die("<strong>FATAL ERROR: </strong>Folder in path is a file: <strong>\"" . $checkPath . "\"</strong>");
@@ -55,7 +49,6 @@ class PostHelper {
             $checkPath .= DIRECTORY_SEPARATOR;
         }
 
-        // echo $checkPath;
         // if it comes here the path is a valid folder and we will download the featered img
         $url = $post[5];
         $orig = $checkPath . "ORIGINAL.jpg";
@@ -66,8 +59,6 @@ class PostHelper {
             // die("<strong>FATAL ERROR: </strong>Image Already exists: <strong>$orig</strong>");
         } else {
             // create the featured img
-            // echo "is $checkPath a path: " . (is_dir($checkPath) ? "true" : "false") . "<br />";
-            // echo $url ."<br>";
             if(strlen(trim($url)) == 0 || $post[0] == 3006) {
                 echo "url: <strong>Length is 0 on post: ". $post[0] ."</strong><br>";
                 echo "<hr/>";
@@ -111,18 +102,13 @@ class PostHelper {
         $imgElements = $html->find('img'); 
 
         foreach($imgElements as $element) {
-            $re = '/(https:\/\/www.rollyside.nl\/wp-content\/uploads\/20[0-9]{2}\/[0-9]{2}\/.*\.(jpg|png|jpeg)\.).*/m';
-            $subst = '$1';
 
-            $result = preg_replace($re, $subst, $element->src);
-            $result = rtrim($result, '.');
-            print_r($element);
-            // print_r("url: " . $element->str);
+            $result = ltrim($element->src, '.');
+            var_dump($result);
             try {
                 $urlToImg = url_to_absolute($url, $result);
-                //code...
             } catch (\Throwable $th) {
-                echo "$result<br>";
+                echo "<hr>$result<br>";
                 die("<hr /> Post: " . $post[0] . " fialed to make a good link<hr>".$th);
             }
         
@@ -152,7 +138,6 @@ class PostHelper {
         $str = $html->find("div[id=wrap]", 0);
         $newArticle = $str->innertext;
 
-        // echo $newArticle;
         return [$newArticle, $imgF, $imgT];
         
 

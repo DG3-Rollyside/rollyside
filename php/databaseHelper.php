@@ -37,7 +37,7 @@ include_once "htmlCleaner.php";
         $intro_txt = PostHelper::GetIntroFromContent($cleanedCon);
         array_push($temp,$intro_txt);
         
-        array_push($temp,$cleanedCon);
+        array_push($temp,$newContent);
         
         
 
@@ -56,7 +56,6 @@ include_once "htmlCleaner.php";
 
         
       fclose($file);
-      // print_r($csvNew);
 
       // header('location: ./nieuws_gen.csv');
 

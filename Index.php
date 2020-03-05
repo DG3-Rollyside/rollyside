@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 
 <head>
     <meta charset="utf-8" />
@@ -69,7 +69,7 @@
                 <div class="split-2">
                     <div class="left">
                         <div class="nieuws-featured"
-                            style='background-image: url("http://www.rollyside.nl/wp-content/uploads/2020/01/IMG_0671-1-rotated.jpg");'>
+                            style='background-image: url("./img/nieuws/3983/ORIGINAL.jpg");'>
                             <div class="content">
                                 <h3 class="title">
                                     Angst op mindervaliden-tribune FC na afstekenfakkel: ‘Je ziet hem bijna
@@ -102,12 +102,12 @@
                                 <a href="autgen" class="read-more">Lees meer...</a>
                             </div>
                             <div class="img"
-                                style='background-image: url("http://www.rollyside.nl/wp-content/uploads/2020/01/IMG_0671-1-rotated.jpg");'>
+                                style='background-image: url("./img/nieuws/3983/FEATURED.jpg");'>
                             </div>
                         </div>
                         <div class="news">
                             <div class="img"
-                                style='background-image: url("http://www.rollyside.nl/wp-content/uploads/2020/01/IMG_0671-1-rotated.jpg");'>
+                                style='background-image: url("./img/nieuws/3983/FEATURED.jpg");'>
                             </div>
                             <div class="content">
                                 <h3 class="title">
@@ -130,97 +130,98 @@
                 <button onclick="window.location = './nieuws.php';" class="button">Bekijk meer berichten</button>
             </div>
         </div>
+    </div>
 
-        <div id="sponsoren">
-            <div class="wrapper">
-                <h1>Onze sponsoren</h1>
-                <div class="owl-carousel">
-                    <img src="./img/KNVB-logo.png" alt="">
-                    <img src="./img/KNVB-logo.png" alt="">
-                    <img src="./img/KNVB-logo.png" alt="">
-                    <img src="./img/KNVB-logo.png" alt="">
-                    <img src="./img/KNVB-logo.png" alt="">
-                    <img src="./img/KNVB-logo.png" alt="">
-                    <img src="./img/KNVB-logo.png" alt="">
-                    <img src="./img/KNVB-logo.png" alt="">
-                    <img src="./img/KNVB-logo.png" alt="">
-                    <img src="./img/KNVB-logo.png" alt="">
-                    <img src="./img/KNVB-logo.png" alt="">
-                    <img src="./img/KNVB-logo.png" alt="">
-                    <img src="./img/KNVB-logo.png" alt="">
-                    <img src="./img/KNVB-logo.png" alt="">
-                    <img src="./img/KNVB-logo.png" alt="">
-                    <img src="./img/KNVB-logo.png" alt="">
-                    <img src="./img/KNVB-logo.png" alt="">
-                    <img src="./img/KNVB-logo.png" alt="">
-                    <img src="./img/KNVB-logo.png" alt="">
-                </div>
+    <div id="sponsoren">
+        <div class="wrapper">
+            <h1>Onze sponsoren</h1>
+            <div class="owl-carousel">
+                <img src="./img/KNVB-logo.png" alt="">
+                <img src="./img/KNVB-logo.png" alt="">
+                <img src="./img/KNVB-logo.png" alt="">
+                <img src="./img/KNVB-logo.png" alt="">
+                <img src="./img/KNVB-logo.png" alt="">
+                <img src="./img/KNVB-logo.png" alt="">
+                <img src="./img/KNVB-logo.png" alt="">
+                <img src="./img/KNVB-logo.png" alt="">
+                <img src="./img/KNVB-logo.png" alt="">
+                <img src="./img/KNVB-logo.png" alt="">
+                <img src="./img/KNVB-logo.png" alt="">
+                <img src="./img/KNVB-logo.png" alt="">
+                <img src="./img/KNVB-logo.png" alt="">
+                <img src="./img/KNVB-logo.png" alt="">
+                <img src="./img/KNVB-logo.png" alt="">
+                <img src="./img/KNVB-logo.png" alt="">
+                <img src="./img/KNVB-logo.png" alt="">
+                <img src="./img/KNVB-logo.png" alt="">
+                <img src="./img/KNVB-logo.png" alt="">
             </div>
         </div>
+    </div>
 
-        <footer>
-            <div class="wrapper">
-                <section class="footer-text">
-                    <h2> Neem contact op </h2>
-                    <p>
-                        Heeft u een vraag of wilt u iets kwijt?
-                        Stel deze via onderstaand formulier.
-                        Ook reacties op of opmerkingen over
-                        rollyside.nl kunt u kwijt via
-                        onderstaand formulier U kunt ons ook
-                        bereiken door te bellen naar het
-                        nummer
-                    </p>
-                    <h4> Mobiel: Heike ten Hoove 06-10 860 061 </h4>
-                    <h4> Adres Secretaris Gerda Boersema </h4>
-                    <p>
-                        Rollyside<br />
-                        Torenakkers 10<br />
-                        9482 RP Tynaarlo<br />
-                    </p>
-                </section>
-                <section>
-                    <form>
-                        <input type="text" placeholder="Naam" class="contact-form" name="naam" />
-                        <input type="text" placeholder="Email" class="contact-form" name="email" />
-                        <textarea placeholder="Bericht"></textarea>
-                        <input type="submit" value="Verstuur" class="submit">
-                    </form>
-                </section>
-            </div>
-        </footer>
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-        <script src="./js/owl.carousel.min.js"></script>
-        <script>
-        $(".owl-carousel").owlCarousel({
-            items: 4,
-            loop: 1,
-            autoplay: 1,
-            dots: 1,
-            responsive: {
-                0: {
-                    items: 1
-                },
-                600: {
-                    items: 2
-                },
-                1200: {
-                    items: 4
-                }
+    <footer>
+        <div class="wrapper">
+            <section class="footer-text">
+                <h2> Neem contact op </h2>
+                <p>
+                    Heeft u een vraag of wilt u iets kwijt?
+                    Stel deze via onderstaand formulier.
+                    Ook reacties op of opmerkingen over
+                    rollyside.nl kunt u kwijt via
+                    onderstaand formulier U kunt ons ook
+                    bereiken door te bellen naar het
+                    nummer
+                </p>
+                <h4> Mobiel: Heike ten Hoove 06-10 860 061 </h4>
+                <h4> Adres Secretaris Gerda Boersema </h4>
+                <p>
+                    Rollyside<br />
+                    Torenakkers 10<br />
+                    9482 RP Tynaarlo<br />
+                </p>
+            </section>
+            <section>
+                <form>
+                    <input type="text" placeholder="Naam" class="contact-form" name="naam" />
+                    <input type="text" placeholder="Email" class="contact-form" name="email" />
+                    <textarea placeholder="Bericht"></textarea>
+                    <input type="submit" value="Verstuur" class="submit">
+                </form>
+            </section>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="./js/owl.carousel.min.js"></script>
+    <script>
+    $(".owl-carousel").owlCarousel({
+        items: 4,
+        loop: 1,
+        autoplay: 1,
+        dots: 1,
+        responsive: {
+            0: {
+                items: 1
+            },
+            600: {
+                items: 2
+            },
+            1200: {
+                items: 4
             }
-        });
-
-        function openMobileMenu() {
-            let menu = document.getElementsByTagName("mobile-nav")[0];
-            menu.classList.add("open");
         }
+    });
 
-        function closeMobileMenu() {
-            let menu = document.getElementsByTagName("mobile-nav")[0];
-            menu.classList.remove("open");
-        }
-        </script>
-        <script src="./js/site.js"></script>
+    function openMobileMenu() {
+        let menu = document.getElementsByTagName("mobile-nav")[0];
+        menu.classList.add("open");
+    }
+
+    function closeMobileMenu() {
+        let menu = document.getElementsByTagName("mobile-nav")[0];
+        menu.classList.remove("open");
+    }
+    </script>
+    <script src="./js/site.js"></script>
 </body>
 
 </html>
