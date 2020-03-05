@@ -1,7 +1,7 @@
 <?php 
 include_once "imageEditor.php";
 include_once "simplehtmldom/HtmlDocument.php";
-require_once("./url_to_absolute/url_to_absolute.php");
+include_once "./url_to_absolute/url_to_absolute.php";
 
 use simplehtmldom\HtmlDocument;
 
