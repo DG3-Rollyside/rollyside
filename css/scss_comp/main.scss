@@ -1,3 +1,7 @@
+.fixedPosition {
+  position: fixed;
+}
+
 html,
 textarea {
   box-sizing: border-box !important;
@@ -310,7 +314,6 @@ intro {
         margin: 20px;
 
         .left {
-          width: calc();
           height: calc(50vw);
           max-height: 650px;
 
@@ -345,7 +348,7 @@ intro {
             }
 
             h3 {
-              font-size: 42px;
+              font-size: 2.625em;
               margin-bottom: 20px;
             }
 
@@ -358,7 +361,6 @@ intro {
             h5,
             p {
               margin-top: 20px;
-              font-size: 22px;
               color: white;
               font-weight: 500;
             }
@@ -367,7 +369,7 @@ intro {
         .right {
           display: grid;
           grid-template-rows: 1fr 1fr;
-          row-gap: 50px;
+          row-gap: 30px;
 
           .news {
             width: 100%;
@@ -416,54 +418,13 @@ intro {
         left: 50%;
         transform: translatex(-50%);
 
-        font-size: 32px;
+        font-size: 2em;
         text-decoration: none;
         color: white;
       }
     }
   }
 }
-@media screen and (max-width: 1300px) {
-    #index {
-      .wrapper {
-        .news-featured {
-          width: fit-content;
-          margin: auto 10px;
-          .split-2 {
-            grid-template-columns: 1fr;
-
-            .left {
-              width: 100%;
-              min-height: 300px;
-              height: fit-content;
-            }
-
-            .right {
-              display: none;
-            }
-          }
-        }
-      }
-    }
-}
-
-
-#sponsoren {
-  background-color: #f3f3f3;
-
-  .wrapper {
-    padding: 10px;
-    h1 {
-      width: fit-content;
-      margin: 80px auto;
-    }
-  }
-  .owl-carousel {
-    margin-top: 50px;
-    margin-bottom: 50px;
-  }
-}
-
 @media screen and (max-width: 1200px) {
   .hamburger {
     display: inline-block;
@@ -480,31 +441,35 @@ intro {
   tablet,
   mobile-nav {
     display: inline-block;
-    overflow-x: scroll;
+    
   }
-
+  
   mobile-nav {
     position: absolute;
     left: -100vw;
     top: 0px;
-    height: 100vh;
+    height: 105vh;
     width: 100vw;
     background-color: white;
     transition: left 0.3s;
 
+    overflow-y: scroll;
+    overflow-x: hidden;
+    
     &.open {
       left: 0px;
       display: inline-block;
+
     }
 
     .logo {
-      /*min-height: 70px;*/
       width: calc(50vw - 20px);
       margin: 50px;
     }
 
     ul {
       padding: 0;
+      margin-bottom: 80px;
 
       li {
         list-style: none;

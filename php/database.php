@@ -37,12 +37,14 @@ include "postHelper.php";
 
       $stmt->execute();
       $result = $stmt->get_result();
+      $conn->close();
+
       return $result->fetch_all();
 
     }
 
     public static function getPosts($limit, $offset = 0){
-    $conn = Database::connect();
+      $conn = Database::connect();
 
       $sql = "SELECT * FROM `nieuws` ORDER BY created_at DESC LIMIT ? OFFSET ?";
 
@@ -53,11 +55,89 @@ include "postHelper.php";
       $result = $stmt->get_result();
       $results = $result->fetch_all();
 
+      $conn->close();
       return $results;
     }
+    public static function deletePost($postId) {
+
+      // check if the postid is a valid number because all ids are numberic
+      if (is_numeric($postId)) {
+        $conn = Database::connect();
+        $sql = "DELETE FROM `nieuws` WHERE `id` = ?";
+  
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("i", $postId);
+
+        $stmt->execute();
+        // TODO: test the amount of effected rows and return message based on result
+        $rowsAffected = $stmt->affected_rows;
+        if ($rowsAffected <= 0) {
+          $conn->close();
+          return [false, "the post with the given id: <strong>$postId</strong> was not found"];
+        } else if ($rowsAffected >= 2) {
+          // Not Possible
+          $conn->close();
+          return [true, "Removed the <strong>$rowsAffected</strong> posts with the id <strong>$postId</strong>"];
+        }
+        $conn->close();
+        return [true, "Post with the id <strong>$postId</strong> is succesfully deleted"];
+
+      } else {
+        return [false, "<strong>$postId</strong> is not a valid post id"];
+      }
+    }
+
+    public static function createPost($title, $introText, $content, $featuredImg, $postImg, $date) {
+      $conn = Database::connect();
+
+      $sql = "INSERT INTO `nieuws` (`title`, `created_at`, `content`, `intro_text`, `intro_img`, `post_img`) VALUES ( ?, ?, ?, ?, ?, ?)";
+      $stmt = $conn->prepare($sql);
+
+      $mysqlDate = date("Y-m-d H:i:s", strtotime($date));
+      $stmt->bind_param("ssssss", $title, $mysqlDate, $content, $introText, $featuredImg, $postImg);
+
+      $stmt->execute();
+      
+      $rowsAffected = $stmt->affected_rows;
+      if ($rowsAffected <= 0) {
+        $conn->close();
+        return [false, "There was an error with creating the post"];
+      }
+      $conn->close();
+      return [true, "Post has been succesfully created"];
+
+
+    }
+
+    public static function updatePost($oldId, $newPost) {
+      list($title, $introText, $content, $featuredImg, $postImg, $date) = $newPost;
+
+      $succesfullyDeleted = Database::deletePost($oldId)[0];
+      $errorcode = 0;
+      $errorMsg = "";
+      if ($succesfullyDeleted) {
+        $succesCreated = Database::createPost($title, $introText, $content, $featuredImg, $postImg, $date);
+
+        if ($succesCreated) {
+          return [true, $errorcode, "the post has been succesfully updated"];
+        } else {
+          $errorMsg = "the post could not be created";
+          $errorcode = 2;
+        }
+      } else {
+          $errorMsg = "the post could not be deleted";
+          $errorcode = 1;
+      }
+    
+      return [false, [$errorcode, $errorMsg], "There was an error creating the post"];
+
+
+    }
+
+    //! end of class
   }
 
+$msg = Database::updatePost(4883,["lul", "dit is test", "dit is een test", "../hoi.png", "../hoi/post.png", "14-01-2003 12:00:00"]);
+print_R($msg);
 
-  // $post = Database::getPosts(1, 2)[0];
-  // PostHelper::downloadImages($post, "../img/nieuws")
 ?>

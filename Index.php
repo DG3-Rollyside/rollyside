@@ -4,7 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>rollyside</title>
-    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/minified/main.min.css" />
+    <link rel="stylesheet" href="./css/minified/index.min.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/owl.carousel.min.css">
 </head>
@@ -70,17 +71,20 @@
                         <div class="nieuws-featured"
                             style='background-image: url("http://www.rollyside.nl/wp-content/uploads/2020/01/IMG_0671-1-rotated.jpg");'>
                             <div class="content">
-                                <h3 class="title">
-                                    Angst op mindervaliden-tribune FC na afstekenfakkel: ‘Je ziet hem bijna
-                                    dood gaan’
-                                </h3>
-                                <h5 class="date">18-01-2020</h5>
-                                <p class="intro-text">
-                                    De rookbom die tijdens FC Groningen – Ajax werd afgestoken, zorgde voor angstige
-                                    momenten op de Rollyside, de tribune voor FC-supporters die in een rolstoel
-                                    zitten of visueel gehandicapt zijn.
-                                </p>
-                                <a href="autgen" class="read-more">Lees meer...</a>
+                                <div class="contents">
+
+                                    <h3 class="title">
+                                        Angst op mindervaliden-tribune FC na afstekenfakkel: ‘Je ziet hem bijna
+                                        dood gaan’
+                                    </h3>
+                                    <h5 class="date">18-01-2020</h5>
+                                    <p class="intro-text">
+                                        De rookbom die tijdens FC Groningen – Ajax werd afgestoken, zorgde voor angstige
+                                        momenten op de Rollyside, de tribune voor FC-supporters die in een rolstoel
+                                        zitten of visueel gehandicapt zijn.
+                                    </p>
+                                    <a href="autgen" class="read-more">Lees meer...</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -197,6 +201,7 @@
         loop: 1,
         autoplay: 1,
         dots: 1,
+        margin: 50,
         responsive: {
             0: {
                 items: 1
@@ -213,13 +218,16 @@
     function openMobileMenu() {
         let menu = document.getElementsByTagName("mobile-nav")[0];
         menu.classList.add("open");
+        document.getElementsByTagName("body")[0].classList.add("fixedPosition")
     }
 
     function closeMobileMenu() {
         let menu = document.getElementsByTagName("mobile-nav")[0];
         menu.classList.remove("open");
+        document.getElementsByTagName("body")[0].classList.remove("fixedPosition")
     }
     </script>
     <script src="./js/site.js"></script>
+    <?php require_once("php/cookie.php") ?>
 </body>
 </html>
