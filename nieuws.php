@@ -1,8 +1,14 @@
 <?php
 include_once "php/database.php";
 
+$offset = 0;
+$pagina = 0;
+if (isset($_REQUEST["pagina"])) {
+    $offset = ($_REQUEST["pagina"] + 1) * 9;
+    $pagina = $_REQUEST["pagina"];
+}
 $postsFeatured = Database::getPosts(3, 0);
-$posts = Database::getPosts(9,3);
+$posts = Database::getPosts(9, 3 + $offset);
 
 ?>
 
@@ -13,7 +19,8 @@ $posts = Database::getPosts(9,3);
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>rollyside</title>
-    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/minified/main.min.css" />
+    <link rel="stylesheet" href="./css/nieuws.css" />
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/owl.carousel.min.css">
 </head>
@@ -85,11 +92,12 @@ $posts = Database::getPosts(9,3);
                                     <h3 class="title">
                                         <?php echo $postsFeatured[0][1] ?>
                                     </h3>
-                                    <h5 class="date"><?php echo date("d F Y",strtotime($postsFeatured[0][2]))?></h5>
+                                    <h5 class="date"><?php echo date("d F Y", strtotime($postsFeatured[0][2])) ?></h5>
                                     <p class="intro-text">
                                         <?php echo $postsFeatured[0][4] ?>
                                     </p>
-                                    <a href="./<?php echo $postsFeatured[0][0]; ?>" class="read-more">Lees meer...</a>
+                                    <a href="./nieuwsArticle.php?ppostId=<?php echo $postsFeatured[0][0]; ?>"
+                                        class="read-more">Lees meer...</a>
                                 </div>
                             </div>
                         </div>
@@ -100,11 +108,12 @@ $posts = Database::getPosts(9,3);
                                 <h3 class="title">
                                     <?php echo $postsFeatured[1][1] ?>
                                 </h3>
-                                <h5 class="date"><?php echo date("d F Y",strtotime($postsFeatured[1][2]))?></h5>
+                                <h5 class="date"><?php echo date("d F Y", strtotime($postsFeatured[1][2])) ?></h5>
                                 <p class="intro-text">
                                     <?php echo $postsFeatured[1][4] ?>
                                 </p>
-                                <a href="./<?php echo $postsFeatured[1][0]; ?>" class="read-more">Lees meer...</a>
+                                <a href="./nieuwsArticle.php?ppostId=<?php echo $postsFeatured[1][0]; ?>"
+                                    class="read-more">Lees meer...</a>
                             </div>
                             <div class="img" style='background-image: url("<?php echo $postsFeatured[1][5] ?>");'>
                             </div>
@@ -116,11 +125,11 @@ $posts = Database::getPosts(9,3);
                                 <h3 class="title">
                                     <?php echo $postsFeatured[2][1] ?>
                                 </h3>
-                                <h5 class="date"><?php echo date("d F Y",strtotime($postsFeatured[2][2]))?></h5>
+                                <h5 class="date"><?php echo date("d F Y", strtotime($postsFeatured[2][2])) ?></h5>
                                 <p class="intro-text">
                                     <?php echo $postsFeatured[2][4] ?>
                                 </p>
-                                <a href="./nieuwsArticle?postId=<?php echo $postsFeatured[2][0]; ?>"
+                                <a href="./nieuwsArticle.php?postId=<?php echo $postsFeatured[2][0]; ?>"
                                     class="read-more">Lees meer...</a>
                             </div>
                         </div>
@@ -131,32 +140,41 @@ $posts = Database::getPosts(9,3);
     </div>
     <div id="posts">
         <div class="wrapper">
-            <?php foreach($posts as $post) { ?>
+            <?php foreach ($posts as $post) { ?>
             <div class="news">
-                <img src="<?php echo $post[5] ?>" alt="<?php echo $post[1]?>" width="600px" height="600px">
-                </div>
-                <div class="content">
-                    <h3 class="title">
-                        <?php echo $post[1] ?>
-                    </h3>
-                    <h5 class="date"><?php echo date("d F Y",strtotime($post[2]))?></h5>
-                    <p class="intro-text">
-                        <?php echo $post[4] ?>
-                    </p>
-                    <a href="./nieuwsArticle?postId=<?php echo $post[0]; ?>" class="read-more">Lees
-                        meer...</a>
-                </div>
+                <img src="<?php echo $post[5] ?>" alt="<?php echo $post[1] ?>" width="600px" height="600px">
             </div>
-            <?php }?>
-
-            <div class="navigatie">
-
+            <div class="content">
+                <h3 class="title">
+                    <?php echo $post[1] ?>
+                </h3>
+                <h5 class="date"><?php echo date("d F Y", strtotime($post[2])) ?></h5>
+                <p class="intro-text">
+                    <?php echo $post[4] ?>
+                </p>
+                <a href="./nieuwsArticle.php?postId=<?php echo $post[0]; ?>" class="read-more">Lees
+                    meer...</a>
             </div>
+            <?php } ?>
+        </div>
+
+        <div class="navigatie">
+            <?php if ($pagina == 1) { ?>
+            <a href="./nieuws.php">vorige</a>
+            <?php } else if ($pagina > 1) { ?>
+            <a href="./nieuws.php?pagina=<?php echo --$pagina; ?>">vorige</a>
+            <?php } ?>
+
+            <span class="line"></span>
+            <?php if (count($posts) > 8) { ?>
+            <a href="./nieuws.php?pagina=<?php echo ++$pagina; ?>">volgende</a>
+            <?php } ?>
+
         </div>
     </div>
-
+    </div>
     <footer>
-        <div class="wrapper">
+        <div class=" wrapper">
             <section class="footer-text">
                 <h2> Neem contact op </h2>
                 <p>
@@ -168,8 +186,8 @@ $posts = Database::getPosts(9,3);
                     bereiken door te bellen naar het
                     nummer
                 </p>
-                <h4> Mobiel: Heike ten Hoove 06-10 860 061 </h4>
-                <h4> Adres Secretaris Gerda Boersema </h4>
+                <h4> Mobiel: 06-10 860 061 </h4>
+                <h4> Adres Secretaris </h4>
                 <p>
                     Rollyside<br />
                     Torenakkers 10<br />
