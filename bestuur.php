@@ -80,6 +80,7 @@
                      eerste ring tegenover de hoofdtribune (op de Piet Fransen tribune).
                  </p>
              </div>
+
              <div class="carousel_wrapper">
                  <div class="owl-carousel">
                      <div class="bestuurs_lid">
@@ -106,7 +107,7 @@
                      <div class="bestuurs_lid">
                          <img src="./img/bestuurs_leden/harry.jpg" alt="Harry de Jong">
                          <h3 class="name">Harry de Jong</h3>
-                         <p>Bestuurds lid</p>
+                         <p>Bestuurs lid</p>
                      </div>
 
                      <div class="bestuurs_lid">
@@ -133,8 +134,8 @@
                      bereiken door te bellen naar het
                      nummer
                  </p>
-                 <h4> Mobiel: Heike ten Hoove 06-10 860 061 </h4>
-                 <h4> Adres Secretaris Gerda Boersema </h4>
+                 <h4> Mobiel: 06-10 860 061 </h4>
+                 <h4> Adres Secretaris </h4>
                  <p>
                      Rollyside<br />
                      Torenakkers 10<br />
@@ -173,9 +174,9 @@
          }
      });
 
-     $(".owl-dot").map((i, elem)=> {
-            $(elem).attr("aria-label", `Carousel navigatie ${i}`);        
-        }); 
+     $(".owl-dot").map((i, elem) => {
+         $(elem).attr("aria-label", `Carousel navigatie ${i}`);
+     });
 
      function openMobileMenu() {
          let menu = document.getElementsByTagName("mobile-nav")[0];

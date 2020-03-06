@@ -3,11 +3,16 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="De Rollyside is de supportersvereniging voor minder validen van FC Groningen. Meld je aan!" />
+
     <title>rollyside</title>
     <link rel="stylesheet" href="./css/minified/main.min.css" />
     <link rel="stylesheet" href="./css/minified/index.min.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/owl.carousel.min.css">
+
+    <link rel="preload" href="./img/logo.svg" as="image">
+    <link rel="preload" href="./img/header-img.jpg" as="image">
 </head>
 
 <body>

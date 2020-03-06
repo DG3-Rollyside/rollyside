@@ -1,0 +1,111 @@
+#sponsoren {
+  background-color: white;
+}
+
+#sponsoren * {
+  color: #333333;
+}
+
+#sponsoren .wrapper {
+  padding: 0px 20px;
+  margin: 80px auto;
+}
+
+#sponsoren .wrapper .split-2 {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  margin-bottom: 80px;
+}
+
+#sponsoren .wrapper .split-2 h1 {
+  margin: auto 0px;
+  margin-left: 80px;
+  font-size: 5.5em;
+}
+
+#sponsoren .wrapper .split-2 p {
+  font-size: 1.75em;
+}
+
+#sponsoren .wrapper .split-2 h2 {
+  margin: 10px 0px;
+  font-size: 2em;
+}
+
+#sponsoren .wrapper .split-2 h2 a {
+  text-decoration: none;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+#sponsoren .wrapper .split-2 h2 a:hover {
+  color: #20660b;
+}
+
+#sponsoren .wrapper .owl-carousel {
+  background-color: #f3f3f3;
+  padding: 80px;
+  padding-bottom: 40px;
+}
+
+#sponsoren .wrapper .owl-carousel .sponsoren-logo {
+  height: 300px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: auto;
+}
+
+#sponsoren .wrapper .owl-carousel .sponsoren-logo .logo {
+  width: 300px;
+}
+
+#sponsoren .wrapper .owl-carousel .owl-dots {
+  margin-top: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#sponsoren .wrapper .owl-carousel .owl-dots button {
+  margin: 7.5px;
+  width: 15px;
+  height: 15px;
+  border-radius: 10px;
+  background-color: #a3a3a3;
+}
+
+#sponsoren .wrapper .owl-carousel .owl-dots button.active {
+  background-color: #333333;
+}
+
+@media screen and (max-width: 1400px) {
+  #sponsoren .wrapper .split-2 h1 {
+    margin-left: 0px;
+    margin-right: 40px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  #sponsoren .wrapper .split-2 {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+    -ms-grid-rows: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+    padding: 10px;
+  }
+  #sponsoren .wrapper .split-2 h1 {
+    margin: 20px auto;
+    margin-bottom: 0px;
+  }
+  #sponsoren .wrapper .split-2 P {
+    margin: 40px;
+    margin-top: 0px;
+  }
+}
+/*# sourceMappingURL=sponsoren.css.map */
