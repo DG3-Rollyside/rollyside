@@ -85,31 +85,24 @@
                 <div class="owl-carousel">
                     <a class="sponsoren-logo" href="https://www.allure-energie.nl/" target="_blank">
                         <img src="./img/sponsoren/allure.png" class="logo" alt="Logo Allure Energie">
-                        <div class="name"> Allure Energie </div>
                     </a>
                      <a class="sponsoren-logo" href="https://www.cafefootball.eu/" target="_blank">
-                        <img src="./img/sponsoren/cafe.jpg" class="logo" alt="Logo CAFE">
-                        <div class="name"> CAFE - Centre for access to football in Europe. </div>
+                        <img src="./img/sponsoren/cafe.png" class="logo" alt="Logo CAFE">
                     </a>
                      <a class="sponsoren-logo" href="https://www.svfcgroningen.nl/" target="_blank">
                         <img src="./img/sponsoren/svfcg.png" class="logo" alt="Logo Supportersvereniging FCG">
-                        <div class="name"> Supportersvereniging FCG </div>
                     </a>
                      <a class="sponsoren-logo" href="https://www.fcgroningen.nl/" target="_blank">
                         <img src="./img/sponsoren/fcgroningen.png" class="logo" alt="Logo FC Groningen">
-                        <div class="name"> FC Groningen </div>
                     </a>
                      <a class="sponsoren-logo" href="http://www.hibernianfc.co.uk/" target="_blank">
                         <img src="./img/sponsoren/hibernian.png" class="logo" alt="Logo Hibernian FC">
-                        <div class="name"> Hibernian FC </div>
                     </a>
                      <a class="sponsoren-logo" href="https://www.humanitas.nl/" target="_blank">
                         <img src="./img/sponsoren/humanitas.png" class="logo" alt="Logo Humanitas">
-                        <div class="name"> Humanitas </div>
                     </a>
                     <a class="sponsoren-logo" href="https://www.knvb.nl/" target="_blank">
                         <img src="./img/sponsoren/knvb.png" class="logo" alt="Logo KNVB">
-                        <div class="name"> KNVB </div>
                     </a>
                 </div>
             </div>
