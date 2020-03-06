@@ -1,6 +1,8 @@
 <?php 
 include_once "imageEditor.php";
 include_once "simplehtmldom/HtmlDocument.php";
+require_once("./url_to_absolute/url_to_absolute.php");
+
 use simplehtmldom\HtmlDocument;
 
 
@@ -27,15 +29,9 @@ class PostHelper {
     }
 
     public static function downloadImages($post, $path) {
-        // echo ++PostHelper::$debugIttr . "<br>";
-        // if (Posthelper::$debugIttr == 8) {
-        //     echo $post[3];
-        // }
-
         // check the path to the folder of the images
-        $pathArr = explode("/", $path . "/".$post[0]);
+        $pathArr = explode("/", $path . "/");
         $checkPath = "";
-        echo $checkPath;
         foreach($pathArr as $pathPiece){
             if ($pathPiece == "..") {
                 $checkPath .= ".." . DIRECTORY_SEPARATOR;
@@ -46,15 +42,13 @@ class PostHelper {
                 try {
                     mkdir($checkPath);
                 } catch (\Throwable $th) {
-                    echo $checkPath;
                 }
-                echo $checkPath;
             } else if(!is_dir($checkPath)) {
                 die("<strong>FATAL ERROR: </strong>Folder in path is a file: <strong>\"" . $checkPath . "\"</strong>");
             }
             $checkPath .= DIRECTORY_SEPARATOR;
         }
-        
+
         // if it comes here the path is a valid folder and we will download the featered img
         $url = $post[5];
         $orig = $checkPath . "ORIGINAL.jpg";
@@ -65,15 +59,11 @@ class PostHelper {
             // die("<strong>FATAL ERROR: </strong>Image Already exists: <strong>$orig</strong>");
         } else {
             // create the featured img
-            echo "is $checkPath a path: " . (is_dir($checkPath) ? "true" : "false") . "<br />";
-            echo $url ."<br>";
-            if(strlen($url) == 0) {
-                echo "<hr/><hr/>";
-                
-                
-                echo "url: <strong>Length is 0</strong><br>";
-                print_r($post);
-                echo "<hr/><hr/>";
+            if(strlen(trim($url)) == 0 || $post[0] == 3006) {
+                echo "url: <strong>Length is 0 on post: ". $post[0] ."</strong><br>";
+                echo "<hr/>";
+                $imgT = "https://place-hold.it/650";
+                $imgF = "https://place-hold.it/1920/1080";
 
             } else {
                 echo $orig;
@@ -88,32 +78,63 @@ class PostHelper {
                 $resize->saveImage($imgT, 60);
                 $post[6] = $imgT;
                 
-                echo "THUMBNAIL AND FEATURED IMAGES CREATED";
-                echo "<hr>";
+                echo "THUMBNAIL AND FEATURED IMAGES OF ". $post[0] ."CREATED";
             }
         }
 
         #download images from the content of the articles
         $doc = new HTmlDocument();
         $tempHtml = "<div id='wrap'> ". $post[3] . "</div>"; 
-        print_r($tempHtml);
         $html = $doc->load($tempHtml);
-        
-        $imgTags = $html->find('#wrap figure img');
-        print_r($imgTags);
-        foreach($imgTags as $image) {
 
-            print_r($image);
-
-            $path = $checkPath . uniqid($post[0] . "_") . ".jpg";
-            $url = $image->src;
-            file_put_contents($path, file_get_contents($url));    
-            $resize = new ResizeImage($path);
-            $resize->resizeTo(1280, 720, 'maxWidth');
-            $resize->saveImage($path, 60);
-
-            $image->src = $path;
+        // check if the folder exists and when it exists remove all files in that folder
+        $folderPathFromPHP = $checkPath . "article_images/";
+        if (!is_dir($folderPathFromPHP) && !file_exists($folderPathFromPHP)) {
+            mkdir($folderPathFromPHP);
+        } else {
+            $files = glob( $folderPathFromPHP . '*', GLOB_MARK ); //GLOB_MARK adds a slash to directories returned
+            foreach($files as $file){ // iterate files
+                if(is_file($file))
+                  unlink($file); // delete file
+              }
         }
+        // download the images in the article
+        $url = "http://www.rollyside.nl";
+        $imgElements = $html->find('img'); 
+
+        foreach($imgElements as $element) {
+
+            $result = ltrim($element->src, '.');
+            var_dump($result);
+            try {
+                $urlToImg = url_to_absolute($url, $result);
+            } catch (\Throwable $th) {
+                echo "<hr>$result<br>";
+                die("<hr /> Post: " . $post[0] . " fialed to make a good link<hr>".$th);
+            }
+        
+            $imagePathFromPHP = $folderPathFromPHP . uniqid() . ".jpg"; 
+            
+            $imagePathFromPost  = PostHelper::createCorrectPathToImg($imagePathFromPHP);
+
+            try {
+                file_put_contents($imagePathFromPHP, file_get_contents($urlToImg));    
+                $resize2 = new ResizeImage($imagePathFromPHP);
+                $resize2->resizeTo(1280,720, 'maxWidth');
+                $resize2->saveImage($imagePathFromPHP, 60);
+            } catch (\Throwable $th) {
+                echo $imagePathFromPHP;
+            }
+
+            // change the url in the article to the new url
+            
+            $element->src = "<strong>".$imagePathFromPost."</strong>";
+            // test
+            // $element->src = $imagePathFromPHP;
+        }
+
+        $html->save();
+        
         $str = $html->find("div[id=wrap]", 0);
         $newArticle = $str->innertext;
 
@@ -123,6 +144,21 @@ class PostHelper {
 
         
 
+
+    }
+    private static function createCorrectPathToImg($path) {
+        $checkPath = "./";
+        $pathArr = explode('\\', $path);
+
+        
+        foreach($pathArr as $pathPiece){
+            if ($pathPiece == "..") {
+                continue;    
+            }
+            $checkPath .= $pathPiece . "/";
+        }
+        $checkPath = rtrim($checkPath, "/");
+        return $checkPath;
 
     }
 }
