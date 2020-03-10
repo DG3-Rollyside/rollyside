@@ -72,7 +72,23 @@ include_once "htmlCleaner.php";
       array_walk($array,$func);
       return $array;
   }
+
+  
+    public static function createCorrectPathToImg($path) {
+        $checkPath = "./";
+        $pathArr = explode('\\', $path);
+
+        
+        foreach($pathArr as $pathPiece){
+            if ($pathPiece == "..") {
+                continue;    
+            }
+            $checkPath .= $pathPiece . "/";
+        }
+        $checkPath = rtrim($checkPath, "/");
+        return $checkPath;
+
+    }
   }  
 
-  DatabaseHelper::genCleanCSV(100);
  ?>

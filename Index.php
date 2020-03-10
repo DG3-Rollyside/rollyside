@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="nl">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="De Rollyside is de supportersvereniging voor minder validen van FC Groningen. Meld je aan!" />
+    <meta name="description"
+        content="De Rollyside is de supportersvereniging voor minder validen van FC Groningen. Meld je aan!" />
 
     <title>rollyside</title>
     <link rel="stylesheet" href="./css/minified/main.min.css" />
@@ -144,25 +146,27 @@
         <div class="wrapper">
             <h1>Onze sponsoren</h1>
             <div class="owl-carousel">
-                <img src="./img/KNVB-logo.png" alt="">
-                <img src="./img/KNVB-logo.png" alt="">
-                <img src="./img/KNVB-logo.png" alt="">
-                <img src="./img/KNVB-logo.png" alt="">
-                <img src="./img/KNVB-logo.png" alt="">
-                <img src="./img/KNVB-logo.png" alt="">
-                <img src="./img/KNVB-logo.png" alt="">
-                <img src="./img/KNVB-logo.png" alt="">
-                <img src="./img/KNVB-logo.png" alt="">
-                <img src="./img/KNVB-logo.png" alt="">
-                <img src="./img/KNVB-logo.png" alt="">
-                <img src="./img/KNVB-logo.png" alt="">
-                <img src="./img/KNVB-logo.png" alt="">
-                <img src="./img/KNVB-logo.png" alt="">
-                <img src="./img/KNVB-logo.png" alt="">
-                <img src="./img/KNVB-logo.png" alt="">
-                <img src="./img/KNVB-logo.png" alt="">
-                <img src="./img/KNVB-logo.png" alt="">
-                <img src="./img/KNVB-logo.png" alt="">
+                <a class="sponsoren-logo" href="https://www.allure-energie.nl/" target="_blank">
+                    <img src="./img/sponsoren/allure.png" class="logo" alt="Logo Allure Energie">
+                </a>
+                <a class="sponsoren-logo" href="https://www.cafefootball.eu/" target="_blank">
+                    <img src="./img/sponsoren/cafe.png" class="logo" alt="Logo CAFE">
+                </a>
+                <a class="sponsoren-logo" href="https://www.svfcgroningen.nl/" target="_blank">
+                    <img src="./img/sponsoren/svfcg.png" class="logo" alt="Logo Supportersvereniging FCG">
+                </a>
+                <a class="sponsoren-logo" href="https://www.fcgroningen.nl/" target="_blank">
+                    <img src="./img/sponsoren/fcgroningen.png" class="logo" alt="Logo FC Groningen">
+                </a>
+                <a class="sponsoren-logo" href="http://www.hibernianfc.co.uk/" target="_blank">
+                    <img src="./img/sponsoren/hibernian.png" class="logo" alt="Logo Hibernian FC">
+                </a>
+                <a class="sponsoren-logo" href="https://www.humanitas.nl/" target="_blank">
+                    <img src="./img/sponsoren/humanitas.png" class="logo" alt="Logo Humanitas">
+                </a>
+                <a class="sponsoren-logo" href="https://www.knvb.nl/" target="_blank">
+                    <img src="./img/sponsoren/knvb.png" class="logo" alt="Logo KNVB">
+                </a>
             </div>
         </div>
     </div>
@@ -203,9 +207,10 @@
     <script>
     $(".owl-carousel").owlCarousel({
         items: 4,
-        loop: 1,
+        rewind: 1,
         autoplay: 1,
-        dots: 1,
+        dots: true,
+        lazyLoad: true,
         margin: 50,
         responsive: {
             0: {
@@ -235,4 +240,5 @@
     <script src="./js/site.js"></script>
     <?php require_once("php/cookie.php") ?>
 </body>
+
 </html>

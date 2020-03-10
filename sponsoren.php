@@ -155,7 +155,7 @@
         items: 4,
         dots: true,
         margin: 50,
-        lazyload: true,
+        lazyLoad: true,
         autoWidth: true,
         responsive: {
             0: {

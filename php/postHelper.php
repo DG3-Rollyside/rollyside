@@ -1,6 +1,7 @@
 <?php 
 include_once "imageEditor.php";
 include_once "simplehtmldom/HtmlDocument.php";
+include_once "databaseHelper.php";
 require_once("./url_to_absolute/url_to_absolute.php");
 
 use simplehtmldom\HtmlDocument;
@@ -71,12 +72,12 @@ class PostHelper {
                 $resize = new ResizeImage($orig);
                 $resize->resizeTo(1920, 1080, 'maxWidth');
                 $resize->saveImage($imgF, 60);
-                $post[5] = $imgF;
+                $post[5] = DatabaseHelper::createCorrectPathToImg($imgF);
                 
                 // create the thumbnail
                 $resize->resizeTo(650,650, 'exact');
                 $resize->saveImage($imgT, 60);
-                $post[6] = $imgT;
+                $post[6] = DatabaseHElper::createCorrectPathToImg($imgT);
                 
                 echo "THUMBNAIL AND FEATURED IMAGES OF ". $post[0] ."CREATED";
             }
@@ -115,7 +116,7 @@ class PostHelper {
         
             $imagePathFromPHP = $folderPathFromPHP . uniqid() . ".jpg"; 
             
-            $imagePathFromPost  = PostHelper::createCorrectPathToImg($imagePathFromPHP);
+            $imagePathFromPost  = DatabaseHelper::createCorrectPathToImg($imagePathFromPHP);
 
             try {
                 file_put_contents($imagePathFromPHP, file_get_contents($urlToImg));    
@@ -128,7 +129,7 @@ class PostHelper {
 
             // change the url in the article to the new url
             
-            $element->src = "<strong>".$imagePathFromPost."</strong>";
+            $element->src = $imagePathFromPost;
             // test
             // $element->src = $imagePathFromPHP;
         }
@@ -144,21 +145,6 @@ class PostHelper {
 
         
 
-
-    }
-    private static function createCorrectPathToImg($path) {
-        $checkPath = "./";
-        $pathArr = explode('\\', $path);
-
-        
-        foreach($pathArr as $pathPiece){
-            if ($pathPiece == "..") {
-                continue;    
-            }
-            $checkPath .= $pathPiece . "/";
-        }
-        $checkPath = rtrim($checkPath, "/");
-        return $checkPath;
 
     }
 }
