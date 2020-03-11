@@ -170,7 +170,7 @@
     static public function getFoto($limit, $offset = 0) {
       $conn = Database::connect();
 
-      $sql = "SELECT * FROM galerij LIMIT ? OFFSET ?";
+      $sql = "SELECT * FROM galerij ORDER BY `galerij_id` DESC LIMIT ? OFFSET ?";
 
       $stmt = $conn->prepare($sql);
       $stmt->bind_param("ss", $limit, $offset);

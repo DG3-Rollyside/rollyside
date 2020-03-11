@@ -8,8 +8,8 @@
         content="De Rollyside is de supportersvereniging voor minder validen van FC Groningen. Meld je aan!" />
 
     <title>rollyside</title>
-    <link rel="stylesheet" href="./css/minified/main.min.css" />
-    <link rel="stylesheet" href="./css/minified/index.min.css">
+    <link rel="stylesheet" href="./css/scss_comp/main.css" />
+    <link rel="stylesheet" href="./css/scss_comp/index.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/owl.carousel.min.css">
 
@@ -141,7 +141,6 @@
             </div>
         </div>
     </div>
-
     <div id="sponsoren">
         <div class="wrapper">
             <h1>Onze sponsoren</h1>
@@ -193,10 +192,10 @@
                 </p>
             </section>
             <section>
-                <form>
+                <form id="messageForm">
                     <input type="text" placeholder="Naam" class="contact-form" name="naam" />
                     <input type="text" placeholder="Email" class="contact-form" name="email" />
-                    <textarea placeholder="Bericht"></textarea>
+                    <textarea placeholder="Bericht" name="bericht"></textarea>
                     <input type="submit" value="Verstuur" class="submit">
                 </form>
             </section>
@@ -235,6 +234,37 @@
         let menu = document.getElementsByTagName("mobile-nav")[0];
         menu.classList.remove("open");
         document.getElementsByTagName("body")[0].classList.remove("fixedPosition")
+    }
+
+    $('#messageForm').submit(function() {
+        try {
+            let form = document.getElementById("messageForm");
+
+            $(this).serializeArray();
+        } catch (error) {
+            console.error(error);
+            return false;
+        }
+        return false;
+    })
+
+    // Example POST method implementation:
+    async function postData(url = '', data = {}) {
+        // Default options are marked with *
+        const response = await fetch(url, {
+            method: 'POST', // *GET, POST, PUT, DELETE, etc.
+            mode: 'same-origin', // no-cors, *cors, same-origin
+            cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+            credentials: 'same-origin', // include, *same-origin, omit
+            headers: {
+                'Content-Type': 'application/json'
+                // 'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            redirect: 'follow', // manual, *follow, error
+            referrerPolicy: 'no-referrer', // no-referrer, *client
+            body: JSON.stringify(data) // body data type must match "Content-Type" header
+        });
+        return await response.json(); // parses JSON response into native JavaScript objects
     }
     </script>
     <script src="./js/site.js"></script>
