@@ -32,6 +32,27 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
+.owl-dots {
+  margin-top: 10px;
+  button {
+    $size: 15px;
+    margin: 7.5px;
+
+    width: $size;
+    height: $size;
+
+    border-radius: 10px;
+
+    background-color: #a3a3a3;
+    &.active {
+      background-color: #333333;
+    }
+  }
+
+  display: flex;
+  justify-content: center;
+}
+
 .wrapper {
   max-width: 1400px;
   margin: auto;
@@ -173,7 +194,7 @@ mobile-nav {
 }
 
 footer {
-  background-color: 00792d#;
+  background-color: #00792d;
   color: white !important;
   padding: 20px;
 
@@ -314,9 +335,8 @@ intro {
   tablet,
   mobile-nav {
     display: inline-block;
-    
   }
-  
+
   mobile-nav {
     position: absolute;
     left: -100vw;
@@ -328,11 +348,10 @@ intro {
 
     overflow-y: scroll;
     overflow-x: hidden;
-    
+
     &.open {
       left: 0px;
       display: inline-block;
-
     }
 
     .logo {
