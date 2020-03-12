@@ -8,8 +8,8 @@
         content="De Rollyside is de supportersvereniging voor minder validen van FC Groningen. Meld je aan!" />
 
     <title>rollyside</title>
-    <link rel="stylesheet" href="./css/minified/main.min.css" />
-    <link rel="stylesheet" href="./css/minified/index.min.css">
+    <link rel="stylesheet" href="./css/scss_comp/main.css" />
+    <link rel="stylesheet" href="./css/scss_comp/index.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/owl.carousel.min.css">
 
@@ -141,30 +141,31 @@
             </div>
         </div>
     </div>
-
     <div id="sponsoren">
         <div class="wrapper">
             <h1>Onze sponsoren</h1>
             <div class="owl-carousel">
-                <img src="./img/KNVB-logo.png" alt="">
-                <img src="./img/KNVB-logo.png" alt="">
-                <img src="./img/KNVB-logo.png" alt="">
-                <img src="./img/KNVB-logo.png" alt="">
-                <img src="./img/KNVB-logo.png" alt="">
-                <img src="./img/KNVB-logo.png" alt="">
-                <img src="./img/KNVB-logo.png" alt="">
-                <img src="./img/KNVB-logo.png" alt="">
-                <img src="./img/KNVB-logo.png" alt="">
-                <img src="./img/KNVB-logo.png" alt="">
-                <img src="./img/KNVB-logo.png" alt="">
-                <img src="./img/KNVB-logo.png" alt="">
-                <img src="./img/KNVB-logo.png" alt="">
-                <img src="./img/KNVB-logo.png" alt="">
-                <img src="./img/KNVB-logo.png" alt="">
-                <img src="./img/KNVB-logo.png" alt="">
-                <img src="./img/KNVB-logo.png" alt="">
-                <img src="./img/KNVB-logo.png" alt="">
-                <img src="./img/KNVB-logo.png" alt="">
+                <a class="sponsoren-logo" href="https://www.allure-energie.nl/" target="_blank">
+                    <img src="./img/sponsoren/allure.png" class="logo" alt="Logo Allure Energie">
+                </a>
+                <a class="sponsoren-logo" href="https://www.cafefootball.eu/" target="_blank">
+                    <img src="./img/sponsoren/cafe.png" class="logo" alt="Logo CAFE">
+                </a>
+                <a class="sponsoren-logo" href="https://www.svfcgroningen.nl/" target="_blank">
+                    <img src="./img/sponsoren/svfcg.png" class="logo" alt="Logo Supportersvereniging FCG">
+                </a>
+                <a class="sponsoren-logo" href="https://www.fcgroningen.nl/" target="_blank">
+                    <img src="./img/sponsoren/fcgroningen.png" class="logo" alt="Logo FC Groningen">
+                </a>
+                <a class="sponsoren-logo" href="http://www.hibernianfc.co.uk/" target="_blank">
+                    <img src="./img/sponsoren/hibernian.png" class="logo" alt="Logo Hibernian FC">
+                </a>
+                <a class="sponsoren-logo" href="https://www.humanitas.nl/" target="_blank">
+                    <img src="./img/sponsoren/humanitas.png" class="logo" alt="Logo Humanitas">
+                </a>
+                <a class="sponsoren-logo" href="https://www.knvb.nl/" target="_blank">
+                    <img src="./img/sponsoren/knvb.png" class="logo" alt="Logo KNVB">
+                </a>
             </div>
         </div>
     </div>
@@ -191,13 +192,11 @@
                 </p>
             </section>
             <section>
-                <form>
-                    <input type="text" placeholder="Naam" class="contact-form" name="naam"
-                        aria-label="Naam Contact formulier" />
-                    <input type="text" placeholder="Email" class="contact-form" name="email"
-                        aria-label="Email contact formulier" />
-                    <textarea placeholder="Bericht" aria-label="bericht contact formulier"></textarea>
-                    <input type="submit" value="Verstuur" class="submit" aria-label="verstuur bericht">
+                <form id="messageForm">
+                    <input type="text" placeholder="Naam" class="contact-form" name="naam" />
+                    <input type="text" placeholder="Email" class="contact-form" name="email" />
+                    <textarea placeholder="Bericht" name="bericht"></textarea>
+                    <input type="submit" value="Verstuur" class="submit">
                 </form>
             </section>
         </div>
@@ -207,9 +206,11 @@
     <script>
     $(".owl-carousel").owlCarousel({
         items: 4,
-        loop: 1,
+        rewind: 1,
         autoplay: 1,
-        dots: 1,
+        dots: true,
+        lazyLoad: true,
+        margin: 50,
         responsive: {
             0: {
                 items: 1
@@ -242,6 +243,37 @@
         let menu = document.getElementsByTagName("mobile-nav")[0];
         menu.classList.remove("open");
         document.getElementsByTagName("body")[0].classList.remove("fixedPosition")
+    }
+
+    $('#messageForm').submit(function() {
+        try {
+            let form = document.getElementById("messageForm");
+
+            $(this).serializeArray();
+        } catch (error) {
+            console.error(error);
+            return false;
+        }
+        return false;
+    })
+
+    // Example POST method implementation:
+    async function postData(url = '', data = {}) {
+        // Default options are marked with *
+        const response = await fetch(url, {
+            method: 'POST', // *GET, POST, PUT, DELETE, etc.
+            mode: 'same-origin', // no-cors, *cors, same-origin
+            cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+            credentials: 'same-origin', // include, *same-origin, omit
+            headers: {
+                'Content-Type': 'application/json'
+                // 'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            redirect: 'follow', // manual, *follow, error
+            referrerPolicy: 'no-referrer', // no-referrer, *client
+            body: JSON.stringify(data) // body data type must match "Content-Type" header
+        });
+        return await response.json(); // parses JSON response into native JavaScript objects
     }
     </script>
     <script src="./js/site.js"></script>

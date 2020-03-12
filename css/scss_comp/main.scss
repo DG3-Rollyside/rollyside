@@ -32,6 +32,27 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
+.owl-dots {
+  margin-top: 10px;
+  button {
+    $size: 15px;
+    margin: 7.5px;
+
+    width: $size;
+    height: $size;
+
+    border-radius: 10px;
+
+    background-color: #a3a3a3;
+    &.active {
+      background-color: #333333;
+    }
+  }
+
+  display: flex;
+  justify-content: center;
+}
+
 .wrapper {
   max-width: 1400px;
   margin: auto;
@@ -173,7 +194,7 @@ mobile-nav {
 }
 
 footer {
-  background-color: 00792d#;
+  background-color: #00792d;
   color: white !important;
   padding: 20px;
 
@@ -216,6 +237,7 @@ footer {
         border: 2px solid white;
         border-radius: 15px;
         color: white;
+        font-size: 1.25rem;
 
         &::placeholder {
           font-size: 1.25rem;
@@ -227,6 +249,13 @@ footer {
           font-weight: 500;
           font-size: 1.25rem;
           text-align: start;
+          width: auto;
+          padding: 20px 35px !important;
+          transition: all 0.3s;
+
+          &:hover {
+            background-color: greenyellow;
+          }
         }
       }
 

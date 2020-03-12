@@ -1,5 +1,4 @@
 <?php
-include "postHelper.php";
   class Database {
 
     public static $nieuwsTable = "TABLE 2";
@@ -12,8 +11,8 @@ include "postHelper.php";
       // $databasename = $username;
 
       $servername = "localhost";
-      $username = "root";
-      $password = "";
+      $username = "Martijn";
+      $password = "Welkom1234";
       $databasename = "rollyside";
 
       //creating connection
@@ -151,6 +150,45 @@ include "postHelper.php";
       return $results;
     }
 
+    static public function getAllFoto() {
+      $conn = Database::connect();
+      
+      $sql = "SELECT * FROM galerij LIMIT ?";
+      
+      $stmt = $conn->prepare($sql);
+      $limit = 100;
+      $stmt->bind_param("s", $limit);
+
+      $stmt->execute();
+      $result = $stmt->get_result();
+      $conn->close();
+
+      return $result->fetch_all();
+
+    }
+
+    static public function getFoto($limit, $offset = 0) {
+      $conn = Database::connect();
+
+      $sql = "SELECT * FROM galerij ORDER BY `galerij_id` DESC LIMIT ? OFFSET ?";
+
+      $stmt = $conn->prepare($sql);
+      $stmt->bind_param("ss", $limit, $offset);
+
+      $stmt->execute();
+      $result = $stmt->get_result();
+      $results = $result->fetch_all();
+
+      $conn->close();
+      return $results;
+    }
+    
     //! end of class
   }
+
+  
+
+
+   
+
 ?>

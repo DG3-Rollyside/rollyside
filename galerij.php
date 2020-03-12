@@ -1,3 +1,18 @@
+<?php 
+    include_once "./php/database.php";
+
+    $offset = 0;
+    $pagina = 0;
+
+    if(isset($_REQUEST["pagina"])) {
+        $offset = ($_REQUEST["pagina"]+1) * 12;
+        $pagina = $_REQUEST["pagina"];
+    }
+    
+    $galerijen = Database::getFoto(12, $offset);
+?>
+
+
 <!DOCTYPE html>
 <html lang="nl">
 
@@ -6,10 +21,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>rollyside</title>
     <link rel="stylesheet" href="./css/main.css" />
-    <link rel="stylesheet" href="./css/sponsoren.css">
+    <link rel="stylesheet" href="./css/galerij.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./css/owl.carousel.min.css">
-    <link rel="icon" href="./img/Rollyside-favicon-appicon.png" type="image/favicon.ico">
 </head>
 
 <body>
@@ -64,49 +77,41 @@
             </div>
         </div>
     </intro>
-    <div id="sponsoren">
+
+    <div id="galerij">
+
         <div class="wrapper">
-            <div class="split-2">
-                <div>
-                    <p>
-                        De Rollyside is niet zo maar een supportersvereniging, het is ook een vrienden vereniging waar veel
-                        wordt gedaan aan ontmoetingen buiten het stadion om. Om dit te bekostigen hebben wij sponsoren
-                        nodig. Draagt u de Rollyside ook een warm hard toe? dan komt uw link bij deze onderstaande links.
-                        Het hoeft niet altijd in geld, het kan ook zijn in middelen.
-                    </p>
-                    <h2> <a href="#contact" data-scroll> Wil je ook een sponsor worden, <br> neem dan contact op! </a></h2>
+            <div class="posts">
+                <?php foreach($galerijen as $post) {  ?>
+                <div class="post">
+                    <a href="./galerijen.php?postId=<?php echo $post[0]; ?>">
+                        <div class="imageWrapper">
+                            <img src="<?php echo $post[3]; ?>" alt="<?php echo $post[2]; ?>">
+                        </div>
+                        <h3><?php echo $post[2];?></h3>
+                    </a>
                 </div>
-                <h1>
-                    Onze sponsoren
-                </h1> 
-                
+                <?php } ?>
             </div>
-            <div class="carousel_wrapper">
-                <div class="owl-carousel">
-                    <a class="sponsoren-logo" href="https://www.allure-energie.nl/" target="_blank">
-                        <img src="./img/sponsoren/allure.png" class="logo" alt="Logo Allure Energie">
-                    </a>
-                     <a class="sponsoren-logo" href="https://www.cafefootball.eu/" target="_blank">
-                        <img src="./img/sponsoren/cafe.png" class="logo" alt="Logo CAFE">
-                    </a>
-                     <a class="sponsoren-logo" href="https://www.svfcgroningen.nl/" target="_blank">
-                        <img src="./img/sponsoren/svfcg.png" class="logo" alt="Logo Supportersvereniging FCG">
-                    </a>
-                     <a class="sponsoren-logo" href="https://www.fcgroningen.nl/" target="_blank">
-                        <img src="./img/sponsoren/fcgroningen.png" class="logo" alt="Logo FC Groningen">
-                    </a>
-                     <a class="sponsoren-logo" href="http://www.hibernianfc.co.uk/" target="_blank">
-                        <img src="./img/sponsoren/hibernian.png" class="logo" alt="Logo Hibernian FC">
-                    </a>
-                     <a class="sponsoren-logo" href="https://www.humanitas.nl/" target="_blank">
-                        <img src="./img/sponsoren/humanitas.png" class="logo" alt="Logo Humanitas">
-                    </a>
-                    <a class="sponsoren-logo" href="https://www.knvb.nl/" target="_blank">
-                        <img src="./img/sponsoren/knvb.png" class="logo" alt="Logo KNVB">
-                    </a>
-                </div>
+
+            <?php 
+            $test = ((sizeof($galerijen) - 1) < 0 ) ? 0 : sizeof($galerijen);
+            if($test > 1) { 
+        ?>
+            <div class="navigatie">
+                <?php } else if($pagina ==1 ) { ?>
+                <a href="./galerij.php">vorige</a>
+                <?php } else if($pagina >1) { ?>
+                <a href="./galerij.php?pagina=<?php echo --$pagina; ?>">vorige</a>
+                <?php } ?>
+
+                <span class="line"></span>
+                <?php if (count($galerijen) > 8) { ?>
+                <a href="./galerij.php?pagina=<?php echo ++$pagina; ?>">volgende</a>
+                <?php } ?>
             </div>
         </div>
+
     </div>
 
 
@@ -132,7 +137,7 @@
                 </p>
             </section>
             <section>
-                <form id="contact">
+                <form>
                     <input type="text" placeholder="Naam" class="contact-form" name="naam"
                         aria-label="Naam Contact formulier" />
                     <input type="text" placeholder="Email" class="contact-form" name="email"
@@ -143,47 +148,22 @@
             </section>
         </div>
     </footer>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="./js/owl.carousel.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@15.0.0/dist/smooth-scroll.polyfills.min.js"></script>
+
     <script>
-    var scroll = new SmoothScroll('a[href*="#"]', {
-        header: 'header'
-    });
-
-    $(".owl-carousel").owlCarousel({
-        items: 4,
-        dots: true,
-        margin: 50,
-        lazyLoad: true,
-        autoWidth: true,
-        responsive: {
-            0: {
-                items: 1
-            },
-            600: {
-                items: 2
-            },
-            1200: {
-                items: 4
-            }
-        }
-    });
-
-    $(".owl-dot").map((i, elem) => {
-        $(elem).attr("aria-label", `Carousel navigatie ${i}`);
-    });
-
     function openMobileMenu() {
         let menu = document.getElementsByTagName("mobile-nav")[0];
         menu.classList.add("open");
+        document.getElementsByTagName("body")[0].classList.add("fixedPosition")
     }
 
     function closeMobileMenu() {
         let menu = document.getElementsByTagName("mobile-nav")[0];
         menu.classList.remove("open");
+        document.getElementsByTagName("body")[0].classList.remove("fixedPosition")
     }
     </script>
+
+
 </body>
 
 </html>
