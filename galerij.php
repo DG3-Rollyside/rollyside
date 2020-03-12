@@ -99,8 +99,8 @@
             if($test > 1) { 
         ?>
             <div class="navigatie">
+                <a href="./galerij.php" class="vorige">vorige</a>
                 <?php } else if($pagina ==1 ) { ?>
-                <a href="./galerij.php">vorige</a>
                 <?php } else if($pagina >1) { ?>
                 <a href="./galerij.php?pagina=<?php echo --$pagina; ?>">vorige</a>
                 <?php } ?>

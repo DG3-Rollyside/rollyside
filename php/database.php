@@ -11,8 +11,8 @@
       // $databasename = $username;
 
       $servername = "localhost";
-      $username = "Martijn";
-      $password = "Welkom1234";
+      $username = "root";
+      $password = "";
       $databasename = "rollyside";
 
       //creating connection
@@ -182,6 +182,8 @@
       $conn->close();
       return $results;
     }
+
+    static public function 
     
     //! end of class
   }

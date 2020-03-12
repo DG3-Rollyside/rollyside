@@ -203,14 +203,18 @@
     </footer>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="./js/owl.carousel.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@15.0.0/dist/smooth-scroll.polyfills.min.js"></script>
     <script>
+    let scroll = new SmoothScroll('a[href*="#"]', {
+        header: 'header'
+    });
+
     $(".owl-carousel").owlCarousel({
         items: 4,
-        rewind: 1,
-        autoplay: 1,
         dots: true,
-        lazyLoad: true,
         margin: 50,
+        lazyLoad: true,
+        autoWidth: true,
         responsive: {
             0: {
                 items: 1
