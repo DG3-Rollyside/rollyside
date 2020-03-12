@@ -231,8 +231,7 @@
         let menu = document.getElementsByTagName("mobile-nav")[0];
         menu.classList.add("open");
     }
-    });
-
+    
     function openMobileMenu() {
         let menu = document.getElementsByTagName("mobile-nav")[0];
         menu.classList.add("open");
