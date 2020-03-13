@@ -183,8 +183,8 @@
                     bereiken door te bellen naar het
                     nummer
                 </p>
-                <h4> Mobiel: Heike ten Hoove 06-10 860 061 </h4>
-                <h4> Adres Secretaris Gerda Boersema </h4>
+                <h4> Mobiel: 06-10 860 061 </h4>
+                <h4> Adres Secretaris </h4>
                 <p>
                     Rollyside<br />
                     Torenakkers 10<br />
@@ -203,14 +203,18 @@
     </footer>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="./js/owl.carousel.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@15.0.0/dist/smooth-scroll.polyfills.min.js"></script>
     <script>
+    let scroll = new SmoothScroll('a[href*="#"]', {
+        header: 'header'
+    });
+
     $(".owl-carousel").owlCarousel({
         items: 4,
-        rewind: 1,
-        autoplay: 1,
         dots: true,
-        lazyLoad: true,
         margin: 50,
+        lazyLoad: true,
+        autoWidth: true,
         responsive: {
             0: {
                 items: 1
@@ -224,6 +228,15 @@
         }
     });
 
+    $(".owl-dot").map((i, elem) => {
+        $(elem).attr("aria-label", `Carousel navigatie ${i}`);
+    });
+
+    function openMobileMenu() {
+        let menu = document.getElementsByTagName("mobile-nav")[0];
+        menu.classList.add("open");
+    }
+    
     function openMobileMenu() {
         let menu = document.getElementsByTagName("mobile-nav")[0];
         menu.classList.add("open");

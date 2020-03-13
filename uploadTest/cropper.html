@@ -1,0 +1,41 @@
+<html>
+<head>
+    <link rel="stylesheet" href="./css/croppie.css" />
+</head>
+
+<body>
+    <input type="file" id="moi">
+<div id="demo"></div>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="./js/croppie.js"></script>
+<script>
+    
+var basic = $('#demo').croppie({
+    boundary: {
+        width: 800,
+        height: 800,
+    },
+    viewport: {
+        width: 300,
+        height: 300
+    }
+});
+
+
+    $("#moi").change(() =>{
+        img = document.getElementById('moi').value;
+        console.log(img)
+
+        basic.croppie('bind', {
+        url: img,
+    })
+})
+//on button click
+basic.croppie('result', 'html').then(function(html) {
+    console.log(html)
+});
+</script>
+</body>
+</html>
