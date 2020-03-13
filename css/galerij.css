@@ -2,14 +2,20 @@
   padding: 20px;
 }
 
-#galerij .wrapper .navigatie * {
-  display: inline-block;
+#galerij .wrapper .navigatie {
+  margin: 40px 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
 
-#galerij .wrapper .navigatie .line {
-  height: 2px;
-  background-color: red;
-  width: 100%;
+#galerij .wrapper .navigatie a {
+  color: green;
+  text-decoration: none;
+  font-size: 2rem;
 }
 
 #galerij .wrapper .posts {

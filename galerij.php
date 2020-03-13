@@ -95,9 +95,9 @@
             </div>
 
             <?php 
-            $test = ((sizeof($galerijen) - 1) < 0 ) ? 0 : sizeof($galerijen);
-            if($test > 1) { 
-        ?>
+                $test = ((sizeof($galerijen) - 1) < 0 ) ? 0 : sizeof($galerijen);
+                if($test > 1) { 
+            ?>
             <div class="navigatie">
                 <?php } else if($pagina ==1 ) { ?>
                 <a href="./galerij.php">vorige</a>
@@ -105,7 +105,6 @@
                 <a href="./galerij.php?pagina=<?php echo --$pagina; ?>">vorige</a>
                 <?php } ?>
 
-                <span class="line"></span>
                 <?php if (count($galerijen) > 8) { ?>
                 <a href="./galerij.php?pagina=<?php echo ++$pagina; ?>">volgende</a>
                 <?php } ?>

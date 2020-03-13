@@ -3,14 +3,17 @@
     padding: 20px;
 
     .navigatie {
-      * {
-        display: inline-block;
-      }
+      margin: 40px 0px;
+      display: flex;
+      justify-content: flex-end;
 
-      .line {
-        height: 2px;
-        background-color: red;
-        width: 100%;
+      a {
+        color: green;
+        text-decoration: none;
+        font-size: 2rem;
+
+        &:last-child() {
+        }
       }
     }
 
