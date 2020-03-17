@@ -1,0 +1,70 @@
+#galerij .wrapper {
+  padding: 20px;
+}
+
+#galerij .wrapper .navigatie {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+#galerij .wrapper .navigatie a {
+  font-size: 1.5em;
+  text-decoration: none;
+  color: #00792D;
+  font-weight: 600;
+}
+
+#galerij .wrapper .navigatie::before {
+  content: " ";
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  margin-right: 10px;
+  height: 3px;
+  background-color: #00792D;
+  top: calc(0.75rem + 1.5px);
+}
+
+#galerij .wrapper .posts {
+  margin: 80px 0px !important;
+  display: -ms-grid;
+  display: grid;
+  -webkit-column-gap: 50px;
+          column-gap: 50px;
+  row-gap: 1.5em;
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
+  margin: 25px;
+}
+
+#galerij .wrapper .posts .post a {
+  text-decoration: none;
+}
+
+#galerij .wrapper .posts .post a h3 {
+  margin-top: 0.5rem;
+  color: #333333;
+  font-size: 1.75rem;
+}
+
+#galerij .wrapper .posts .post a .imageWrapper {
+  height: 300px;
+  overflow: hidden;
+}
+
+#galerij .wrapper .posts .post a .imageWrapper img {
+  width: 100%;
+  height: 100%;
+}
+
+@media screen and (max-width: 1400px) {
+  #galerij .wrapper .posts {
+    -ms-grid-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+/*# sourceMappingURL=galerij.css.map */

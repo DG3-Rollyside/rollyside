@@ -1,0 +1,73 @@
+#galerij {
+  .wrapper {
+    padding: 20px;
+
+    .navigatie {
+      display: flex;
+      justify-content: flex-end;
+      a {
+        font-size: 1.5em;
+        text-decoration: none;
+        color: #00792D;
+        font-weight: 600;
+
+        &.vorige {
+          
+        }
+      }
+
+      &::before {
+        content: " ";
+        display: inline-block;
+        position: relative;
+        width: 100%;
+        margin-right: 10px;
+        height:3px;
+        background-color: #00792D;
+        top: calc(0.75rem + 1.5px);
+        
+      }
+    }
+
+    .posts {
+      margin: 80px 0px !important;
+      display: grid;
+      column-gap: 50px;
+      row-gap: 1.5em;
+      grid-template-columns: repeat(4, 1fr);
+      margin: 25px;
+
+      .post {
+        a {
+          text-decoration: none;
+
+          h3 {
+            margin-top: 0.5rem;
+            color: #333333;
+            font-size: 1.75rem;
+          }
+
+          .imageWrapper {
+            height: 300px;
+            overflow: hidden;
+
+            img {
+              width: 100%;
+              height: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  #galerij {
+    .wrapper {
+      .posts {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+    }
+  }
+}

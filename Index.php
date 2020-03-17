@@ -8,8 +8,8 @@
         content="De Rollyside is de supportersvereniging voor minder validen van FC Groningen. Meld je aan!" />
 
     <title>rollyside</title>
-    <link rel="stylesheet" href="./css/minified/main.min.css" />
-    <link rel="stylesheet" href="./css/minified/index.min.css">
+    <link rel="stylesheet" href="./css/scss_comp/main.css" />
+    <link rel="stylesheet" href="./css/scss_comp/index.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/owl.carousel.min.css">
 
@@ -141,7 +141,6 @@
             </div>
         </div>
     </div>
-
     <div id="sponsoren">
         <div class="wrapper">
             <h1>Onze sponsoren</h1>
@@ -184,8 +183,8 @@
                     bereiken door te bellen naar het
                     nummer
                 </p>
-                <h4> Mobiel: Heike ten Hoove 06-10 860 061 </h4>
-                <h4> Adres Secretaris Gerda Boersema </h4>
+                <h4> Mobiel: 06-10 860 061 </h4>
+                <h4> Adres Secretaris </h4>
                 <p>
                     Rollyside<br />
                     Torenakkers 10<br />
@@ -193,10 +192,10 @@
                 </p>
             </section>
             <section>
-                <form>
+                <form id="messageForm">
                     <input type="text" placeholder="Naam" class="contact-form" name="naam" />
                     <input type="text" placeholder="Email" class="contact-form" name="email" />
-                    <textarea placeholder="Bericht"></textarea>
+                    <textarea placeholder="Bericht" name="bericht"></textarea>
                     <input type="submit" value="Verstuur" class="submit">
                 </form>
             </section>
@@ -204,14 +203,18 @@
     </footer>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="./js/owl.carousel.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@15.0.0/dist/smooth-scroll.polyfills.min.js"></script>
     <script>
+    let scroll = new SmoothScroll('a[href*="#"]', {
+        header: 'header'
+    });
+
     $(".owl-carousel").owlCarousel({
         items: 4,
-        rewind: 1,
-        autoplay: 1,
         dots: true,
-        lazyLoad: true,
         margin: 50,
+        lazyLoad: true,
+        autoWidth: true,
         responsive: {
             0: {
                 items: 1
@@ -225,6 +228,15 @@
         }
     });
 
+    $(".owl-dot").map((i, elem) => {
+        $(elem).attr("aria-label", `Carousel navigatie ${i}`);
+    });
+
+    function openMobileMenu() {
+        let menu = document.getElementsByTagName("mobile-nav")[0];
+        menu.classList.add("open");
+    }
+    
     function openMobileMenu() {
         let menu = document.getElementsByTagName("mobile-nav")[0];
         menu.classList.add("open");
@@ -235,6 +247,37 @@
         let menu = document.getElementsByTagName("mobile-nav")[0];
         menu.classList.remove("open");
         document.getElementsByTagName("body")[0].classList.remove("fixedPosition")
+    }
+
+    $('#messageForm').submit(function() {
+        try {
+            let form = document.getElementById("messageForm");
+
+            $(this).serializeArray();
+        } catch (error) {
+            console.error(error);
+            return false;
+        }
+        return false;
+    })
+
+    // Example POST method implementation:
+    async function postData(url = '', data = {}) {
+        // Default options are marked with *
+        const response = await fetch(url, {
+            method: 'POST', // *GET, POST, PUT, DELETE, etc.
+            mode: 'same-origin', // no-cors, *cors, same-origin
+            cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+            credentials: 'same-origin', // include, *same-origin, omit
+            headers: {
+                'Content-Type': 'application/json'
+                // 'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            redirect: 'follow', // manual, *follow, error
+            referrerPolicy: 'no-referrer', // no-referrer, *client
+            body: JSON.stringify(data) // body data type must match "Content-Type" header
+        });
+        return await response.json(); // parses JSON response into native JavaScript objects
     }
     </script>
     <script src="./js/site.js"></script>

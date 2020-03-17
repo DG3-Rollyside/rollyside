@@ -147,7 +147,7 @@
     <script src="./js/owl.carousel.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@15.0.0/dist/smooth-scroll.polyfills.min.js"></script>
     <script>
-    var scroll = new SmoothScroll('a[href*="#"]', {
+    let scroll = new SmoothScroll('a[href*="#"]', {
         header: 'header'
     });
 
