@@ -3,14 +3,29 @@
     padding: 20px;
 
     .navigatie {
-      * {
-        display: inline-block;
+      display: flex;
+      justify-content: flex-end;
+      a {
+        font-size: 1.5em;
+        text-decoration: none;
+        color: #00792D;
+        font-weight: 600;
+
+        &.vorige {
+          
+        }
       }
 
-      .line {
-        height: 2px;
-        background-color: red;
+      &::before {
+        content: " ";
+        display: inline-block;
+        position: relative;
         width: 100%;
+        margin-right: 10px;
+        height:3px;
+        background-color: #00792D;
+        top: calc(0.75rem + 1.5px);
+        
       }
     }
 

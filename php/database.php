@@ -182,7 +182,54 @@
       $conn->close();
       return $results;
     }
-    
+
+    static public function getGalerij($galerijId) {
+      $conn = Database::connect();
+      $sql = "SELECT * FROM galerij WHERE `galerij_id` = ?";
+
+
+      $stmt = $conn->prepare($sql);
+      $stmt->bind_param("s", $galerijId);
+
+      $stmt->execute();
+      $result = $stmt->get_result();
+      $results = $result->fetch_all();
+
+      $conn->close();
+      return $results[0];
+    }
+
+    public static function getUserInfo($username) {
+      $conn = Database::connect();
+      $sql = "SELECT * FROM users WHERE `username` = ?";
+
+      $stmt = $conn->prepare($sql);
+      $stmt->bind_param("s", $username);
+
+      $stmt->execute();
+      $result = $stmt->get_result();
+      $results = $result->fetch_all();
+
+      $conn->close();
+      return $results[0];
+    }
+
+    public static function getUserExplicit($id, $username) {
+      $conn = Database::connect();
+      $sql = "SELECT * FROM users WHERE `username` = ? AND `user_id` = ?";
+
+      $stmt = $conn->prepare($sql);
+      $stmt->bind_param("ss", $username, $id);
+
+      $stmt->execute();
+      $result = $stmt->get_result();
+      $results = $result->fetch_all();
+
+      $conn->close();
+      return $results[0];
+      
+    }
+
     //! end of class
   }
 

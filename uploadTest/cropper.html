@@ -4,9 +4,9 @@
 </head>
 
 <body>
-    <input type="file" id="moi">
-<div id="demo"></div>
-
+    <div id="demo">
+        <input type="file" id="moi">
+    </div>
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="./js/croppie.js"></script>
@@ -23,19 +23,20 @@ var basic = $('#demo').croppie({
     }
 });
 
-
-    $("#moi").change(() =>{
+$("#moi").change(() =>{
         img = document.getElementById('moi').value;
         console.log(img)
 
         basic.croppie('bind', {
-        url: img,
-    })
+            url: img,
+        })
 })
-//on button click
+ 
+// on button click
 basic.croppie('result', 'html').then(function(html) {
     console.log(html)
 });
+
 </script>
 </body>
 </html>
