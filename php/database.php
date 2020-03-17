@@ -182,8 +182,6 @@
       $conn->close();
       return $results;
     }
-
-    static public function 
     
     //! end of class
   }
