@@ -1,21 +1,3 @@
-<?php
-  session_start();
-  session_destroy();
-    $errror = "";
-  include_once "../php/user.php";
-  if (isset($_POST["login"])) {
-    //log the user in 
-    $loginMessage  = User::login($_POST["username"], $_POST["password"]);
-    if($loginMessage == 0) {
-        $error = "gebruikersnaam niet gevonden";
-    } else if($loginMessage == 1) {
-        $error = "Incorrect wachtwoord";
-    }
-  }
-  if (User::checkedLoggedIn()) {
-      header("Location: ./dashboard.php");
-  }
-?>
 <!doctype html>
 <html lang="en">
 
@@ -89,18 +71,21 @@
 
 <body class="text-center">
     <div class="container">
-        <form class="form-signin" method="post" action="">
-            <h1 class="h1 mb-3 font-weight-normal"> Inloggen </h1>
-            <label for="username" class="sr-only"> Gebruikersnaam </label>
-            <input type="text" id="username" name="username" class="form-control" placeholder="Gebruikersnaam " required=""
+        <form class="form-signin" method="post" action="./recovery.php">
+            <h1 class="h1 mb-3 font-weight-normal"> Wachtwoord vergeten </h1>
+            <p class=""> voer je email in om je wachtwoord te resetten </p>
+            <label for="email" class="sr-only"> email </label>
+            <input type="email" id="email" name="email" class="form-control" placeholder="Email " required=""
                 autofocus="">
-            <label for="password" class="sr-only">Password</label>
-            <input type="password" name="password" id="passwor" class="form-control" placeholder="Password" required="">
-            <button class="btn btn-lg btn-primary btn-block" type="submit" name="login">Log in</button>
-            <p><?php echo isset($error) ? $error : "";?></p>
+            <button class="btn btn-lg btn-primary btn-block" type="submit" name="reset">Verstuur mail</button>
         </form>
-        <a class="h5" href="./password_forgotten/passwordRecoveyform.php"> Wachtwoord vergeten? </a>
-
+        <p>
+            <?php 
+                if (isset($_GET["status"])) {
+                    echo ($_GET["status"] == "success")? "Check je email": "het resetten van je wachtwoord is misslukt probeer later opnieuw"; 
+                }
+            ?>
+        </p>
     </div>
 
     <!-- Optional JavaScript -->

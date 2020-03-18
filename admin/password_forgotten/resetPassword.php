@@ -1,21 +1,13 @@
 <?php
-  session_start();
-  session_destroy();
-    $errror = "";
-  include_once "../php/user.php";
-  if (isset($_POST["login"])) {
-    //log the user in 
-    $loginMessage  = User::login($_POST["username"], $_POST["password"]);
-    if($loginMessage == 0) {
-        $error = "gebruikersnaam niet gevonden";
-    } else if($loginMessage == 1) {
-        $error = "Incorrect wachtwoord";
-    }
-  }
-  if (User::checkedLoggedIn()) {
-      header("Location: ./dashboard.php");
-  }
+//check of de token en selector bestaat;
+
+if(!isset($_GET["selector"]) || !isset($_GET["token"])) {
+    http_response_code(403);
+    exit();
+}
+if (!ctype_xdigit($_GET["selector"]) && !ctype_xdigit($_GET["token"]))
 ?>
+
 <!doctype html>
 <html lang="en">
 
@@ -89,18 +81,38 @@
 
 <body class="text-center">
     <div class="container">
-        <form class="form-signin" method="post" action="">
-            <h1 class="h1 mb-3 font-weight-normal"> Inloggen </h1>
-            <label for="username" class="sr-only"> Gebruikersnaam </label>
-            <input type="text" id="username" name="username" class="form-control" placeholder="Gebruikersnaam " required=""
-                autofocus="">
-            <label for="password" class="sr-only">Password</label>
-            <input type="password" name="password" id="passwor" class="form-control" placeholder="Password" required="">
-            <button class="btn btn-lg btn-primary btn-block" type="submit" name="login">Log in</button>
-            <p><?php echo isset($error) ? $error : "";?></p>
+        <form class="form-signin" method="post" action="resetPassword-script.php">
+            <h1 class="h1 mb-3 font-weight-normal"> Wachtwoord resetten </h1>
+            <p class=""> voer je nieuwe wachtwoord in </p>
+            <p class="error"><?php 
+            if(isset($_GET["status"])) {
+                $status = $_GET["status"];
+                if($status == "match") {
+                    echo "De wachtwoorden zijn niet hetzelfde";
+                }
+                if($status == "empty") {
+                    echo "De wachtwoorden zijn niet ingevuld";
+                }
+                if($status == "contain") {
+                    ?>
+        een wachtwoord moet aan de volgende voldoen
+        <ul>
+            <li>1 of meer hoofdletter</li>
+            <li>1 of meer normale letters</li>
+            <li>1 of meer nummers</li>
+            <li>minimaal 8 characters</li>
+            <li>en een of meer van de volgende characters "@$!%*?&"</li>
+        </ul>
+                    <?php
+                }
+            }
+            ?></p>
+            <input type="hidden" name="token" value="<?php echo $_GET["token"]; ?>">
+            <input type="hidden" name="selector" value="<?php echo $_GET["selector"]; ?>">
+            <input type="password" id="pwd" name="pwd" class="form-control" placeholder="Wachtwoord " required=""autofocus="" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$">
+            <input type="password" id="pwdRepeat" name="repeat" class="form-control" placeholder="Herhaal wachtwoord " required=""autofocus="" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$">
+            <button class="btn btn-lg btn-primary btn-block" type="submit" name="resetPassword">Verstuur mail</button>
         </form>
-        <a class="h5" href="./password_forgotten/passwordRecoveyform.php"> Wachtwoord vergeten? </a>
-
     </div>
 
     <!-- Optional JavaScript -->

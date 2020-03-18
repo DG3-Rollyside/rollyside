@@ -10,6 +10,9 @@ class User {
         }
 
         $userinfo = Database::getUserInfo($username);
+        if(!isset($userinfo[0])) {
+            return 0;
+        }
 
         if (password_verify($password, $userinfo[3])) {
             session_regenerate_id();
@@ -18,11 +21,11 @@ class User {
             $_SESSION["name"] = $username;
             $_SESSION['id'] = $userinfo[0];
 
-            return true;
+            return 2;
         } else {
             session_destroy();
 
-            return false;
+            return 1;
         }
 
     }
@@ -46,6 +49,10 @@ class User {
         } 
 
         return false;
+    }
+
+    public static function updatePassword($password) {
+        
     }
 }
 ?>
