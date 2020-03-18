@@ -111,7 +111,7 @@ if (!ctype_xdigit($_GET["selector"]) && !ctype_xdigit($_GET["token"]))
             <input type="hidden" name="selector" value="<?php echo $_GET["selector"]; ?>">
             <input type="password" id="pwd" name="pwd" class="form-control" placeholder="Wachtwoord " required=""autofocus="" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$">
             <input type="password" id="pwdRepeat" name="repeat" class="form-control" placeholder="Herhaal wachtwoord " required=""autofocus="" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$">
-            <button class="btn btn-lg btn-primary btn-block" type="submit" name="resetPassword">Verstuur mail</button>
+            <button class="btn btn-lg btn-primary btn-block" type="submit" name="resetPassword">Verander wachtwoord</button>
         </form>
     </div>
 

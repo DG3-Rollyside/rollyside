@@ -5,10 +5,11 @@ require_once("../../php/globals.php");
 
 if(!isset($_POST["resetPassword"])) {
     header("Location: $PATH_TO_SITE/");
+    exit();
 }
 if (!isset($_POST["token"]) || !isset($_POST["selector"])) {
-    // header("Location: $PATH_TO_SITE/admin/login.php");
-    print_r($_REQUEST);
+    header("Location: $PATH_TO_SITE/admin/login.php");
+    exit();
 }
 
 $pw = $_POST["pwd"];
@@ -16,14 +17,11 @@ $pwr = $_POST["repeat"];
 
 //check if the passwords match the requirements
 if(empty($pw) || empty($pwr)){
-    // header("Location: $PATH_TO_SITE/admin/password_forgotten/resetPassword.php?token=". $_POST['token'] ."&selector=". $_POST['selector'] ."&status=empty");
-    var_dump($pw);
-    var_dump($pwr);
+    header("Location: $PATH_TO_SITE/admin/password_forgotten/resetPassword.php?token=". $_POST['token'] ."&selector=". $_POST['selector'] ."&status=empty");
     exit();
 }
 if($pw != $pwr) {
-    // header("Location: $PATH_TO_SITE/admin/password_forgotten/resetPassword.php?token=". $_POST['token'] ."&selector=". $_POST['selector'] ."&status=match");
-    echo "not same";
+    header("Location: $PATH_TO_SITE/admin/password_forgotten/resetPassword.php?token=". $_POST['token'] ."&selector=". $_POST['selector'] ."&status=match");
     exit();
 }
 // wachtwoord voldoet aan alle regels
@@ -48,22 +46,14 @@ if (!$token) {
 $tokenBin = hex2bin($validator);
 if (!password_verify($tokenBin, $token->token)) {
     // if the tokens do not match then we send them back to the start
-    // header("Location: $PATH_TO_SITE/admin/password_forgotten/passwordRecoveyform.php");
-    echo"token no match";
+    header("Location: $PATH_TO_SITE/admin/password_forgotten/passwordRecoveyform.php");
     exit();
 }
+
+include_once "../../php/user.php";
+User::logout();
 
 $userEmail = $token->email;
 Database::updatePasswordByEmail($userEmail, password_hash($pw, PASSWORD_BCRYPT));
 
-
-
-
-/*
-e0601ea9be9a95e8
-13bc27729ce2c357
-
-
-b3f71be7c6e26de9
-b3f71be7c6e26de9
-*/
+header("location: ../login.php");

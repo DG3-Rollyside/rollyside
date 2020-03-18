@@ -51,8 +51,12 @@ class User {
         return false;
     }
 
-    public static function updatePassword($password) {
-        
+    public static function logout() {
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        session_destroy();
     }
 }
 ?>

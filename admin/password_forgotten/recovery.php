@@ -13,7 +13,7 @@ $selector = bin2hex(random_bytes(8));
 $token = random_bytes(32);
 
 $url = "$PATH_TO_SITE/admin/password_forgotten/resetPassword.php?selector=$selector&token=" . bin2hex($token);
-$expires = date("U") + 9000;
+$expires = date("U") + 900;
 $encToken = password_hash($token, PASSWORD_BCRYPT);
 
 // make the object to insert into the database
