@@ -157,7 +157,7 @@
                 <a class="sponsoren-logo" href="https://www.fcgroningen.nl/" target="_blank">
                     <img src="./img/sponsoren/fcgroningen.png" class="logo" alt="Logo FC Groningen">
                 </a>
-                <a class="sponsoren-logo" href="http://www.hibernianfc.co.uk/" target="_blank">
+                <a class="sponsoren-logo" href="https://www.hibernianfc.co.uk/" target="_blank">
                     <img src="./img/sponsoren/hibernian.png" class="logo" alt="Logo Hibernian FC">
                 </a>
                 <a class="sponsoren-logo" href="https://www.humanitas.nl/" target="_blank">
@@ -203,7 +203,8 @@
     </footer>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="./js/owl.carousel.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@15.0.0/dist/smooth-scroll.polyfills.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@15.0.0/dist/smooth-scroll.polyfills.min.js">
+    </script>
     <script>
     let scroll = new SmoothScroll('a[href*="#"]', {
         header: 'header'
@@ -236,7 +237,7 @@
         let menu = document.getElementsByTagName("mobile-nav")[0];
         menu.classList.add("open");
     }
-    
+
     function openMobileMenu() {
         let menu = document.getElementsByTagName("mobile-nav")[0];
         menu.classList.add("open");
