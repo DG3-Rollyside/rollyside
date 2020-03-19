@@ -230,12 +230,83 @@
       
     }
 
+    public static function updatePasswordByEmail($email, $pw) {
+      $conn = Database::connect();
+      
+      $sql = "UPDATE users SET wachtwoord = ? WHERE email = ?";
+
+      $stmt = $conn->prepare($sql);
+      $stmt->bind_param("ss", $pw, $email);
+
+      $stmt->execute();
+      $conn->close();
+    }
+
+    /********** RESET PASSWORD **********/
+    public static function insertPasswordReset($dataObj) {
+      $conn = Database::connect();
+      print_r($dataObj);
+      // delete all previus password resets
+      $sql = "DELETE FROM resettoken WHERE email=?";
+
+      $stmt = $conn->prepare($sql);
+      $stmt->bind_param("s", $dataObj->email);
+      $stmt->execute();
+
+      $sql = "INSERT INTO `resettoken` (`email`, `selector`, `token`, `expires`) VALUES (?,?,?,?);";
+
+      $stmt = $conn->prepare($sql);
+      $stmt->bind_param("ssss", $dataObj->email, $dataObj->selector, $dataObj->token, $dataObj->expires);
+      $stmt->execute();
+
+      $conn->close();
+    }
+
+    public static function getUsernameFromEmail($email) {
+      $conn = Database::connect();
+      $sql = "SELECT `username` FROM users WHERE `email`=?";
+
+      $stmt = $conn->prepare($sql);
+      $stmt->bind_param("s", $email);
+
+      $stmt->execute();
+      $result = $stmt->get_result();
+      $results = $result->fetch_all();
+
+      $conn->close();
+      return $results[0];
+    }
+
+    public static function getTokenInfo($selector, $date) {
+      $conn = Database::connect();
+      // echo $date;
+      // var_dump($selector);
+      $sql = "SELECT * FROM resettoken WHERE `selector`= ?";
+      
+      $stmt = $conn->prepare($sql);
+      $stmt->bind_param("s", $selector);
+
+      $stmt->execute();
+      $result = $stmt->get_result();
+      $results = $result->fetch_all();
+      // print_r($results);
+
+      $conn->close();
+      $tr = $results[0];
+      if (isset($tr[0])) {
+
+        $t = new stdClass;
+        $t->id = $tr[0];
+        $t->email = $tr[1];
+        $t->selector = $tr[2];
+        $t->token = $tr[3];
+        $t->expires = $tr[4];
+        return $t;
+      }
+      return false;
+    }
+
     //! end of class
   }
-
-  
-
-
-   
 
 ?>
