@@ -7,15 +7,12 @@ $bulkImages = $_FILES["bulkImg"];
 
 $featuredImg = $_FILES["featured"];
 $featuredName = uniqid() . "." . explode(".", $featuredImg["name"])[0];
-$featured = array("name" => $featuredName, "temp_name" => $featuredImg["tmp_name"], "type" => $featuredImg["type"]);
 
 
 $imgs = array();
 for ($i=0; $i < sizeof($bulkImages["name"]); $i++) {
     echo $i;
     
-    var_dump($bulkImages["name"][$i]);
-
     $name = uniqid() .".". explode(".", $bulkImages["name"][$i])[1];
     array_push($imgs,
         array(
@@ -37,4 +34,3 @@ function uploadImg($img, $path) {
     file_put_contents($filename, file_get_contents($img["temp_name"]));
 }
 ?>
-
