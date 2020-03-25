@@ -68,7 +68,8 @@
         $stmt->bind_param("i", $postId);
 
         $stmt->execute();
-        // TODO: test the amount of effected rows and return message based on result
+
+        //check if there are rows deleted
         $rowsAffected = $stmt->affected_rows;
         if ($rowsAffected <= 0) {
           $conn->close();

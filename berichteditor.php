@@ -9,6 +9,8 @@
 
 <body>
     <button onclick="save()">Opslaan</button>
+    <input type="text" name="" id="title" placeholde="title">
+    <!-- TODO: Add a image featured/resize input -->
     <div id="editorJs" style="border: 1px solid black;"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest"></script>
@@ -100,11 +102,11 @@
                     insertId = http.responseText;
                 }
             }
-
+            let title = document.getElementById("title").value;
             let sendData = {
                 art: outputData,
                 post: {
-                    title: "moi man",
+                    title: title,
                     created_at: new Date(),
                     intro_img: "https://placehold.it/1920/1080",
                     post_img: "https://placehold.it/300/300"
