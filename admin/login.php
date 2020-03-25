@@ -1,6 +1,5 @@
 <?php
   session_start();
-  session_destroy();
     $errror = "";
   include_once "../php/user.php";
   if (isset($_POST["login"])) {

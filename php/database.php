@@ -100,37 +100,29 @@
       $rowsAffected = $stmt->affected_rows;
       if ($rowsAffected <= 0) {
         $conn->close();
-        return [false, "There was an error with creating the post"];
+        // return [false, "There was an error with creating the post"];
+        return -1;
       }
+      $insertId = $conn->insert_id;
+      
       $conn->close();
-      return [true, "Post has been succesfully created"];
+      // return [true, "Post has been succesfully created"];
+      return $insertId;
 
 
     }
 
-    public static function updatePost($oldId, $newPost) {
-      list($title, $introText, $content, $featuredImg, $postImg, $date) = $newPost;
+    public static function updatePostContent($oldId, $newContent) {
+      $conn = Database::connect();
 
-      $succesfullyDeleted = Database::deletePost($oldId)[0];
-      $errorcode = 0;
-      $errorMsg = "";
-      if ($succesfullyDeleted) {
-        $succesCreated = Database::createPost($title, $introText, $content, $featuredImg, $postImg, $date);
+      $sql = "UPDATE `nieuws` SET `content`=? WHERE `nieuws`.`id` = ?";
 
-        if ($succesCreated) {
-          return [true, $errorcode, "the post has been succesfully updated"];
-        } else {
-          $errorMsg = "the post could not be created";
-          $errorcode = 2;
-        }
-      } else {
-          $errorMsg = "the post could not be deleted";
-          $errorcode = 1;
-      }
-    
-      return [false, [$errorcode, $errorMsg], "There was an error creating the post"];
+      $stmt = $conn->prepare($sql);
+      $stmt->bind_param("ss", $newContent, $oldId);
+      $stmt->execute();
 
-
+      $conn->close();
+      return true;
     }
 
     public static function searchPost($title, $limit, $offset) {
@@ -210,8 +202,10 @@
       $result = $stmt->get_result();
       $results = $result->fetch_all();
 
+
       $conn->close();
-      return $results[0];
+      
+      return isset($results[0]) ? $result[0] : false ;
     }
 
     public static function getUserExplicit($id, $username) {
