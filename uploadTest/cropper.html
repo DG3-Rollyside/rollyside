@@ -36,7 +36,7 @@
         
       </div>
       <img id="homo">
-      
+
       <div id="preview"></div>
       <script src="js/jquery.js"></script>
       <script src="./js/croppie.js"></script>
@@ -108,20 +108,26 @@
         
         async function sendAsync () {
           
-          $uploadCrop.result({typ: 'base64'}).then((base) => {
+          $uploadCrop.croppie('result', 'base64').then((base) => {
             let obj = {
               featured: base,
               post: bulkimgs
             }
             
             let json = JSON.stringify(obj);
-
+            console.log("MOI JONG: ", json)
             const Http = new XMLHttpRequest();
             const url = "./uploadGalerij.php";
+            Http.onreadystatechange = () => {
+              if(Http.readyState == XMLHttpRequest.DONE) {
+                console.log(Http.responseText);
+              }
+            }
 
             Http.open("POST", url, true);
             Http.setRequestHeader('Content-type', 'application/json')
             Http.send(json);
+
           })
           
         }

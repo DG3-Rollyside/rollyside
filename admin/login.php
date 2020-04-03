@@ -92,8 +92,8 @@
         <form class="form-signin" method="post" action="">
             <h1 class="h1 mb-3 font-weight-normal"> Inloggen </h1>
             <label for="username" class="sr-only"> Gebruikersnaam </label>
-            <input type="text" id="username" name="username" class="form-control" placeholder="Gebruikersnaam " required=""
-                autofocus="">
+            <input type="text" id="username" name="username" class="form-control" placeholder="Gebruikersnaam "
+                required="" autofocus="">
             <label for="password" class="sr-only">Password</label>
             <input type="password" name="password" id="passwor" class="form-control" placeholder="Password" required="">
             <button class="btn btn-lg btn-primary btn-block" type="submit" name="login">Log in</button>

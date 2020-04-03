@@ -59,4 +59,6 @@ class User {
         session_destroy();
     }
 }
+
+// echo User::createPassword("moi1234!!");
 ?>

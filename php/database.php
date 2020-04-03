@@ -11,8 +11,8 @@
       // $databasename = $username;
 
       $servername = "localhost";
-      $username = "root";
-      $password = "";
+      $username = "Martijn";
+      $password = "Welkom1234";
       $databasename = "rollyside";
 
       //creating connection
@@ -199,6 +199,29 @@
       return $results[0];
     }
 
+    public static function createBlankGallerij() {
+      $conn = Database::connect();
+
+      $id = uniqid();
+      $sql = "INSERT INTO galerij (`titel`) VALUES ('$id')";
+
+      $stmt = $conn->prepare($sql);
+
+      $stmt->execute();
+      $conn->close();
+
+      $stmt = null;
+      $conn = null;
+
+      $conn = Database::connect();
+
+      $sql = "SELECT `galerij_id` FROM `galerij` WHERE `titel` = \"$id\"";
+
+      $results = $conn->query($sql);
+      $result = $results->fetch_assoc();
+      return $result["galerij_id"];
+    }
+    /* ********** USER ********** */
     public static function getUserInfo($username) {
       $conn = Database::connect();
       $sql = "SELECT * FROM users WHERE `username` = ?";
