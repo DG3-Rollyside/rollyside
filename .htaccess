@@ -1,6 +1,2 @@
 ErrorDocument 404 /dg3/errorpages/404.php
 ErrorDocument 403 /dg3/errorpages/403.php
-
-RewriteEngine On
-RewriteCond %{HTTPS} !on
-RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}

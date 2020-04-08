@@ -2,6 +2,7 @@
 <html lang="nl">
 
 <head>
+    <?php require_once("./analytics.php") ?>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>rollyside</title>
@@ -13,6 +14,7 @@
 </head>
 
 <body>
+<?php require_once("php/cookie.php") ?>
     <header>
         <nav>
             <img class="logo" src="./img/logo.svg" alt="logo" />

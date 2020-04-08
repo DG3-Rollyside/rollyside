@@ -10,62 +10,56 @@
     $title = "";
   }
 ?>
+
 <html>
 
 <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/croppie.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="./css/galerijEditor.css">
 </head>
 
 <body>
-    <div class="demo-wrap upload-demo">
         <div class="container">
-            <div class="grid">
-                <div class="col-1-2">
-                    <div class="actions">
-                        <a class="btn file-btn">
-                            <span>Upload</span>
-                            <input type="file" id="upload" value="Choose a file" accept="image/*" />
-
-                        </a>
-                        <button class="upload-result">Result</button>
-                    </div>
-                </div>
-                <div class="col-1-2">
-                    <div class="upload-msg">
-                        Upload a file to start cropping
-                    </div>
-                    <div class="upload-demo-wrap">
-                        <div id="upload-demo"></div>
-                        <!-- rotate featured image -->
-                        <button class="vanilla-rotate" data-deg="-90">Rotate Left</button>
-                        <button class="vanilla-rotate" data-deg="90">Rotate Right</button>
-                    </div>
-                </div>
-            </div>
             <form onsubmit="sendAjax(event)">
-              <input id="browse" type="file" name="bulkImg[]" multiple>
-              <input type="text" name="feartuerimg" placeholder="Titel" value="<?php echo $title; ?>" id="title">
-              <input type="submit" value="Submit" name="submit">
+            <!-- Featured img -->
+                <input type="file" id="upload" value="Choose a file" accept="image/*" />
+            <!-- bulk -->
+                <input class="form-control" id="browse" type="file" name="bulkImg[]" multiple>
+            <!-- title -->
+                <input class="form-control" type="text" name="feartuerimg" placeholder="Titel" value="<?php echo $title; ?>" id="title">
+            <!-- submit -->
+                <input class="btn btn-primary btn-large " type="submit" value="Bijwerken" name="submit">
             </form>
 
         </div>
-        <img id="homo">
-        <textarea id="lul"></textarea>
+        
+        <div class="col-md-2"></div>
 
-        <div id="preview"></div>
+        <div class="col-md-10">
+            <div id="croppie-preview"></div>
+                <div class="form-control">
+                <div class="d-flex justify-content-center">
+                    <button class="vanilla-rotate" data-deg="-90">Rotate Left</button>
+                    <button class="vanilla-rotate" data-deg="90">Rotate Right</button>
+                </div>
+            </div>
+        </div>
+
         <script src="js/jquery.js"></script>
         <script src="./js/croppie.js"></script>
         <script>
         var $uploadCrop;
 
-        let id = <?php echo $id; ?> ;
+        let id = <?php echo $id; ?>;
 
         function readFile(input) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
 
                 reader.onload = function(e) {
-                    $(".upload-demo").addClass("ready");
+                    $(".croppie-preview").addClass("ready");
                     $uploadCrop
                         .croppie("bind", {
                             url: e.target.result
@@ -81,7 +75,7 @@
             }
         }
 
-        $uploadCrop = $("#upload-demo").croppie({
+        $uploadCrop = $("#croppie-preview").croppie({
             enableOrientation: true,
             viewport: {
                 width: 300,
@@ -126,7 +120,7 @@
         async function sendAsync() {
 
             $uploadCrop.croppie('result', 'base64').then((base) => {
-              let title = document.getElementById('title').value;
+                let title = document.getElementById('title').value;
                 let obj = {
                     featured: base,
                     post: bulkimgs,
@@ -168,3 +162,4 @@
 </body>
 
 </html>
+

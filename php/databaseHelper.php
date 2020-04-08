@@ -77,6 +77,9 @@ include_once "htmlCleaner.php";
     public static function createCorrectPathToImg($path) {
         $checkPath = "./";
         $pathArr = explode('\\', $path);
+        if (count($pathArr) >= 0) {
+            $pathArr = explode('/', $path);
+        }
 
         
         foreach($pathArr as $pathPiece){

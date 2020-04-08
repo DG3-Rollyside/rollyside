@@ -2,6 +2,7 @@
 <html lang="nl">
 
 <head>
+    <?php require_once("./analytics.php") ?>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description"
@@ -18,6 +19,7 @@
 </head>
 
 <body>
+<?php require_once("php/cookie.php") ?>
     <header>
         <nav>
             <img class="logo" src="./img/logo.svg" alt="logo" />
@@ -282,7 +284,6 @@
     }
     </script>
     <script src="./js/site.js"></script>
-    <?php require_once("php/cookie.php") ?>
 </body>
 
 </html>

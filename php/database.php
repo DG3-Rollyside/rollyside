@@ -202,24 +202,31 @@
     public static function createBlankGallerij() {
       $conn = Database::connect();
 
-      $id = uniqid();
-      $sql = "INSERT INTO galerij (`titel`) VALUES ('$id')";
+      $sql = "INSERT INTO galerij (`titel`) VALUES ('')";
 
-      $stmt = $conn->prepare($sql);
-
-      $stmt->execute();
+      $stmt = $conn->query($sql);
+      $id = $conn->insert_id;
       $conn->close();
 
-      $stmt = null;
-      $conn = null;
+      return $id;
 
+    }
+
+    public static function fillGalerij($id,$title,$content, $featured){
       $conn = Database::connect();
 
-      $sql = "SELECT `galerij_id` FROM `galerij` WHERE `titel` = \"$id\"";
+      $sql = "UPDATE galerij SET inhoud= ?, titel = ?, featured = ? WHERE galerij_id=?";
 
-      $results = $conn->query($sql);
-      $result = $results->fetch_assoc();
-      return $result["galerij_id"];
+      $stmt = $conn->prepare($sql);
+      $stmt->bind_param("sssi", $content, $title, $featured, $id);
+
+      $stmt->execute();
+      
+      $rowsAffected = $stmt->affected_rows;
+      $conn->close();
+      return ($rowsAffected >= 1);
+      
+      
     }
     /* ********** USER ********** */
     public static function getUserInfo($username) {
@@ -329,6 +336,7 @@
       return false;
     }
 
+    
     //! end of class
   }
 

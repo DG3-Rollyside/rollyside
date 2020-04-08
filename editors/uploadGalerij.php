@@ -55,11 +55,11 @@ mkdir("../img/galerijen/$id/post");
 foreach($data["post"] as $img) {
     $pathImg = "../img/galerijen/$id/post/" . uniqid() . ".jpg";
     $pathFromPost = DatabaseHelper::createCorrectPAthToImg($pathImg);
-
+    echo "<lu>$pathFromPost</lu>";
     $html .= "<a href='$pathFromPost'><img src='$pathFromPost'></a>";
     saveImg($pathImg, $img);
 }
-
+// deze werkt niet
 Database::fillGalerij($id, $data["title"], $html, $featuredImg);
 
 
