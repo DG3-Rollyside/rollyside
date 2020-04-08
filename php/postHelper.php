@@ -2,10 +2,6 @@
 include_once "imageEditor.php";
 include_once "simplehtmldom/HtmlDocument.php";
 include_once "databaseHelper.php";
-<<<<<<< HEAD
-require_once(".\url_to_absolute\url_to_absolute.php");
-=======
->>>>>>> 1fabfd98c31373f660ef7c906852b440f16b18ed
 
 use simplehtmldom\HtmlDocument;
 
