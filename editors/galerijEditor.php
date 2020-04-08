@@ -35,9 +35,9 @@
 
         </div>
         
-        <div class="col-md-2"></div>
+        <div class="col-md-2 "></div>
 
-        <div class="col-md-10">
+        <div class="col-md-10 croppie">
             <div id="croppie-preview"></div>
                 <div class="form-control">
                 <div class="d-flex justify-content-center">

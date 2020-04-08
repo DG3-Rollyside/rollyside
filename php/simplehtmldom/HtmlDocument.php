@@ -967,7 +967,6 @@ class HtmlDocument
 				} else {
 					Debug::log_once('Noise restoration failed. DOM has been corrupted!');
 					// do this to prevent an infinite loop.
-					// FIXME: THis causes an infinite loop because the keyword ___NOISE___ is included in the key!
 					$text = substr($text, 0, $pos)
 					. 'UNDEFINED NOISE FOR KEY: '
 					. $key
