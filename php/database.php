@@ -45,7 +45,7 @@
     public static function getPosts($limit, $offset = 0){
       $conn = Database::connect();
 
-      $sql = "SELECT * FROM `nieuws` ORDER BY created_at DESC LIMIT ? OFFSET ?";
+      $sql = "SELECT * FROM `nieuws` ORDER BY datum DESC LIMIT ? OFFSET ?";
 
       $stmt = $conn->prepare($sql);
       $stmt->bind_param("ss", $limit, $offset);
@@ -236,7 +236,7 @@
 
       $conn->close();
       
-      return isset($results[0]) ? $result[0] : false ;
+      return isset($results[0]) ? $results[0] : false ;
     }
 
     public static function getUserExplicit($id, $username) {
