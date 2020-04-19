@@ -16,7 +16,6 @@ include_once "./php/database.php";
 </head>
 
 <body>
-<?php require_once("php/cookie.php") ?>
     <header>
         <nav>
             <img class="logo" src="./img/logo.svg" alt="logo" />
@@ -68,6 +67,19 @@ include_once "./php/database.php";
         </div>
     </intro>
     <div id="galerijen">
+    <?php 
+    include_once "./php/user.php";
+
+    if(User::checkedLoggedIn()) {
+        ?>
+            <div class="tools wrapper">
+                <a href="./editors/galerijEditor.php?id=<?php echo $_GET["postId"]; ?>">
+                    <img src="./img/icons/edit.svg" alt="Bewerk post"width="20" height="20">
+                </a>
+            </div>
+        <?php
+    }
+    ?>
         <div class="wrapper">
             <?php 
     

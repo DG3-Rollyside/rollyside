@@ -13,7 +13,6 @@
  </head>
 
  <body>
- <?php require_once("php/cookie.php") ?>
      <header>
          <nav>
              <img class="logo" src="./img/logo.svg" alt="logo" />
@@ -190,6 +189,7 @@
          menu.classList.remove("open");
      }
      </script>
+ <?php require_once("php/cookie.php") ?>
  </body>
 
  </html>

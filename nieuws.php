@@ -28,7 +28,6 @@ $posts = Database::getPosts(9, 3 + $offset);
 </head>
 
 <body>
-<?php require_once("php/cookie.php") ?>
     <header>
         <nav>
             <img class="logo" src="./img/logo.svg" alt="logo" />
@@ -144,6 +143,7 @@ $posts = Database::getPosts(9, 3 + $offset);
     <div id="posts">
         <div class="wrapper">
             <?php foreach ($posts as $post) { ?>
+            <div class="post">
             <div class="news">
                 <img src="<?php echo $post[5] ?>" alt="<?php echo $post[1] ?>" width="600px" height="600px">
             </div>
@@ -157,6 +157,7 @@ $posts = Database::getPosts(9, 3 + $offset);
                 </p>
                 <a href="./nieuwsArticle.php?postId=<?php echo $post[0]; ?>" class="read-more">Lees
                     meer...</a>
+            </div>
             </div>
             <?php } ?>
         </div>

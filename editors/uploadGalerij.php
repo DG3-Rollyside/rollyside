@@ -28,7 +28,7 @@ $pathArr = explode("/", $imgPath);
 $checkPath = "";
 foreach ($pathArr as $pathPiece) {
     if ($pathPiece == "..") {
-        $checkPath .= ".." . DIRECTORY_SEPARATOR;
+        $checkPath .= "../";
         continue;
     }
     $checkPath .= $pathPiece;
@@ -40,7 +40,7 @@ foreach ($pathArr as $pathPiece) {
     } else if (!is_dir($checkPath)) {
         die("<strong>FATAL ERROR: </strong>Folder in path is a file: <strong>\"" . $checkPath . "\"</strong>");
     }
-    $checkPath .= DIRECTORY_SEPARATOR;
+    $checkPath .= '/';
 
 }
 
@@ -55,7 +55,6 @@ mkdir("../img/galerijen/$id/post");
 foreach($data["post"] as $img) {
     $pathImg = "../img/galerijen/$id/post/" . uniqid() . ".jpg";
     $pathFromPost = DatabaseHelper::createCorrectPAthToImg($pathImg);
-    echo "<lu>$pathFromPost</lu>";
     $html .= "<a href='$pathFromPost'><img src='$pathFromPost'></a>";
     saveImg($pathImg, $img);
 }

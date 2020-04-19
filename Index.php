@@ -19,7 +19,6 @@
 </head>
 
 <body>
-<?php require_once("php/cookie.php") ?>
     <header>
         <nav>
             <img class="logo" src="./img/logo.svg" alt="logo" />
@@ -159,7 +158,7 @@
                 <a class="sponsoren-logo" href="https://www.fcgroningen.nl/" target="_blank">
                     <img src="./img/sponsoren/fcgroningen.png" class="logo" alt="Logo FC Groningen">
                 </a>
-                <a class="sponsoren-logo" href="https://www.hibernianfc.co.uk/" target="_blank">
+                <a class="sponsoren-logo" href="http://www.hibernianfc.co.uk/" target="_blank">
                     <img src="./img/sponsoren/hibernian.png" class="logo" alt="Logo Hibernian FC">
                 </a>
                 <a class="sponsoren-logo" href="https://www.humanitas.nl/" target="_blank">
@@ -284,6 +283,7 @@
     }
     </script>
     <script src="./js/site.js"></script>
+    <?php require_once("php/cookie.php") ?>
 </body>
 
 </html>

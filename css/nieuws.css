@@ -212,4 +212,36 @@
     font-size: 1.5em;
   }
 }
+
+#posts .wrapper {
+  padding: 20px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+}
+
+@media screen and (max-width: 700px) {
+  #posts .wrapper {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
+}
+
+#posts .wrapper .post .content h3 {
+  font-size: 1.1em;
+}
+
+#posts .wrapper .post .content h5 {
+  font-size: 0.95em;
+}
+
+#posts .wrapper .post .content p {
+  font-size: 1em;
+}
+
+#posts .wrapper .post .content .read-more {
+  text-decoration: none;
+  color: #33a112;
+}
 /*# sourceMappingURL=nieuws.css.map */
