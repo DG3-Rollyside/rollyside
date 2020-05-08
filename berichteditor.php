@@ -1,4 +1,14 @@
 <?php
+    session_start();
+    include_once "../php/user.php";
+
+    if (!User::checkedLoggedIn()) {
+        http_response_code(403);
+        exit;
+    }
+?>
+
+<?php
     if (isset($_GET["id"])) {
         $data = Database::getNieuwsEditorData($_GET["id"]);
     }

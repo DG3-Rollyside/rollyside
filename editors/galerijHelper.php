@@ -1,3 +1,12 @@
+<?php
+    session_start();
+    include_once "../php/user.php";
+
+    if (!User::checkedLoggedIn()) {
+        http_response_code(403);
+        exit;
+    }
+?>
 <?php 
 include_once "imageEditor.php";
 include_once "simplehtmldom/HtmlDocument.php";
