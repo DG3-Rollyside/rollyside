@@ -15,15 +15,15 @@ foreach($blocks as $block) {
         case "image":
             $url = $data["file"]["url"];
 
-            $html .= "<div class='image'>";
+            $html .= "<div class=\'image\'>";
             
             if ($data["caption"] == "false") {
-                $html .= "<img src='$url'>";
+                $html .= "<img src=\'$url\'>";
 
             } else {
                 $caption = $data["caption"];
-                $html .= "<img src='". $url ."alt='$caption'>";
-                $html .= "<span class='caption'>$caption</span>";
+                $html .= "<img src=\'". $url ."\' alt=\'$caption\'>";
+                $html .= "<span class=\'caption\'>$caption</span>";
             }
 
             $html .= "</div>";
@@ -32,9 +32,9 @@ foreach($blocks as $block) {
         // block is a quote
         case "quote": 
             $html .= "
-            <div class='quote'>
-                <p class='text'>". $data["text"] ."</p>
-                <p class='caption'>". $data["caption"] ."</p>
+            <div class=\'quote\'>
+                <p class=\'text\'>". $data["text"] ."</p>
+                <p class=\'caption\'>". $data["caption"] ."</p>
             </div>";
         break;
 
@@ -42,19 +42,19 @@ foreach($blocks as $block) {
         case "linkTool":
             $meta = $data["meta"];
             $html .= "
-            <div class='link'>
-                <a href='". $data["link"] ."'>
-                    <p class='title'>". $meta["title"] ."</p>
-                    <p class='description'>". $meta["description"] ."</p>
-                    <img src='". $meta["image"]["url"] ."' alt='". $meta["site_name"] ."'>
-                    <p class='site_name'>". $meta["site_name"] ."</p>
+            <div class=\'link\'>
+                <a href=\'". $data["link"] ."\'>
+                    <p class=\'title\'>". $meta["title"] ."</p>
+                    <p class=\'description\'>". $meta["description"] ."</p>
+                    <img src=\'". $meta["image"]["url"] ."\' alt=\'". $meta["site_name"] ."\'>
+                    <p class=\'site_name\'>". $meta["site_name"] ."</p>
                 </a>
             </div>";
         break;
 
         // block is a list
         case "list":
-            $html .= "<div class='list'>";
+            $html .= "<div class=\'list\'>";
             // check what type of list it is
             if ($data["style"] == "unordered") {
                 // list is a unordered list
@@ -79,7 +79,7 @@ foreach($blocks as $block) {
         // block is a header
         case "header":
 
-            $html .= "<div class='header'>";
+            $html .= "<div class=\'header\'>";
             //check the level of the header
             if($data["level"] == 1) {
                 $html .= "<h2>". $data["text"] ."</h2>";
@@ -91,7 +91,7 @@ foreach($blocks as $block) {
 
         // block is a paragraph
         case "paragraph":
-            $html .= "<div class='p'><p>". $data["text"] ."</p></div>";
+            $html .= "<div class=\'p\'><p>". $data["text"] ."</p></div>";
         break;
 
         // block is a embed
@@ -99,7 +99,7 @@ foreach($blocks as $block) {
             $link = $data["source"];
             $linkArr = split_url($link);
             $embedLink = "http://www.youtube.com/embed/" . $linkArr["path"];
-            $html .= "<iframe src='$embedLink' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>";
+            $html .= "<iframe src=\'$embedLink\' frameborder=\'0\' allow=\'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\' allowfullscreen></iframe>";
         break;
 
 
@@ -113,10 +113,10 @@ foreach($blocks as $block) {
     if (!isset($_GET["postId"])) {
         include_once "../posthelper.php";
         $intro = PostHelper::GetIntroFromContent($article);
-        $insert_id = Database::createPost($post["title"], $intro, $article, $post["intro_img"], $post["post_img"], date("Y:m:j", strtotime($post["created_at"])));
+        $insert_id = Database::createPost($post["title"], $intro, $article, $post["intro_img"], $post["post_img"], date("Y:m:j", strtotime($post["created_at"])), $dataFromCreator);
     } else {
         $insert_id  =$_GET["postId"];
-        Database::updatePostContent($insert_id, $article);
+        Database::updatePostContent($insert_id, $article, $dataFromCreator);
     }
 
     echo $insert_id;
@@ -124,3 +124,4 @@ foreach($blocks as $block) {
 }
 
 ?>
+

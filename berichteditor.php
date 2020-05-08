@@ -1,6 +1,6 @@
 <?php
     if (isset($_GET["id"])) {
-
+        $data = Database::getNieuwsEditorData($_GET["id"]);
     }
 ?>
 
@@ -40,18 +40,26 @@
 
     <!-- The body of the navbar saving -->
     <div class="form-group">
-        <div class="title_input">
-            <input aria-label="Titel" type="text" name="title" id="title" placeholder="Titel" class="form-control">
-        </div>
-        <!-- <file upload> -->
-        <div class="file-input">
-            
-        </div>
-        <!-- </file upload> -->
-        <button onclick="save()" class="btn btn-primary btn-small">Opslaan</button>
-    </div>
 
-    <div id="upload-demo"></div>
+    
+            <!-- <file upload> -->
+        <div class="col-3 text-center mx-auto">
+            <input class="form-control" aria-label="Titel" type="text" name="title" id="title" placeholder="Titel">
+            <div class="custom-file form-group ">
+                <input type="file" class="custom-file-input col-3" id="upload" value="Choose a file"
+                accept="image/*" aria-describedby="featuredImgs" />
+                <label class="custom-file-label" for="featuredImgs">Bestand kiezen</label>
+            </div>
+        <!-- </file upload> -->
+            <label for="datepick">Datum:</label>
+            <input class="form-control" type="date" id="datepick" name="datum">
+            <button onclick="save()" class=" btn btn-primary btn-small">Opslaan</button> 
+        </div>
+    </div>
+    
+    <div class="wrapper">
+        <div id="upload-demo"></div>
+    </div>
 
 
 
@@ -108,7 +116,7 @@
             enableExif: true
         });
 
-        $('#file-input').on('change', function() {
+        $('#upload').on('change', function() {
             readFile(this);
         });
         $('.upload-result').on('click', function(ev) {
@@ -126,17 +134,18 @@
 
 
         // message editor
-        let insertId = -1;
+        let insertId = <?php echo isset($_GET["id"]) ? $_GET["id"] : "-1"; ?>;
         const editor = new EditorJS({
             holderId: 'editorJs',
+            placeholder: "klik hier om te bewerken",
+
+            <?php 
+            if(isset($data)) {
+                echo "data: " . json_encode($data) . ",";
+            }
+            ?>
 
             tools: {
-                linkTool: {
-                    class: LinkTool,
-                    config: {
-                        endpoint: "./php/editor/fetchLinkData.php",
-                    }
-                },
                 header: {
                     class: Header,
                     shortcut: "CMD+SHIFT+H",

@@ -3,10 +3,6 @@
 }
 
 #galerij .wrapper .navigatie {
-<<<<<<< HEAD
-  margin: 40px 0px;
-=======
->>>>>>> 7b26e270be89c6a642b6fb94b4b055bdaa649276
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -16,11 +12,6 @@
 }
 
 #galerij .wrapper .navigatie a {
-<<<<<<< HEAD
-  color: green;
-  text-decoration: none;
-  font-size: 2rem;
-=======
   font-size: 1.5em;
   text-decoration: none;
   color: #00792D;
@@ -36,7 +27,6 @@
   height: 3px;
   background-color: #00792D;
   top: calc(0.75rem + 1.5px);
->>>>>>> 7b26e270be89c6a642b6fb94b4b055bdaa649276
 }
 
 #galerij .wrapper .posts {

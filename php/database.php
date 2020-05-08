@@ -57,6 +57,20 @@
       $conn->close();
       return $results;
     }
+    public static function getPost($postId) {
+      $conn = Database::connect();
+
+      $sql = "SELECT * FROM `nieuws` WHERE `id` = ?";
+      $stmt = $conn->prepare($sql);
+      $stmt->bind_param("s", $postId);
+
+      $stmt->execute();
+      $result = $stmt->get_result();
+      $results = $result->fetch_all();
+
+      $conn->close();
+      return $results[0];
+    }
     public static function deletePost($postId) {
 
       // check if the postid is a valid number because all ids are numberic
@@ -87,14 +101,15 @@
       }
     }
 
-    public static function createPost($title, $introText, $content, $featuredImg, $postImg, $date) {
+    public static function createPost($title, $introText, $content, $featuredImg, $postImg, $date, $editorData) {
       $conn = Database::connect();
 
-      $sql = "INSERT INTO `nieuws` (`title`, `created_at`, `content`, `intro_text`, `intro_img`, `post_img`) VALUES ( ?, ?, ?, ?, ?, ?)";
+      $sql = "INSERT INTO `nieuws` (`titel`, `datum`, `text`, `intro_text`, `img`, `editorData`) VALUES (?,?,?,?,?,?)";
       $stmt = $conn->prepare($sql);
 
       $mysqlDate = date("Y-m-d H:i:s", strtotime($date));
-      $stmt->bind_param("ssssss", $title, $mysqlDate, $content, $introText, $featuredImg, $postImg);
+      $editorData = json_encode($editorData);
+      $stmt->bind_param("ssssss", $title, $mysqlDate, $content, $introText, $featuredImg, $editorData);
 
       $stmt->execute();
       
@@ -113,17 +128,32 @@
 
     }
 
-    public static function updatePostContent($oldId, $newContent) {
+    public static function updatePostContent($oldId, $newContent, $editorData) {
       $conn = Database::connect();
 
-      $sql = "UPDATE `nieuws` SET `content`=? WHERE `nieuws`.`id` = ?";
+      $sql = "UPDATE `nieuws` SET `text`=?, `editorData`=? WHERE `id` = ?";
 
       $stmt = $conn->prepare($sql);
-      $stmt->bind_param("ss", $newContent, $oldId);
+      $editorData = json_encode($editorData);
+      $stmt->bind_param("sss", $newContent, $editorData, $oldId);
       $stmt->execute();
 
       $conn->close();
       return true;
+    }
+
+    public static function getNieuwsEditorData($id) {
+      $conn = Database::connect();
+
+      $sql = "SELECT `editorData` FROM `nieuws` WHERE `id=`=?";
+      $stmt = $conn->prepare($sql);
+      $stmt->bind_param("s", $id);
+      $stmt->execute();
+
+      $result = $stmt->get_result();
+      $results = $result->fetch_all();
+      $conn->close();
+      return isset($results[0]) ? $results[0]: "";
     }
 
     public static function searchPost($title, $limit, $offset) {

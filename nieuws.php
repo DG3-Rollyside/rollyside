@@ -98,7 +98,7 @@ $posts = Database::getPosts(9, 3 + $offset);
                                     <p class="intro-text">
                                         <?php echo $postsFeatured[0][4] ?>
                                     </p>
-                                    <a href="./nieuwsArticle.php?postId=<?php echo $postsFeatured[0][0]; ?>"
+                                    <a href="./nieuwspagina.php?postId=<?php echo $postsFeatured[0][0]; ?>"
                                         class="read-more">Lees meer...</a>
                                 </div>
                             </div>
@@ -114,7 +114,7 @@ $posts = Database::getPosts(9, 3 + $offset);
                                 <p class="intro-text">
                                     <?php echo $postsFeatured[1][4] ?>
                                 </p>
-                                <a href="./nieuwsArticle.php?postId=<?php echo $postsFeatured[1][0]; ?>"
+                                <a href="./nieuwspagina.php?postId=<?php echo $postsFeatured[1][0]; ?>"
                                     class="read-more">Lees meer...</a>
                             </div>
                             <div class="img" style='background-image: url("<?php echo $postsFeatured[1][5] ?>");'>
@@ -131,7 +131,7 @@ $posts = Database::getPosts(9, 3 + $offset);
                                 <p class="intro-text">
                                     <?php echo $postsFeatured[2][4] ?>
                                 </p>
-                                <a href="./nieuwsArticle.php?postId=<?php echo $postsFeatured[2][0]; ?>"
+                                <a href="./nieuwspagina.php?postId=<?php echo $postsFeatured[2][0]; ?>"
                                     class="read-more">Lees meer...</a>
                             </div>
                         </div>
@@ -155,7 +155,7 @@ $posts = Database::getPosts(9, 3 + $offset);
                 <p class="intro-text">
                     <?php echo $post[4] ?>
                 </p>
-                <a href="./nieuwsArticle.php?postId=<?php echo $post[0]; ?>" class="read-more">Lees
+                <a href="./nieuwspagina.php?postId=<?php echo $post[0]; ?>" class="read-more">Lees
                     meer...</a>
             </div>
             </div>

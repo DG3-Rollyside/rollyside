@@ -1,0 +1,27 @@
+#aanmelden .wrapper {
+  padding: 0px 20px;
+  margin: 80px auto;
+}
+
+#aanmelden .wrapper p {
+  font-size: 32px;
+}
+
+#aanmelden .wrapper form input, #aanmelden .wrapper form textarea {
+  background-color: inherit;
+
+  border-radius: 10px;
+  border: 2px solid #20660b; 
+  padding: 10px;
+}
+
+#aanmelden .wrapper form {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 25px;
+}
+
+#aanmelden .wrapper form textarea, #aanmelden .wrapper form input[type="email"]{
+  grid-column: 1/3;
+}

@@ -29,4 +29,13 @@
   height: 16px;
   margin-right: 4px;
 }
+
+.wraper {
+  margin: auto;
+  max-width: 1400px;
+}
+
+.ce-toolbar__actions {
+  opacity: 1 !important;
+}
 /*# sourceMappingURL=messageEditor.css.map */

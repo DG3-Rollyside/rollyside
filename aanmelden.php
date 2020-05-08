@@ -1,6 +1,4 @@
-<?php
-include_once "./php/database.php";
-?>
+
 <!DOCTYPE html>
 <html lang="nl">
 
@@ -9,17 +7,9 @@ include_once "./php/database.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>rollyside</title>
     <link rel="stylesheet" href="./css/minified/main.min.css" />
-    <link rel="stylesheet" href="./css/galerijen.css" />
+    <link rel="stylesheet" href="./css/wordlid.css" />
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.1.2/simple-lightbox.min.css">
-
-    <style>
-        p {
-            font-size: 1.25rem;
-            margin-bottom: 2rem;
-        }
-    
-    </style>
 </head>
 
 <body>
@@ -73,24 +63,28 @@ include_once "./php/database.php";
             </div>
         </div>
     </intro>
-    <div id="galerijen">
+
+    <div id="aanmelden">
         <div class="wrapper">
-            <?php
-
-            if (!isset($_REQUEST["postId"])) {
-                header("Location: ./nieuws.php");
-            }
-
-            $post = Database::getPost($_REQUEST["postId"]);
-
-            echo "<h1 class='title'>$post[1]</h1>";
-            echo "<img src='$post[5]'>";
-            echo "<div class='article'>$post[3]</div>";
-            ?>
+            <p>
+                Wilt u ook lid worden van onze vereniging? Voor een bedrag van € 10,00 per voetbalseizoen heeft u al een lidmaatschap. Stuur een mail via contact en vermeld in de mail duidelijk uw Naam, Adres, Postcode, Woonplaats, Geboortedatum en Telefoonnummer. Indien aanwezig uw MIVA plek op de Rollyside in het stadion. De contributie van € 10,00 kunt u rechtstreeks overmaken naar NL04ABNA0423127292 t.n.v. de Rolly-Side Groningen.
+            </p>
+            <p>Vul het onderstaande formulier in of klik hier en word vandaag ook nog lid van onze vereniging!</p>
+            <form action="./php/sendmail.php" class="form">
+                <input type="text" name="naam"  placeholder="Naam" required>
+                <input type="text" name="adres"  placeholder="Adres" required>
+                <input type="text" name="postocde"  placeholder="postcode" required>
+                <input type="date" name="datum" placeholder="Geboortedatum" required>
+                <input type="text" name="telefoon" placeholder="Telefoonnummer" required>
+                <input type="text" name="woonplaats" placeholder="Woonplaats" required>
+                <input type="email" name="mail" placeholder="Email" required>
+                <textarea name="bericht" cols="30" rows="10" placeholder="bericht"></textarea>
+            </form>
         </div>
     </div>
+
     <footer>
-        <div class=" wrapper">
+        <div class="wrapper">
             <section class="footer-text">
                 <h2> Neem contact op </h2>
                 <p>
@@ -112,34 +106,32 @@ include_once "./php/database.php";
             </section>
             <section>
                 <form>
-                    <input type="text" placeholder="Naam" class="contact-form" name="naam" />
-                    <input type="text" placeholder="Email" class="contact-form" name="email" />
-                    <textarea placeholder="Bericht"></textarea>
-                    <input type="submit" value="Verstuur" class="submit">
+                    <input type="text" placeholder="Naam" class="contact-form" name="naam"
+                        aria-label="Naam Contact formulier" />
+                    <input type="text" placeholder="Email" class="contact-form" name="email"
+                        aria-label="Email contact formulier" />
+                    <textarea placeholder="Bericht" aria-label="bericht contact formulier"></textarea>
+                    <input type="submit" value="Verstuur" class="submit" aria-label="verstuur bericht">
                 </form>
             </section>
         </div>
     </footer>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="./js/owl.carousel.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.1.2/simple-lightbox.min.js"></script>
+
     <script>
-        let lightbox = new SimpleLightbox('.fotos a')
+    function openMobileMenu() {
+        let menu = document.getElementsByTagName("mobile-nav")[0];
+        menu.classList.add("open");
+        document.getElementsByTagName("body")[0].classList.add("fixedPosition")
+    }
 
-        function openMobileMenu() {
-            let menu = document.getElementsByTagName("mobile-nav")[0];
-            menu.classList.add("open");
-            document.getElementsByTagName("body")[0].classList.add("fixedPosition")
-        }
-
-        function closeMobileMenu() {
-            let menu = document.getElementsByTagName("mobile-nav")[0];
-            menu.classList.remove("open");
-            document.getElementsByTagName("body")[0].classList.remove("fixedPosition")
-        }
+    function closeMobileMenu() {
+        let menu = document.getElementsByTagName("mobile-nav")[0];
+        menu.classList.remove("open");
+        document.getElementsByTagName("body")[0].classList.remove("fixedPosition")
+    }
     </script>
-    <script src="./js/site.js"></script>
-    <?php require_once("php/cookie.php") ?>
+
+<?php require_once("php/cookie.php") ?>
 </body>
 
 </html>
