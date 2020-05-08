@@ -1,6 +1,7 @@
 <?php
 include_once "php/database.php";
 
+
 $offset = 0;
 $pagina = 0;
 if (isset($_REQUEST["pagina"])) {
@@ -16,6 +17,7 @@ $posts = Database::getPosts(9, 3 + $offset);
 <html lang="nl">
 
 <head>
+    <?php require_once("./analytics.php") ?>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>rollyside</title>
@@ -96,7 +98,7 @@ $posts = Database::getPosts(9, 3 + $offset);
                                     <p class="intro-text">
                                         <?php echo $postsFeatured[0][4] ?>
                                     </p>
-                                    <a href="./nieuwsArticle.php?ppostId=<?php echo $postsFeatured[0][0]; ?>"
+                                    <a href="./nieuwspagina.php?postId=<?php echo $postsFeatured[0][0]; ?>"
                                         class="read-more">Lees meer...</a>
                                 </div>
                             </div>
@@ -112,7 +114,7 @@ $posts = Database::getPosts(9, 3 + $offset);
                                 <p class="intro-text">
                                     <?php echo $postsFeatured[1][4] ?>
                                 </p>
-                                <a href="./nieuwsArticle.php?ppostId=<?php echo $postsFeatured[1][0]; ?>"
+                                <a href="./nieuwspagina.php?postId=<?php echo $postsFeatured[1][0]; ?>"
                                     class="read-more">Lees meer...</a>
                             </div>
                             <div class="img" style='background-image: url("<?php echo $postsFeatured[1][5] ?>");'>
@@ -129,7 +131,7 @@ $posts = Database::getPosts(9, 3 + $offset);
                                 <p class="intro-text">
                                     <?php echo $postsFeatured[2][4] ?>
                                 </p>
-                                <a href="./nieuwsArticle.php?postId=<?php echo $postsFeatured[2][0]; ?>"
+                                <a href="./nieuwspagina.php?postId=<?php echo $postsFeatured[2][0]; ?>"
                                     class="read-more">Lees meer...</a>
                             </div>
                         </div>
@@ -141,6 +143,7 @@ $posts = Database::getPosts(9, 3 + $offset);
     <div id="posts">
         <div class="wrapper">
             <?php foreach ($posts as $post) { ?>
+            <div class="post">
             <div class="news">
                 <img src="<?php echo $post[5] ?>" alt="<?php echo $post[1] ?>" width="600px" height="600px">
             </div>
@@ -152,8 +155,9 @@ $posts = Database::getPosts(9, 3 + $offset);
                 <p class="intro-text">
                     <?php echo $post[4] ?>
                 </p>
-                <a href="./nieuwsArticle.php?postId=<?php echo $post[0]; ?>" class="read-more">Lees
+                <a href="./nieuwspagina.php?postId=<?php echo $post[0]; ?>" class="read-more">Lees
                     meer...</a>
+            </div>
             </div>
             <?php } ?>
         </div>

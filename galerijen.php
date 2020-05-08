@@ -5,13 +5,14 @@ include_once "./php/database.php";
 <html lang="nl">
 
 <head>
+    <?php require_once("./analytics.php") ?>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>rollyside</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/minified/main.min.css" />
     <link rel="stylesheet" href="./css/galerijen.css" />
-    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.1.2/simple-lightbox.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
 </head>
 
 <body>
@@ -66,6 +67,19 @@ include_once "./php/database.php";
         </div>
     </intro>
     <div id="galerijen">
+    <?php 
+    include_once "./php/user.php";
+
+    if(User::checkedLoggedIn()) {
+        ?>
+            <div class="tools wrapper">
+                <a href="./editors/galerijEditor.php?id=<?php echo $_GET["postId"]; ?>">
+                    <img src="./img/icons/edit.svg" alt="Bewerk post"width="20" height="20">
+                </a>
+            </div>
+        <?php
+    }
+    ?>
         <div class="wrapper">
             <?php 
     
@@ -75,13 +89,13 @@ include_once "./php/database.php";
                 
                 echo "<h1 class='title'>$gal[2]</h1>";
 
-                $imgText = preg_replace("<img\s*(.*?)src=\"('.*?'|\".*?\"|[^\s]+)\"(.*?)\s*\/?>", "<a href=\"$2\"><img src=\"$2\" alt=\"$gal[2]\" /></a>", $gal[1]);
-                $imgText2 = str_replace("<<", "<", $imgText);
-                $imgText3 = str_replace(">>", ">", $imgText2);
-            ?>
-            <div class="fotos">
-                <?php echo $imgText3; ?>
-            </div>
+                $imgText = preg_replace("<img\s*(.*?)src=\"('.*?'|\".*?\"|[^\s]+)\"(.*?)\s*\/?>", "<a
+                data-facybox='gallery' href=\"$2\"><img src=\"$2\" alt=\"$gal[2]\" /></a>", $gal[1]);
+            $imgText2 = str_replace("<<", "<" , $imgText); $imgText3=str_replace(">>", ">", $imgText2);
+                ?>
+                <div class="fotos">
+                    <?php echo $imgText3; ?>
+                </div>
         </div>
     </div>
     <footer>
@@ -117,21 +131,8 @@ include_once "./php/database.php";
     </footer>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="./js/owl.carousel.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.1.2/simple-lightbox.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
     <script>
-        let lightbox =new SimpleLightbox('.fotos a')
-
-    function openMobileMenu() {
-        let menu = document.getElementsByTagName("mobile-nav")[0];
-        menu.classList.add("open");
-        document.getElementsByTagName("body")[0].classList.add("fixedPosition")
-    }
-
-    function closeMobileMenu() {
-        let menu = document.getElementsByTagName("mobile-nav")[0];
-        menu.classList.remove("open");
-        document.getElementsByTagName("body")[0].classList.remove("fixedPosition")
-    }
     </script>
     <script src="./js/site.js"></script>
     <?php require_once("php/cookie.php") ?>

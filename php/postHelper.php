@@ -2,37 +2,37 @@
 include_once "imageEditor.php";
 include_once "simplehtmldom/HtmlDocument.php";
 include_once "databaseHelper.php";
-require_once("./url_to_absolute/url_to_absolute.php");
 
 use simplehtmldom\HtmlDocument;
 
 
 class PostHelper
 {
-
+    
     static $debugIttr = 0;
-
+    
     public static function GetIntroFromContent($content)
     {
-
+        
         $start = strpos($content, '<p>');
         $end = strpos($content, '</p>', $start);
-
+        
         $p = substr($content, $start, $end - $start + 4);
         if (strlen($p) > 256) {
             $p = substr(html_entity_decode(strip_tags($p)), 0, 250);
             $wordArr = explode(" ", $p);
             array_pop($wordArr);
-
+            
             $final = implode(" ", $wordArr);
             return $final;
         } else {
             return html_entity_decode(strip_tags($p));
         }
     }
-
+    
     public static function downloadImages($post, $path)
     {
+        require_once(".\url_to_absolute\url_to_absolute.php");
         // check the path to the folder of the images
         $pathArr = explode("/", $path . "/");
         $checkPath = "";
@@ -223,8 +223,3 @@ class PostHelper
         return $html;
     }
 }
-$json = '{"time":1583831879555,"blocks":[{"type":"image","data":{"url":"https://i.imgur.com/lz552aT.png","caption":"à wild pokemon","withBorder":false,"withBackground":false,"stretched":false}},{"type":"paragraph","data":{"text":"this is a paragarph"}},{"type":"header","data":{"text":"this is a header","level":2}},{"type":"quote","data":{"text":"this is a qoute","caption":"this is a name","alignment":"left"}},{"type":"list","data":{"style":"ordered","items":["this is a ordered list","this is the secodn item"]}},{"type":"list","data":{"style":"unordered","items":["this is a unorded list","this is the second unordered item"]}},{"type":"embed","data":{"service":"youtube","source":"https://youtu.be/dQw4w9WgXcQ","embed":"https://www.youtube.com/embed/dQw4w9WgXcQ","width":580,"height":320,"caption":""}}],"version":"2.16.1"}';
-
-$cleanHtml = PostHelper::decodeEditor($json);
-
-echo $cleanHtml;

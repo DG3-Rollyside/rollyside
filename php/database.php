@@ -11,8 +11,8 @@
       // $databasename = $username;
 
       $servername = "localhost";
-      $username = "root";
-      $password = "";
+      $username = "Martijn";
+      $password = "Welkom1234";
       $databasename = "rollyside";
 
       //creating connection
@@ -45,7 +45,7 @@
     public static function getPosts($limit, $offset = 0){
       $conn = Database::connect();
 
-      $sql = "SELECT * FROM `nieuws` ORDER BY created_at DESC LIMIT ? OFFSET ?";
+      $sql = "SELECT * FROM `nieuws` ORDER BY datum DESC LIMIT ? OFFSET ?";
 
       $stmt = $conn->prepare($sql);
       $stmt->bind_param("ss", $limit, $offset);
@@ -56,6 +56,20 @@
 
       $conn->close();
       return $results;
+    }
+    public static function getPost($postId) {
+      $conn = Database::connect();
+
+      $sql = "SELECT * FROM `nieuws` WHERE `id` = ?";
+      $stmt = $conn->prepare($sql);
+      $stmt->bind_param("s", $postId);
+
+      $stmt->execute();
+      $result = $stmt->get_result();
+      $results = $result->fetch_all();
+
+      $conn->close();
+      return $results[0];
     }
     public static function deletePost($postId) {
 
@@ -68,7 +82,8 @@
         $stmt->bind_param("i", $postId);
 
         $stmt->execute();
-        // TODO: test the amount of effected rows and return message based on result
+
+        //check if there are rows deleted
         $rowsAffected = $stmt->affected_rows;
         if ($rowsAffected <= 0) {
           $conn->close();
@@ -86,51 +101,59 @@
       }
     }
 
-    public static function createPost($title, $introText, $content, $featuredImg, $postImg, $date) {
+    public static function createPost($title, $introText, $content, $featuredImg, $postImg, $date, $editorData) {
       $conn = Database::connect();
 
-      $sql = "INSERT INTO `nieuws` (`title`, `created_at`, `content`, `intro_text`, `intro_img`, `post_img`) VALUES ( ?, ?, ?, ?, ?, ?)";
+      $sql = "INSERT INTO `nieuws` (`titel`, `datum`, `text`, `intro_text`, `img`, `editorData`) VALUES (?,?,?,?,?,?)";
       $stmt = $conn->prepare($sql);
 
       $mysqlDate = date("Y-m-d H:i:s", strtotime($date));
-      $stmt->bind_param("ssssss", $title, $mysqlDate, $content, $introText, $featuredImg, $postImg);
+      $editorData = json_encode($editorData);
+      $stmt->bind_param("ssssss", $title, $mysqlDate, $content, $introText, $featuredImg, $editorData);
 
       $stmt->execute();
       
       $rowsAffected = $stmt->affected_rows;
       if ($rowsAffected <= 0) {
         $conn->close();
-        return [false, "There was an error with creating the post"];
+        // return [false, "There was an error with creating the post"];
+        return -1;
       }
+      $insertId = $conn->insert_id;
+      
       $conn->close();
-      return [true, "Post has been succesfully created"];
+      // return [true, "Post has been succesfully created"];
+      return $insertId;
 
 
     }
 
-    public static function updatePost($oldId, $newPost) {
-      list($title, $introText, $content, $featuredImg, $postImg, $date) = $newPost;
+    public static function updatePostContent($oldId, $newContent, $editorData) {
+      $conn = Database::connect();
 
-      $succesfullyDeleted = Database::deletePost($oldId)[0];
-      $errorcode = 0;
-      $errorMsg = "";
-      if ($succesfullyDeleted) {
-        $succesCreated = Database::createPost($title, $introText, $content, $featuredImg, $postImg, $date);
+      $sql = "UPDATE `nieuws` SET `text`=?, `editorData`=? WHERE `id` = ?";
 
-        if ($succesCreated) {
-          return [true, $errorcode, "the post has been succesfully updated"];
-        } else {
-          $errorMsg = "the post could not be created";
-          $errorcode = 2;
-        }
-      } else {
-          $errorMsg = "the post could not be deleted";
-          $errorcode = 1;
-      }
-    
-      return [false, [$errorcode, $errorMsg], "There was an error creating the post"];
+      $stmt = $conn->prepare($sql);
+      $editorData = json_encode($editorData);
+      $stmt->bind_param("sss", $newContent, $editorData, $oldId);
+      $stmt->execute();
 
+      $conn->close();
+      return true;
+    }
 
+    public static function getNieuwsEditorData($id) {
+      $conn = Database::connect();
+
+      $sql = "SELECT `editorData` FROM `nieuws` WHERE `id=`=?";
+      $stmt = $conn->prepare($sql);
+      $stmt->bind_param("s", $id);
+      $stmt->execute();
+
+      $result = $stmt->get_result();
+      $results = $result->fetch_all();
+      $conn->close();
+      return isset($results[0]) ? $results[0]: "";
     }
 
     public static function searchPost($title, $limit, $offset) {
@@ -199,6 +222,36 @@
       return $results[0];
     }
 
+    public static function createBlankGallerij() {
+      $conn = Database::connect();
+
+      $sql = "INSERT INTO galerij (`titel`) VALUES ('')";
+
+      $stmt = $conn->query($sql);
+      $id = $conn->insert_id;
+      $conn->close();
+
+      return $id;
+
+    }
+
+    public static function fillGalerij($id,$title,$content, $featured){
+      $conn = Database::connect();
+
+      $sql = "UPDATE galerij SET inhoud= ?, titel = ?, featured = ? WHERE galerij_id=?";
+
+      $stmt = $conn->prepare($sql);
+      $stmt->bind_param("sssi", $content, $title, $featured, $id);
+
+      $stmt->execute();
+      
+      $rowsAffected = $stmt->affected_rows;
+      $conn->close();
+      return ($rowsAffected >= 1);
+      
+      
+    }
+    /* ********** USER ********** */
     public static function getUserInfo($username) {
       $conn = Database::connect();
       $sql = "SELECT * FROM users WHERE `username` = ?";
@@ -210,8 +263,10 @@
       $result = $stmt->get_result();
       $results = $result->fetch_all();
 
+
       $conn->close();
-      return $results[0];
+      
+      return isset($results[0]) ? $results[0] : false ;
     }
 
     public static function getUserExplicit($id, $username) {
@@ -230,12 +285,82 @@
       
     }
 
+    public static function updatePasswordByEmail($email, $pw) {
+      $conn = Database::connect();
+      
+      $sql = "UPDATE users SET wachtwoord = ? WHERE email = ?";
+
+      $stmt = $conn->prepare($sql);
+      $stmt->bind_param("ss", $pw, $email);
+
+      $stmt->execute();
+      $conn->close();
+    }
+
+    /********** RESET PASSWORD **********/
+    public static function insertPasswordReset($dataObj) {
+      $conn = Database::connect();
+      print_r($dataObj);
+      // delete all previus password resets
+      $sql = "DELETE FROM resettoken WHERE email=?";
+
+      $stmt = $conn->prepare($sql);
+      $stmt->bind_param("s", $dataObj->email);
+      $stmt->execute();
+
+      $sql = "INSERT INTO `resettoken` (`email`, `selector`, `token`, `expires`) VALUES (?,?,?,?);";
+
+      $stmt = $conn->prepare($sql);
+      $stmt->bind_param("ssss", $dataObj->email, $dataObj->selector, $dataObj->token, $dataObj->expires);
+      $stmt->execute();
+
+      $conn->close();
+    }
+
+    public static function getUsernameFromEmail($email) {
+      $conn = Database::connect();
+      $sql = "SELECT `username` FROM users WHERE `email`=?";
+
+      $stmt = $conn->prepare($sql);
+      $stmt->bind_param("s", $email);
+
+      $stmt->execute();
+      $result = $stmt->get_result();
+      $results = $result->fetch_all();
+
+      $conn->close();
+      return $results[0];
+    }
+
+    public static function getTokenInfo($selector, $date) {
+      $conn = Database::connect();
+      // echo $date;
+      // var_dump($selector);
+      $sql = "SELECT * FROM resettoken WHERE `selector`= ?";
+      
+      $stmt = $conn->prepare($sql);
+      $stmt->bind_param("s", $selector);
+
+      $stmt->execute();
+      $result = $stmt->get_result();
+      $results = $result->fetch_all();
+      // print_r($results);
+
+      $conn->close();
+      $tr = $results[0];
+      if (isset($tr[0])) {
+
+        $t = new stdClass;
+        $t->id = $tr[0];
+        $t->email = $tr[1];
+        $t->selector = $tr[2];
+        $t->token = $tr[3];
+        $t->expires = $tr[4];
+        return $t;
+      }
+      return false;
+    }
+
+    
     //! end of class
   }
-
-  
-
-
-   
-
-?>

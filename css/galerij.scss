@@ -3,6 +3,19 @@
     padding: 20px;
 
     .navigatie {
+<<<<<<< HEAD
+      margin: 40px 0px;
+      display: flex;
+      justify-content: flex-end;
+
+      a {
+        color: green;
+        text-decoration: none;
+        font-size: 2rem;
+
+        &:last-child() {
+        }
+=======
       display: flex;
       justify-content: flex-end;
       a {
@@ -26,6 +39,7 @@
         background-color: #00792D;
         top: calc(0.75rem + 1.5px);
         
+>>>>>>> 7b26e270be89c6a642b6fb94b4b055bdaa649276
       }
     }
 

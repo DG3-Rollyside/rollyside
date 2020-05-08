@@ -2,6 +2,7 @@
 <html lang="nl">
 
 <head>
+    <?php require_once("./analytics.php") ?>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description"
@@ -203,7 +204,8 @@
     </footer>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="./js/owl.carousel.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@15.0.0/dist/smooth-scroll.polyfills.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@15.0.0/dist/smooth-scroll.polyfills.min.js">
+    </script>
     <script>
     let scroll = new SmoothScroll('a[href*="#"]', {
         header: 'header'
@@ -236,7 +238,7 @@
         let menu = document.getElementsByTagName("mobile-nav")[0];
         menu.classList.add("open");
     }
-    
+
     function openMobileMenu() {
         let menu = document.getElementsByTagName("mobile-nav")[0];
         menu.classList.add("open");

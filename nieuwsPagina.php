@@ -1,24 +1,25 @@
-<?php 
-    include_once "./php/database.php";
-
-    $offset = 0;
-    $pagina = 0;
-    
-    $galerijen = Database::getFoto(1200000, $offset);
+<?php
+include_once "./php/database.php";
 ?>
-
-
 <!DOCTYPE html>
 <html lang="nl">
 
 <head>
-    <?php require_once("./analytics.php") ?>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>rollyside</title>
-    <link rel="stylesheet" href="./css/main.css" />
-    <link rel="stylesheet" href="./css/galerij.css">
+    <link rel="stylesheet" href="./css/minified/main.min.css" />
+    <link rel="stylesheet" href="./css/galerijen.css" />
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.1.2/simple-lightbox.min.css">
+
+    <style>
+        p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+        }
+    
+    </style>
 </head>
 
 <body>
@@ -45,7 +46,6 @@
                 <div class="bar3"></div>
             </div>
         </nav>
-
         <mobile-nav>
             <row>
                 <img class="logo" src="./img/logo.svg" alt="logo" />
@@ -73,29 +73,24 @@
             </div>
         </div>
     </intro>
-
-    <div id="galerij">
-
+    <div id="galerijen">
         <div class="wrapper">
-            <div class="posts">
-                <?php foreach($galerijen as $post) {  ?>
-                <div class="post">
-                    <a href="./galerijen.php?postId=<?php echo $post[0]; ?>">
-                        <div class="imageWrapper">
-                            <img src="<?php echo $post[3]; ?>" alt="<?php echo $post[2]; ?>">
-                        </div>
-                        <h3><?php echo $post[2];?></h3>
-                    </a>
-                </div>
-                <?php } ?>
-            </div>
+            <?php
+
+            if (!isset($_REQUEST["postId"])) {
+                header("Location: ./nieuws.php");
+            }
+
+            $post = Database::getPost($_REQUEST["postId"]);
+
+            echo "<h1 class='title'>$post[1]</h1>";
+            echo "<img src='$post[5]'>";
+            echo "<div class='article'>$post[3]</div>";
+            ?>
         </div>
-
     </div>
-
-
     <footer>
-        <div class="wrapper">
+        <div class=" wrapper">
             <section class="footer-text">
                 <h2> Neem contact op </h2>
                 <p>
@@ -117,32 +112,34 @@
             </section>
             <section>
                 <form>
-                    <input type="text" placeholder="Naam" class="contact-form" name="naam"
-                        aria-label="Naam Contact formulier" />
-                    <input type="text" placeholder="Email" class="contact-form" name="email"
-                        aria-label="Email contact formulier" />
-                    <textarea placeholder="Bericht" aria-label="bericht contact formulier"></textarea>
-                    <input type="submit" value="Verstuur" class="submit" aria-label="verstuur bericht">
+                    <input type="text" placeholder="Naam" class="contact-form" name="naam" />
+                    <input type="text" placeholder="Email" class="contact-form" name="email" />
+                    <textarea placeholder="Bericht"></textarea>
+                    <input type="submit" value="Verstuur" class="submit">
                 </form>
             </section>
         </div>
     </footer>
-
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="./js/owl.carousel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.1.2/simple-lightbox.min.js"></script>
     <script>
-    function openMobileMenu() {
-        let menu = document.getElementsByTagName("mobile-nav")[0];
-        menu.classList.add("open");
-        document.getElementsByTagName("body")[0].classList.add("fixedPosition")
-    }
+        let lightbox = new SimpleLightbox('.fotos a')
 
-    function closeMobileMenu() {
-        let menu = document.getElementsByTagName("mobile-nav")[0];
-        menu.classList.remove("open");
-        document.getElementsByTagName("body")[0].classList.remove("fixedPosition")
-    }
+        function openMobileMenu() {
+            let menu = document.getElementsByTagName("mobile-nav")[0];
+            menu.classList.add("open");
+            document.getElementsByTagName("body")[0].classList.add("fixedPosition")
+        }
+
+        function closeMobileMenu() {
+            let menu = document.getElementsByTagName("mobile-nav")[0];
+            menu.classList.remove("open");
+            document.getElementsByTagName("body")[0].classList.remove("fixedPosition")
+        }
     </script>
-
-<?php require_once("php/cookie.php") ?>
+    <script src="./js/site.js"></script>
+    <?php require_once("php/cookie.php") ?>
 </body>
 
 </html>

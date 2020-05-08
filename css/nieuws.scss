@@ -204,3 +204,39 @@
     }
   }
 }
+
+
+#posts {
+  .wrapper {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    @media screen and ( max-width: 700px) {
+      grid-template-columns: 1fr;
+    }
+
+    .post {
+      .news {
+
+      }
+      .content { 
+        h3 {
+          font-size: 1.1em;
+        }
+        h5 {
+          font-size: 0.95em;
+        }
+        p {
+          font-size: 1em;
+        }
+
+        .read-more {
+          text-decoration: none;
+          color: #33a112;
+        }
+
+      }
+    }
+  }
+}
