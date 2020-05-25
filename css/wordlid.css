@@ -8,6 +8,7 @@
 }
 
 #aanmelden .wrapper form input, #aanmelden .wrapper form textarea {
+  font-size: 1.25rem;
   background-color: inherit;
 
   border-radius: 10px;
