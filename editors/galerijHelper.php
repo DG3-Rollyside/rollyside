@@ -23,7 +23,7 @@ function DownloadAll() {
     foreach($imgs as $img) {
         
         $id = $img[0];
-        $imgsPath = "../img/$id"
+        $imgsPath = "../img/$id";
 
         if(!file_exists($imgsPath)) {
 
@@ -40,13 +40,13 @@ function DownloadAll() {
 }
 
 function downloadImg($path, $width, $height) {
-            list($width, $height) = getimagesize($featuredImg);
+            list($width, $height) = getimagesize($path);
             $new_width = 300;
             $new_height = 300;
 
             // Resample
             $image_p = imagecreatetruecolor($new_width, $new_height);
-            $image = imagecreatefromjpeg($featuredImg);
+            $image = imagecreatefromjpeg($path);
             imagecopyresampled($image_p, $image, 0, 0, 0, 0, $new_width, $new_height, $width, $height);
 
             // Output

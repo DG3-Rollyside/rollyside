@@ -1,6 +1,6 @@
 <?php
     session_start();
-    include_once "../php/user.php";
+    include_once "./php/user.php";
 
     if (!User::checkedLoggedIn()) {
         http_response_code(403);
@@ -151,7 +151,7 @@
 
             <?php 
             if(isset($data)) {
-                echo "data: " . json_encode($data) . ",";
+                echo "data: \"" . json_encode($data) . "\",";
             }
             ?>
 
