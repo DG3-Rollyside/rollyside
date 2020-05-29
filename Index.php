@@ -1,3 +1,7 @@
+<?php
+include_once "php/database.php";
+$postsFeatured = Database::getPosts(3, 0);
+?>
 <!DOCTYPE html>
 <html lang="nl">
 
@@ -73,25 +77,24 @@
     <div id="index">
         <div class="wrapper">
             <div class="news-featured">
-                <h1>onze laatste berichten</h1>
+            <h1>onze laatste berichten</h1>
                 <div class="split-2">
                     <div class="left">
                         <div class="nieuws-featured"
-                            style='background-image: url("http://www.rollyside.nl/wp-content/uploads/2020/01/IMG_0671-1-rotated.jpg");'>
+                            style='background-image: url("<?php echo $postsFeatured[0][5] ?>");'>
                             <div class="content">
+
                                 <div class="contents">
 
                                     <h3 class="title">
-                                        Angst op mindervaliden-tribune FC na afstekenfakkel: ‘Je ziet hem bijna
-                                        dood gaan’
+                                        <?php echo $postsFeatured[0][1] ?>
                                     </h3>
-                                    <h5 class="date">18-01-2020</h5>
+                                    <h5 class="date"><?php echo date("d F Y", strtotime($postsFeatured[0][2])) ?></h5>
                                     <p class="intro-text">
-                                        De rookbom die tijdens FC Groningen – Ajax werd afgestoken, zorgde voor angstige
-                                        momenten op de Rollyside, de tribune voor FC-supporters die in een rolstoel
-                                        zitten of visueel gehandicapt zijn.
+                                        <?php echo $postsFeatured[0][4] ?>
                                     </p>
-                                    <a href="autgen" class="read-more">Lees meer...</a>
+                                    <a href="./nieuwspagina.php?postId=<?php echo $postsFeatured[0][0]; ?>"
+                                        class="read-more">Lees meer...</a>
                                 </div>
                             </div>
                         </div>
@@ -100,44 +103,33 @@
                         <div class="news">
                             <div class="content">
                                 <h3 class="title">
-                                    Angst op mindervaliden-tribune FC na afsteken
-                                    fakkel: ‘Je ziet hem bijna
-                                    dood gaan’
+                                    <?php echo $postsFeatured[1][1] ?>
                                 </h3>
-                                <h5 class="date">18-01-2020</h5>
+                                <h5 class="date"><?php echo date("d F Y", strtotime($postsFeatured[1][2])) ?></h5>
                                 <p class="intro-text">
-                                    De rookbom die tijdens FC Groningen – Ajax werd afgestoken, zorgde voor angstige
-                                    momenten op de Rollyside, de tribune voor FC-supporters die in een rolstoel
-                                    zitten of visueel gehandicapt zijn.
+                                    <?php echo $postsFeatured[1][4] ?>
                                 </p>
-                                <a href="autgen" class="read-more">Lees meer...</a>
+                                <a href="./nieuwspagina.php?postId=<?php echo $postsFeatured[1][0]; ?>"
+                                    class="read-more">Lees meer...</a>
                             </div>
-                            <div class="img"
-                                style='background-image: url("http://www.rollyside.nl/wp-content/uploads/2020/01/IMG_0671-1-rotated.jpg");'>
+                            <div class="img" style='background-image: url("<?php echo $postsFeatured[1][5] ?>");'>
                             </div>
                         </div>
                         <div class="news">
-                            <div class="img"
-                                style='background-image: url("http://www.rollyside.nl/wp-content/uploads/2020/01/IMG_0671-1-rotated.jpg");'>
+                            <div class="img" style='background-image: url("<?php echo $postsFeatured[2][5] ?>");'>
                             </div>
                             <div class="content">
                                 <h3 class="title">
-                                    Angst op mindervaliden-tribune FC na afsteken
-                                    fakkel: ‘Je ziet hem bijna
-                                    dood gaan’
+                                    <?php echo $postsFeatured[2][1] ?>
                                 </h3>
-                                <h5 class="date">18-01-2020</h5>
+                                <h5 class="date"><?php echo date("d F Y", strtotime($postsFeatured[2][2])) ?></h5>
                                 <p class="intro-text">
-                                    De rookbom die tijdens FC Groningen – Ajax werd afgestoken, zorgde voor angstige
-                                    momenten op de Rollyside, de tribune voor FC-supporters die in een rolstoel
-                                    zitten of visueel gehandicapt zijn.
+                                    <?php echo $postsFeatured[2][4] ?>
                                 </p>
-                                <a href="autgen" class="read-more">Lees meer...</a>
+                                <a href="./nieuwspagina.php?postId=<?php echo $postsFeatured[2][0]; ?>"
+                                    class="read-more">Lees meer...</a>
                             </div>
                         </div>
-                        </divi>
-                    </div>
-                </div>
                 <button onclick="window.location = './nieuws.php';" class="button">Bekijk meer berichten</button>
             </div>
         </div>
