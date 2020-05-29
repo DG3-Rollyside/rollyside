@@ -1,4 +1,5 @@
 # Hoofdfoto bewerken
+
 Je kunt de hoofdfoto bewerken door hem bij te snijden, in/uit zoemen, en roteren.
 
 Hoe moet je dit doen.
