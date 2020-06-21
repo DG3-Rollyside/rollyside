@@ -70,7 +70,7 @@
                 Wilt u ook lid worden van onze vereniging? Voor een bedrag van € 10,00 per voetbalseizoen heeft u al een lidmaatschap. Stuur een mail via contact en vermeld in de mail duidelijk uw Naam, Adres, Postcode, Woonplaats, Geboortedatum en Telefoonnummer. Indien aanwezig uw MIVA plek op de Rollyside in het stadion. De contributie van € 10,00 kunt u rechtstreeks overmaken naar NL04ABNA0423127292 t.n.v. de Rolly-Side Groningen.
             </p>
             <p>Vul het onderstaande formulier in of klik hier en word vandaag ook nog lid van onze vereniging!</p>
-            <form action="./php/sendmail.php" class="form">
+            <form action="./php/sendMail.php" class="form">
                 <input type="text" name="naam"  placeholder="Naam" required>
                 <input type="text" name="adres"  placeholder="Adres" required>
                 <input type="text" name="postocde"  placeholder="postcode" required>

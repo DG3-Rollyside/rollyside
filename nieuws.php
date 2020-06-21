@@ -11,6 +11,8 @@ if (isset($_REQUEST["pagina"])) {
 $postsFeatured = Database::getPosts(3, 0);
 $posts = Database::getPosts(9, 3 + $offset);
 
+database::RemoveEmpty();
+
 ?>
 
 <!DOCTYPE html>
