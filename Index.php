@@ -77,7 +77,7 @@ $postsFeatured = Database::getPosts(3, 0);
     <div id="index">
         <div class="wrapper">
             <div class="news-featured">
-            <h1>onze laatste berichten</h1>
+                <h1>onze laatste berichten</h1>
                 <div class="split-2">
                     <div class="left">
                         <div class="nieuws-featured"
@@ -130,35 +130,38 @@ $postsFeatured = Database::getPosts(3, 0);
                                     class="read-more">Lees meer...</a>
                             </div>
                         </div>
-                <button onclick="window.location = './nieuws.php';" class="button">Bekijk meer berichten</button>
+                        <button onclick="window.location = './nieuws.php';" class="button">Bekijk meer
+                            berichten</button>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-    <div id="sponsoren">
-        <div class="wrapper">
-            <h1>Onze sponsoren</h1>
-            <div class="owl-carousel">
-                <a class="sponsoren-logo" href="https://www.allure-energie.nl/" target="_blank">
-                    <img src="./img/sponsoren/allure.png" class="logo" alt="Logo Allure Energie">
-                </a>
-                <a class="sponsoren-logo" href="https://www.cafefootball.eu/" target="_blank">
-                    <img src="./img/sponsoren/cafe.png" class="logo" alt="Logo CAFE">
-                </a>
-                <a class="sponsoren-logo" href="https://www.svfcgroningen.nl/" target="_blank">
-                    <img src="./img/sponsoren/svfcg.png" class="logo" alt="Logo Supportersvereniging FCG">
-                </a>
-                <a class="sponsoren-logo" href="https://www.fcgroningen.nl/" target="_blank">
-                    <img src="./img/sponsoren/fcgroningen.png" class="logo" alt="Logo FC Groningen">
-                </a>
-                <a class="sponsoren-logo" href="http://www.hibernianfc.co.uk/" target="_blank">
-                    <img src="./img/sponsoren/hibernian.png" class="logo" alt="Logo Hibernian FC">
-                </a>
-                <a class="sponsoren-logo" href="https://www.humanitas.nl/" target="_blank">
-                    <img src="./img/sponsoren/humanitas.png" class="logo" alt="Logo Humanitas">
-                </a>
-                <a class="sponsoren-logo" href="https://www.knvb.nl/" target="_blank">
-                    <img src="./img/sponsoren/knvb.png" class="logo" alt="Logo KNVB">
-                </a>
+            <div id="sponsoren">
+                <div class="wrapper">
+                    <h1>Onze sponsoren</h1>
+                    <div class="owl-carousel">
+                        <a class="sponsoren-logo" href="https://www.allure-energie.nl/" target="_blank">
+                            <img src="./img/sponsoren/allure.png" class="logo" alt="Logo Allure Energie">
+                        </a>
+                        <a class="sponsoren-logo" href="https://www.cafefootball.eu/" target="_blank">
+                            <img src="./img/sponsoren/cafe.png" class="logo" alt="Logo CAFE">
+                        </a>
+                        <a class="sponsoren-logo" href="https://www.svfcgroningen.nl/" target="_blank">
+                            <img src="./img/sponsoren/svfcg.png" class="logo" alt="Logo Supportersvereniging FCG">
+                        </a>
+                        <a class="sponsoren-logo" href="https://www.fcgroningen.nl/" target="_blank">
+                            <img src="./img/sponsoren/fcgroningen.png" class="logo" alt="Logo FC Groningen">
+                        </a>
+                        <a class="sponsoren-logo" href="http://www.hibernianfc.co.uk/" target="_blank">
+                            <img src="./img/sponsoren/hibernian.png" class="logo" alt="Logo Hibernian FC">
+                        </a>
+                        <a class="sponsoren-logo" href="https://www.humanitas.nl/" target="_blank">
+                            <img src="./img/sponsoren/humanitas.png" class="logo" alt="Logo Humanitas">
+                        </a>
+                        <a class="sponsoren-logo" href="https://www.knvb.nl/" target="_blank">
+                            <img src="./img/sponsoren/knvb.png" class="logo" alt="Logo KNVB">
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -274,7 +277,7 @@ $postsFeatured = Database::getPosts(3, 0);
         return await response.json(); // parses JSON response into native JavaScript objects
     }
     </script>
-    <script src="./js/site.js"></script>
+    
     <?php require_once("php/cookie.php") ?>
 </body>
 

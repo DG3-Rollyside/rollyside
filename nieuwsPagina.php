@@ -10,6 +10,8 @@ include_once "./php/database.php";
     <title>rollyside</title>
     <link rel="stylesheet" href="./css/minified/main.min.css" />
     <link rel="stylesheet" href="./css/galerijen.css" />
+    <link rel="stylesheet" href="./css/minified/nieuwspagina.min.css" />
+    <link rel="stylesheet" href="./css/minified.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.1.2/simple-lightbox.min.css">
 
@@ -84,7 +86,7 @@ include_once "./php/database.php";
             $post = Database::getPost($_REQUEST["postId"]);
 
             echo "<h1 class='title'>$post[1]</h1>";
-            echo "<img src='$post[5]'>";
+            echo "<img class='featured_img' src='$post[7]'>";
             echo "<div class='article'>$post[3]</div>";
             ?>
         </div>
