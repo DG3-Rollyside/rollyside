@@ -88,6 +88,7 @@ om een nieuwsbericht te maken moet je een titel invullen als je dat gedaan hebt 
 
 - [MySQL](https://www.mysql.com/) - Database
 - [PHP](https://php.net/) - Server
+- html - markup
 
 ## Authors
 
